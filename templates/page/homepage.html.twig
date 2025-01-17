@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BigMars!
+{% endblock %}
+
+{% block body %}
+	<h1>Bienvenue sur bigmars sur BigMars!</h1>
+	<a href="{{ path ('app_login') }}">
+		se connecter</a>
+	<a href="{{ path ('app_register') }}">
+		s'inscrire</a>
+	{% if is_granted('ROLE_ADMIN') %}
+		<a href="#">
+			Admin
+		</a>
+	{% endif %}
+{% endblock %}
