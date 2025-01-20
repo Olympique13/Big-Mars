@@ -4,11 +4,12 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Bienvenue sur bigmars sur BigMars!</h1>
+	<p class="font-bold text-3xl">Bienvenue sur bigmars sur BigMars!</p>
 	<a href="{{ path ('app_login') }}">
 		se connecter</a>
 	<a href="{{ path ('app_register') }}">
 		s'inscrire</a>
+	<a href="{{ path ('app_event') }}">Voir event</a>
 	{% if is_granted('ROLE_ADMIN') %}
 		<a href="{{ path ('admin') }}">
 			Admin
