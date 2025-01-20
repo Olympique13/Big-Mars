@@ -24,10 +24,10 @@ class PlaceCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             TextField::new('ville', 'Ville'),
             TextField::new('adresse', 'Adresse'),
-            TextField::new('lieu', 'Lieu-dit'),
+            TextField::new('lieu', 'Lieux-dit'),
             IntegerField::new('cpostal', 'Code Postal'),
-            DateTimeField::new('createdAt', 'Date de création')->setFormat('dd MMMM y HH:mm')->hideOnForm(),
-            DateTimeField::new('updatedAt', 'Dernière modification')->setFormat('dd MMMM y HH:mm')->hideOnForm(),
+            DateTimeField::new('createdAt', 'Date de création')->setFormat('dd MMM y HH:mm')->hideOnForm(),
+            DateTimeField::new('updatedAt', 'Dernière modification')->setFormat('dd MMM y HH:mm')->hideOnForm(),
         ];
     }
 }

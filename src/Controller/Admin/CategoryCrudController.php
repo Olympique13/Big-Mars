@@ -22,9 +22,9 @@ class CategoryCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('name', 'Nom'),
-            SlugField::new('slug', 'Slug')->setTargetFieldName('name')->hideOnIndex(),
-            DateTimeField::new('createdAt', 'Date de création')->setFormat('dd MMMM y HH:mm')->hideOnForm(),
-            DateTimeField::new('updatedAt', 'Dernière modification')->setFormat('dd MMMM y HH:mm')->hideOnForm(),
+            SlugField::new('slug', 'Slug')->setTargetFieldName('name')->hideOnIndex()->hideOnForm(),
+            DateTimeField::new('createdAt', 'Date de création')->setFormat('dd MMM y HH:mm')->hideOnForm(),
+            DateTimeField::new('updatedAt', 'Dernière modification')->setFormat('dd MMM y HH:mm')->hideOnForm(),
         ];
     }
 }
