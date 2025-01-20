@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Contact;
 use App\Entity\User;
 use App\Entity\Category;
 use App\Entity\Event;
@@ -40,6 +41,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Lieu', 'fas fa-location-dot', Place::class);
         yield MenuItem::linkToCrud('Evènement', 'fas fa-calendar-days', Event::class);
         yield MenuItem::linkToCrud('Inscription', 'fas fa-address-card', EventRegistration::class);
+        yield MenuItem::linkToCrud('Contact', 'fas fa-circle-question', Contact::class);
         yield MenuItem::linkToCrud('Utilisateur', 'fas fa-user', User::class)->setPermission('ROLE_ADMIN');
     }
 }

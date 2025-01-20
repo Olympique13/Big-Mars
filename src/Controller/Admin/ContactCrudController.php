@@ -2,33 +2,30 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\EventRegistration;
+use App\Entity\Contact;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
-class EventRegistrationCrudController extends AbstractCrudController
+class ContactCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return EventRegistration::class;
+        return Contact::class;
     }
 
     public function configureFields(string $pageName): iterable
     {
         return [
             IdField::new('id')->hideOnForm(),
-            AssociationField::new('event', 'Evénement'),
-            TextField::new('firstName', 'Nom'),
-            TextField::new('lastName', 'Prénom'),
+            TextField::new('lastName', 'Nom'),
+            TextField::new('firstName', 'Prénom'),
             EmailField::new('email', '@Mail'),
             TextField::new('phone', 'N° Téléphone'),
-            DateTimeField::new('createdAt', 'Date de création')->setFormat('dd MMM y HH:mm')->hideOnForm(),
-            DateTimeField::new('updatedAt', 'Dernière modification')->setFormat('dd MMM y HH:mm')->hideOnForm(),
+            TextField::new('subject', 'Sujet'),
+            TextEditorField::new('content', 'Message')
         ];
     }
 }
