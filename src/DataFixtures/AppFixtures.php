@@ -19,6 +19,7 @@ class AppFixtures extends Fixture
             $place->setAdresse('adresse ' . $p);
             $place->setVille('ville ' . $p);
             $place->setCPostal(1234 . $p);
+            $place->setLieu('La cannebière');
             $place->setCreatedAt(new \DateTimeImmutable());
             $place->setUpdatedAt(new \DateTimeImmutable());
             $manager->persist($place);

@@ -8,6 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity(repositoryClass: PlaceRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Place
 {
     #[ORM\Id]
@@ -27,12 +28,10 @@ class Place
     #[Assert\NotBlank]
     private ?int $cPostal = null;
 
-    #[ORM\Column]
-    #[Gedmo\Timestampable(on: 'create')]
+    #[ORM\Column(type: "datetime_immutable")]
     private ?\DateTimeImmutable $createdAt = null;
 
-    #[ORM\Column]
-    #[Gedmo\Timestampable(on: 'update')]
+    #[ORM\Column(type: "datetime_immutable")]
     private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\Column(length: 255)]
@@ -79,14 +78,28 @@ class Place
         return $this;
     }
 
+    public function getLieu(): ?string
+    {
+        return $this->lieu;
+    }
+
+    public function setLieu(string $lieu): static
+    {
+        $this->lieu = $lieu;
+
+        return $this;
+    }
+
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    #[ORM\PrePersist]
+    public function setCreatedAt(): static
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt = new \DateTimeImmutable();
+        $this->updatedAt = new \DateTimeImmutable();
 
         return $this;
     }
@@ -96,21 +109,10 @@ class Place
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(\DateTimeImmutable $updatedAt): static
+    #[ORM\PreUpdate]
+    public function setUpdatedAt(): static
     {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    public function getLieu(): ?string
-    {
-        return $this->lieu;
-    }
-
-    public function setLieu(string $lieu): static
-    {
-        $this->lieu = $lieu;
+        $this->updatedAt = new \DateTimeImmutable();
 
         return $this;
     }
