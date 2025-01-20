@@ -8,12 +8,15 @@ use App\Entity\Category;
 use App\Entity\Event;
 use App\Entity\EventRegistration;
 use App\Entity\Place;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
 #[IsGranted('ROLE_ADMIN', message: 'Vous n\'êtes pas autorisé à consulter cette page')]
 class DashboardController extends AbstractDashboardController
@@ -31,8 +34,8 @@ class DashboardController extends AbstractDashboardController
     {
         return Dashboard::new()
             // ->setTitle('<img src="https://www.synergiefamily.com/build/images/compressed/year-logo-02.png"> BigMars');
-                ->setTitle('Big Mars - Administration');
-        }
+            ->setTitle('Big Mars - Administration');
+    }
 
     public function configureMenuItems(): iterable
     {
