@@ -11,6 +11,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
+use Symfony\Component\Form\ChoiceList\ChoiceList;
 
 class UserCrudController extends AbstractCrudController
 {
@@ -26,7 +28,12 @@ class UserCrudController extends AbstractCrudController
             EmailField::new('email', '@Mail'),
             TextField::new('firstname', 'Prénom'),
             TextField::new('lastname', 'Nom'),
-            TextField::new('password', 'Mot de passe')->hideOnIndex(),
+            ChoiceField::new('roles', 'Role')->setChoices([
+                'Utilisateur' => 'ROLE_USER',
+                'Administrateur' => 'ROLE_ADMIN',
+                'Super-Administrateur' => 'ROLE_ADMIN_SUPER',
+            ])->allowMultipleChoices()->autocomplete(),
+            TextField::new('password', 'Mot de passe')->hideOnIndex()->hideOnForm(),
             DateTimeField::new('createdAt', 'Date de création')->setFormat('dd MMM y HH:mm')->hideOnForm()->setRequired(true),
             DateTimeField::new('updatedAt', 'Modifié le')->setFormat('dd MMM y HH:mm')->hideOnForm()->setRequired(true),
         ];
