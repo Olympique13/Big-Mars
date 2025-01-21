@@ -7,6 +7,11 @@ parameters:
   DEMO: "%env(DEMO)%"
   EMAIL_FROM: "%env(EMAIL_FROM)%"
   EMAIL_TO: "%env(EMAIL_TO)%"
+  EMAIL_NOM: "%env(EMAIL_NOM)%"
+  EMAIL_PRENOM: "%env(EMAIL_PRENOM)%"
+  EMAIL_PHONE: "%env(EMAIL_PHONE)%"
+  EMAIL_SUBJECT: "%env(EMAIL_SUBJECT)%"
+  EMAIL_CONTENT: "%env(EMAIL_CONTENT)%"
 
 services:
   # default configuration for services in *this* file
