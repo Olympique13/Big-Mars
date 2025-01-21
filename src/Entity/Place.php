@@ -119,6 +119,13 @@ class Place
 
     public function __toString(): string
     {
-        return $this->lieu;
+        $formattedAddress = $this->adresseComplete();
+        $place = $this->lieu;
+        return $formattedAddress . '(' . $place .')';
+    }
+
+    private function adresseComplete(): string
+    {
+        return $this->adresse . ', ' . $this->cPostal . ' ' . $this->ville . ' ';
     }
 }

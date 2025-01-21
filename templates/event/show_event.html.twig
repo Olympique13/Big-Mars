@@ -1,0 +1,38 @@
+{%  extends 'base.html.twig' %}
+
+{% block title %}Events{% endblock %}
+
+{% block body %}
+    <main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
+        <div class="flex justify-between px-4 mx-auto max-w-screen-xl">
+            <article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+                <header class="mb-4 lg:mb-6 not-format">
+                    <img src="{{ events.imageName }}" alt="{{ events.imageName }}">
+                    <address class="flex items-center mb-6 not-italic">
+                        <div class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white">
+                            <div>
+                                <p class="text-base text-gray-500 dark:text-gray-400">
+                                    Créer le :
+                                    <time datetime="{{ events.createdAt|date('y/d/m')}}" title="{{ events.createdAt|date('y/d/m')}}">{{ events.createdAt|date('d/m/y à H:i')}}</time>
+                                </p>
+                            </div>
+                        </div>
+                    </address>
+                    <h1 class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">{{ events.title }}</h1>
+                </header>
+                <section class="main_review">
+                    <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                        {{ events.content|raw }}
+                    </p>
+                </section>
+                <span class="mt-9">Le {{ events.eventDate|date('d/m/y') }} à {{ events.eventDate|date('H') }}H{{ events.eventDate|date('i') }} à {{ events.place }}</span>
+            </article>
+        </div>
+    </main>
+
+    <div class="flex justify-center mt-8">
+        <a href="{{ path('app_event') }}" class="inline-block px-6 py-3 text-sm font-medium leading-6 text-center text-white transition bg-blue-600 rounded shadow ripple hover:shadow-lg hover:bg-blue-700 focus:outline-none">
+            Retour aux événements
+        </a>
+    </div>
+{% endblock %}

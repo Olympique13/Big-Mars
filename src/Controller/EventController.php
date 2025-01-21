@@ -13,9 +13,18 @@ final class EventController extends AbstractController
     public function index(EventRepository $EventRepository): Response
     {
         $events = $EventRepository->findAll();
-
         return $this->render('event/index.html.twig', [
-            'event' => $events
+            'events' => $events
+        ]);
+    }
+
+
+    #[Route('/event/{slug}', name: 'show_event')]
+    public function show(EventRepository $EventRepository, string $slug): Response
+    {
+        $events = $EventRepository->findOneBy(['slug' => $slug]);
+        return $this->render('event/show_event.html.twig', [
+            'events' => $events
         ]);
     }
 }

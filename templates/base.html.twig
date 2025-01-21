@@ -7,13 +7,15 @@
 
         {% block stylesheets %}
             <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        {% endblock %}
 
+        {% block javascripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
         {% endblock %}
 
     </head>
     <body class="font-sanstext-gray-800bg-gray-100overflow-x-hidden" id="body">
-    <div class="container">
-        {% block body %}{% endblock %}
+    <div class="main-content p-8 w-11/12 mx-auto my-8 bg-white border border-gray-200 rounded-lg shadow-lg flex justify-center flex-col"> {% block body %}{% endblock %}
     </div>
     </body>
 </html>
