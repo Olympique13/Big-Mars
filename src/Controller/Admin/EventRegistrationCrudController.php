@@ -40,7 +40,6 @@ class EventRegistrationCrudController extends AbstractCrudController
             EmailField::new('email', '@Mail'),
             TextField::new('phone', 'N° Téléphone'),
             DateTimeField::new('createdAt', 'Date de création')->setFormat('dd MMM y HH:mm')->hideOnForm(),
-            DateTimeField::new('updatedAt', 'Dernière modification')->setFormat('dd MMM y HH:mm')->hideOnForm(),
         ];
     }
 }

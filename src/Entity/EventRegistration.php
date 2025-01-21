@@ -35,16 +35,12 @@ class EventRegistration
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank]
-    #[Assert\Regex(pattern: '^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$^')]
+    // #[Assert\Regex(pattern: '^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$^')]
     private ?string $phone = null;
 
     #[ORM\Column]
     #[Gedmo\Timestampable(on: 'create')]
     private ?\DateTimeImmutable $createdAt = null;
-
-    #[ORM\Column (nullable: true)]
-    #[Gedmo\Timestampable(on: 'update')]
-    private ?\DateTimeImmutable $updatedAt = null;
 
     public function getId(): ?int
     {
@@ -120,20 +116,6 @@ class EventRegistration
     public function setCreatedAt(): static
     {
         $this->createdAt = new \DateTimeImmutable();
-        $this->updatedAt = new \DateTimeImmutable();
-
-        return $this;
-    }
-
-    public function getUpdatedAt(): ?\DateTimeImmutable
-    {
-        return $this->updatedAt;
-    }
-
-    #[ORM\PreUpdate]
-    public function setUpdatedAt(): static
-    {
-        $this->updatedAt = new \DateTimeImmutable();
 
         return $this;
     }
