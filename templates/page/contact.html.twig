@@ -6,7 +6,7 @@
 {% block body %}
 
 	<div class="container mx-auto" id="contactForm">
-		<h1 class="text-2xl font-bold mb-5">S'inscrire</h1>
+		<h1 class="text-2xl font-bold mb-5">Nous contacter</h1>
 
 		{{ form_start(contactForm) }}
 		{{ form_errors(contactForm) }}
@@ -39,6 +39,9 @@
 					{{ form_label(contactForm.content, "Message", {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
 					{{ form_widget(contactForm.content, {'attr': {'class': 'mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md', 'placeholder': 'Votre message ici :'}}) }}
 				</div>
+				<div>
+					{{ form_label(contactForm.agreeContact, "Accepter d'être recontacté par BigMars", {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
+					{{ form_widget(contactForm.agreeContact) }}</div>
 			</div>
 			<div>
 				<button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Envoyer</button>

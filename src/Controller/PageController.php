@@ -24,6 +24,8 @@ final class PageController extends AbstractController
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
+
+        // dd($this->getParameter('DEMO'));
         
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($contact);

@@ -7,6 +7,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Validator\Constraints\IsTrue;
 
 class ContactType extends AbstractType
 {
@@ -17,8 +20,24 @@ class ContactType extends AbstractType
             ->add('lastName')
             ->add('email')
             ->add('phone')
-            ->add('subject')
+            ->add('subject', ChoiceType::class, [
+                'choices' => [
+                    'Choix 1' => 'Info 1',
+                    'choix 2' => 'Info 2',
+                    'choix 3' => 'info 3',
+                    'Autre' => 'Autre'
+                ]
+            ])
             ->add('content')
+            ->add('agreeContact', CheckboxType::class, [
+                'mapped' => false,
+                'required' => true,
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'Vous devez acceptez d\être recontacté par BigMars',
+                    ]),
+                ],
+            ])
             ->add('createdAt', HiddenType::class)
         ;
     }
