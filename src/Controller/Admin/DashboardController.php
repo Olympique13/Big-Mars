@@ -30,8 +30,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            // ->setTitle('<img src="https://www.synergiefamily.com/build/images/compressed/year-logo-02.png"> BigMars');
-            ->setTitle('Big Mars - Administration');
+            ->setTitle('<img style="width:120px;" src="https://www.synergiefamily.com/build/images/compressed/year-logo-02.png"><br/>BigMars Admin');
     }
 
     public function configureMenuItems(): iterable
