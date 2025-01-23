@@ -36,12 +36,23 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToUrl('Retour à la page d\'accueil', 'fas fa-home', $this->generateUrl('app_homepage'));
-        yield MenuItem::linkToCrud('Catégories', 'fas fa-layer-group', Category::class);
+        yield MenuItem::linkToUrl('Retour à la page d\'accueil', 'fas fa-home', '/');
+        yield MenuItem::linkToDashboard('Dashboard', 'fas fa-home');
+        
+        yield MenuItem::section('Lieu');
         yield MenuItem::linkToCrud('Emplacements', 'fas fa-location-dot', Place::class);
-        yield MenuItem::linkToCrud('Evènements', 'fas fa-calendar-days', Event::class);
+        
+        yield MenuItem::section('Catégorie');
+        yield MenuItem::linkToCrud('Catégories', 'fas fa-layer-group', Category::class);
+        
+        yield MenuItem::section('événement');
+        yield MenuItem::linkToCrud('Nos événements', 'fas fa-calendar-days', Event::class);
         yield MenuItem::linkToCrud('Inscriptions', 'fas fa-address-card', EventRegistration::class);
+        
+        yield MenuItem::section('Utilisateur')->setPermission('ROLE_ADMIN_SUPER');
+        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
+        
+        yield MenuItem::section('Information');
         yield MenuItem::linkToCrud('Contact', 'fas fa-circle-question', Contact::class);
-        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class)->setPermission('ROLE_ADMIN_SUPER');
     }
 }
