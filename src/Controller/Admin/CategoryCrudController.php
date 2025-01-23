@@ -7,14 +7,19 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
 class CategoryCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
         return Category::class;
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud->setPageTitle('index', 'Nos catégories')->setPageTitle('new', 'Ajouter une nouvelle catégorie')->setPageTitle('edit', 'Modifier la catégorie');
     }
 
     public function configureFields(string $pageName): iterable

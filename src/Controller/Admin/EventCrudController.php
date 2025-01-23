@@ -9,11 +9,10 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use Symfony\Component\DomCrawler\Field\FileFormField;
 use Vich\UploaderBundle\Form\Type\VichFileType;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 
 class EventCrudController extends AbstractCrudController
 {
@@ -22,7 +21,13 @@ class EventCrudController extends AbstractCrudController
         return Event::class;
     }
 
-
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+        ->setPageTitle('index', 'Nos événements')
+        ->setPageTitle('new', 'Ajouter un nouvel événement')
+        ->setPageTitle('edit', 'Modifier cet événement');
+    }
 
     public function configureFields(string $pageName): iterable
     {

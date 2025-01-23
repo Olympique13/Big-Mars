@@ -22,9 +22,9 @@ class ContactType extends AbstractType
             ->add('phone')
             ->add('subject', ChoiceType::class, [
                 'choices' => [
-                    'Choix 1' => 'Info 1',
-                    'choix 2' => 'Info 2',
-                    'choix 3' => 'info 3',
+                    'Choix 1' => 'Choix 1',
+                    'choix 2' => 'Choix 2',
+                    'choix 3' => 'Choix 3',
                     'Autre' => 'Autre'
                 ]
             ])

@@ -39,12 +39,12 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Catégorie', 'fas fa-layer-group', Category::class);
-        yield MenuItem::linkToCrud('Lieu', 'fas fa-location-dot', Place::class);
-        yield MenuItem::linkToCrud('Evènement', 'fas fa-calendar-days', Event::class);
-        yield MenuItem::linkToCrud('Inscription', 'fas fa-address-card', EventRegistration::class);
+        yield MenuItem::linkToDashboard('DashboPage d\'accueil', 'fa fa-home');
+        yield MenuItem::linkToCrud('Catégories', 'fas fa-layer-group', Category::class);
+        yield MenuItem::linkToCrud('Emplacements', 'fas fa-location-dot', Place::class);
+        yield MenuItem::linkToCrud('Evènements', 'fas fa-calendar-days', Event::class);
+        yield MenuItem::linkToCrud('Inscriptions', 'fas fa-address-card', EventRegistration::class);
         yield MenuItem::linkToCrud('Contact', 'fas fa-circle-question', Contact::class);
-        yield MenuItem::linkToCrud('Utilisateur', 'fas fa-user', User::class)->setPermission('ROLE_ADMIN_SUPER');
+        yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class)->setPermission('ROLE_ADMIN_SUPER');
     }
 }
