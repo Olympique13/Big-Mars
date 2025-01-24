@@ -1,0 +1,21 @@
+<div class="container mx-auto bg-white p-6 shadow-md">
+	<div class="content my-6">
+		<h1 class="text-2xl font-bold mb-4">Confirmation d'inscription à l'événement</h1>
+		<p class="mb-4">Bonjour
+			{{ lastName }}
+			{{ firstName }},</p>
+
+		<p class="mb-4">Merci de vous être inscrit à notre événement. Voici les détails de votre inscription :</p>
+		<ul class="list-disc list-inside mb-4">
+			<li>
+				<strong>Événement :</strong>
+				{{ eventTitle }}</li>
+			<li>
+				<strong>Date :</strong>
+				{{ eventDate }}</li>
+			<li>
+				<strong>Lieu :</strong>
+				{{ place }}</li>
+		</ul>
+	</div>
+</div>

@@ -27,7 +27,6 @@ final class PageController extends AbstractController
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
 
-        // dd($this->getParameter('DEMO'));
         
         if ($form->isSubmitted() && $form->isValid()) {
             $this->addFlash('notice','Message envoyé');
@@ -38,7 +37,7 @@ final class PageController extends AbstractController
                 ->to('neyssimodeur@gmail.com')
                 ->subject($form->get('subject')->getData())
                 ->text($form->get('content')->getData())
-                ->htmlTemplate('page/email.html.twig')
+                ->htmlTemplate('email/contact.html.twig')
                 ->context([
                     'firstName'=> $form->get('firstName')->getData(),
                     'lastName'=> $form->get('lastName')->getData(),
