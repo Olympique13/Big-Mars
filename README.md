@@ -40,6 +40,6 @@ php bin/console --version (Symfony)
 - [ ] Installer toutes les dépendences
 - [ ] Verifier les bonnes versions
 - [ ] Lancer le serveur (selon ce que vous utilisez)
-- [ ] http://localhost/bigmars/public/
+- [ ] http://localhost/bigmars/public/ OU bigmars.test (si vous utiliser Laragon)
 
 ---
