@@ -1,0 +1,39 @@
+<div class="container mx-auto" style="display:none;" id="eventReg">
+	<h1 class="text-2xl font-bold mb-5">S'inscrire</h1>
+
+	{{ form_start(eventReg) }}
+	{{ form_errors(eventReg) }}
+
+	<div class="space-y-6">
+		<div class="space-y-4">
+			<div>
+				{{ form_label(eventReg.lastName, "nom", {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
+				{{ form_widget(eventReg.lastName, {'attr': {'class': 'mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md', 'placeholder': 'Nom'}}) }}
+				{{ form_errors(eventReg.lastName) }}
+			</div>
+			<div>
+				{{ form_label(eventReg.firstName, "prenom", {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
+				{{ form_widget(eventReg.firstName, {'attr': {'class': 'mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md', 'placeholder': 'prenom'}}) }}
+			</div>
+			<div>
+				{{ form_label(eventReg.email, "email", {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
+				{{ form_widget(eventReg.email, {'attr': {'class': 'mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md', 'placeholder': 'Votre @Mail'}}) }}
+				{{ form_errors(eventReg.email) }}
+			</div>
+			<div>
+				{{ form_label(eventReg.phone, "N° Téléphone", {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
+				{{ form_widget(eventReg.phone, {'attr': {'class': 'mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md', 'placeholder': 'Votre numéro'}}) }}
+			</div>
+			<div>
+				{{ form_widget(eventReg.event, {'value': id, 'attr': {'hidden': true}}) }}
+			</div>
+		</div>
+		<div>
+			<button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">Enregistrer</button>
+		</div>
+		<div>
+			<a href="{{ path('app_event') }}" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">Retour</a>
+		</div>
+	</div>
+	{{ form_end(eventReg) }}
+</div>

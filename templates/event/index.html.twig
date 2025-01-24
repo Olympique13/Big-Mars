@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Events
+{% endblock %}
+
+{% block body %}
+
+	{% for event in events %}
+		<div class="bg-white border border-gray-200 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow pb-12 mb-12 w-2/4">
+			<a href="{{ path('show_event', {'slug': event.slug}) }}">
+				<h2 class="text-2xl font-bold mb-3 text-gray-800 hover:text-blue-600 transition-colors">{{ event.title }}</h2>
+			</a>
+			<p class="text-gray-600 mb-4">{{ event.content|raw }}</p>
+			<p class="text-gray-600 mb-4">Le
+				{{event.eventDate|date('d/m/y à H:m') }}</p>
+		</div>
+
+	{% endfor %}
+{% endblock %}

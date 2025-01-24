@@ -1,0 +1,54 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content %}
+
+	<section>
+		<h1 style="padding : 3vh 0;">
+			Bienvenue sur le panel admin de BigMars !</h1>
+
+		<p>Vous pouvez revenir à tout moment sur cette documentation en cliquant sur la maison.</p>
+		<p>
+			Possibilité d'agrandir/réduire le menu en cliquant sur la bordure de gauche.</p>
+		<h2>
+			Comment créer un événement ?
+		</h2>
+
+		<p>
+			Rendez-vous dans la section "Evénement" puis selectionner la rubrique "Nos événement".
+		</p>
+		<p>
+			Dans cette rubrique vous avez plusieurs possibilités :
+		</p>
+		<ul>
+			<li>Création d'un nouvel événement -> Bouton "Créer Event"</li>
+			<li>Modification d'un événement -> bouton "..." puis "Modifier"</li>
+			<li>Suppression d'un événement -> bouton "..." puis "Supprimer"</li>
+		</ul>
+
+		<h3>
+			Les contraintes
+		</h3>
+
+		<p>Plusieurs contraintes ont été définies concernant le nombre de caractères de certains champs, pour un visuel propre au format mobile.</p>
+		<ul>
+			<li>
+				Le champ "Titre" est limité à
+				<b>255</b>
+				caractères.</li>
+            <li>
+				Les images ne peuvent pas dépasser les 2Mo.
+			</li>
+			<li>
+				<b>Toujours</b>
+				avoir un emplacement associé à un événement.
+			</li>
+			<li>
+				Un événement doit
+				<b>toujours</b>
+				avoir une catégorie.
+			</li>
+		</ul>
+
+	</section>
+
+{% endblock %}
