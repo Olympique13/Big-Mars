@@ -42,9 +42,13 @@ class ContactCrudController extends AbstractCrudController
             TextField::new('firstName', 'Prénom'),
             EmailField::new('email', '@Mail'),
             TextField::new('phone', 'N° Téléphone'),
-            TextField::new('subject', 'Sujet'),
-            TextEditorField::new('content', 'Message'),
+            TextField::new('type', 'Type'),
+            TextField::new('status', 'Statut'),
+            TextField::new('ageGroup', 'Tranche d\'âge'),
+            TextField::new('company', 'Entreprise'),
+            TextEditorField::new('message', 'Message'),
             DateTimeField::new('createdAt', 'Envoyé le')->setFormat('dd/MM/y à HH:mm'),
+            DateTimeField::new('updatedAt', 'Modifié le')->setFormat('dd/MM/y à HH:mm')->hideOnIndex(),
         ];
     }
 }

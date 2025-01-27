@@ -6,6 +6,7 @@ use App\Repository\ContactRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
 #[ORM\HasLifecycleCallbacks]
@@ -23,20 +24,41 @@ class Contact
     private ?string $lastName = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Regex(pattern: '/^((?!\.)[\w._-]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/', message: 'Votre adresse mail n\'est pas valide')]
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le numéro de téléphone ne peut pas être vide')]
+    #[Assert\Length(min: 10, max: 14, minMessage: 'Votre numéro est incorrect', maxMessage: 'Votre numéro est incorrect')]
+    #[Assert\Regex(pattern: '/^(0|\+33)[6-7]([-. ]?[0-9]{2}[-. ]?){4}$/', message: 'Votre numéro de téléphone n\'est pas valide (06.. ou 07..)')]
     private ?string $phone = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $subject = null;
+    private ?string $type = null;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $content = null;
+    private ?string $message = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\NotBlank(groups: ['company'], message: 'Vous devez entrez le nom de votre entreprise')]
+    private ?string $company = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\NotBlank(groups: ['talent'], message: 'Séléctionner votre statut')]
+    private ?string $status = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\NotBlank(groups: ['talent'], message: 'Séléctionner votre tranche d\'âge')]
+    private ?string $ageGroup = null;
 
     #[ORM\Column]
     #[Gedmo\Timestampable(on: 'create')]
     private ?\DateTimeImmutable $createdAt = null;
+
+    #[ORM\Column]
+    #[Gedmo\Timestampable(on: 'update')]
+    private ?\DateTimeImmutable $updatedAt = null;
+
 
     public function getId(): ?int
     {
@@ -91,40 +113,89 @@ class Contact
         return $this;
     }
 
-    public function getSubject(): ?string
+    public function getType(): ?string
     {
-        return $this->subject;
+        return $this->type;
     }
 
-    public function setSubject(string $subject): static
+    public function setType(string $type): static
     {
-        $this->subject = $subject;
+        $this->type = $type;
 
         return $this;
     }
 
-    public function getContent(): ?string
+    public function getMessage(): ?string
     {
-        return $this->content;
+        return $this->message;
     }
 
-    public function setContent(string $content): static
+    public function setMessage(string $message): static
     {
-        $this->content = $content;
+        $this->message = $message;
 
         return $this;
     }
 
+    
+    public function getCompany(): ?string
+    {
+        return $this->company;
+    }
+
+    public function setCompany(?string $company): static
+    {
+        $this->company = $company;
+        
+        return $this;
+    }
+    
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+    
+    public function setStatus(?string $status): static
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+    
+    public function getAgeGroup(): ?string
+    {
+        return $this->ageGroup;
+    }
+    
+    public function setAgeGroup(?string $ageGroup): static
+    {
+        $this->ageGroup = $ageGroup;
+        
+        return $this;
+    }
+    
     public function getCreatedAt(): ?\DateTimeImmutable
     {
         return $this->createdAt;
     }
-
+    
     #[ORM\PrePersist]
     public function setCreatedAt(): static
     {
         $this->createdAt = new \DateTimeImmutable();
-
+        $this->updatedAt = new \DateTimeImmutable();
+        return $this;
+    }
+    
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+    
+    #[ORM\PreUpdate]
+    public function setUpdatedAt(): static
+    {
+        $this->updatedAt = new \DateTimeImmutable();
         return $this;
     }
 }
