@@ -70,9 +70,9 @@ class ContactType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Contact::class,
             'validation_groups' => function (FormInterface $form): array {
-            $entity = $form->getData();
-
-            return $entity->getStatus() ? ['talent'] : ['company'];
-        },        ]);
+                $entity = $form->getData();
+                return $entity->getType() === 'Entreprise' ? ['company'] : ['talent'];
+            },
+        ]);
     }
 }

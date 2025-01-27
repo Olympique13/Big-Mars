@@ -44,11 +44,11 @@ class Contact
     private ?string $company = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Assert\NotBlank(groups: ['talent'], message: 'Séléctionner votre statut')]
+    #[Assert\NotBlank(groups: ['talent'], message: 'Sélectionnez votre statut')]
     private ?string $status = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    #[Assert\NotBlank(groups: ['talent'], message: 'Séléctionner votre tranche d\'âge')]
+    #[Assert\NotBlank(groups: ['talent'], message: 'Sélectionnez votre tranche d\'âge')]
     private ?string $ageGroup = null;
 
     #[ORM\Column]
