@@ -28,11 +28,10 @@ class PlaceCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id')->hideOnForm(),
-            TextField::new('ville', 'Ville'),
-            TextField::new('adresse', 'Adresse'),
-            TextField::new('lieu', 'Lieux-dit'),
-            IntegerField::new('cpostal', 'Code Postal'),
+            TextField::new('city', 'Ville'),
+            TextField::new('address', 'Adresse'),
+            TextField::new('place', 'Lieu'),
+            TextField::new('zipCode', 'Code Postal'),
             DateTimeField::new('createdAt', 'Date de création')->setFormat('dd MMM y HH:mm')->hideOnForm(),
             DateTimeField::new('updatedAt', 'Dernière modification')->setFormat('dd MMM y HH:mm')->hideOnForm(),
         ];
