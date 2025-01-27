@@ -2,6 +2,7 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@symfony/webpack-encore": "^5.0.1",
+    "cleave.js": "^1.6.0",
     "run": "^1.5.0",
     "watch": "^0.13.0"
   },
