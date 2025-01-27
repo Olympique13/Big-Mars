@@ -35,11 +35,6 @@ class Event
     #[Gedmo\Slug(fields: ['title'])]
     private ?string $slug = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    #[Assert\NotBlank]
-    private ?Place $place = null;
-
     #[ORM\Column]
     #[Gedmo\Timestampable(on: 'create')]
     private ?\DateTimeImmutable $createdAt = null;
@@ -66,6 +61,9 @@ class Event
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
+
+    #[ORM\Column]
+    private ?bool $active = null;
 
     public function __construct()
     {
@@ -109,18 +107,6 @@ class Event
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
-
-        return $this;
-    }
-
-    public function getPlace(): ?Place
-    {
-        return $this->place;
-    }
-
-    public function setPlace(?Place $place): static
-    {
-        $this->place = $place;
 
         return $this;
     }
@@ -229,6 +215,18 @@ class Event
     public function setContent(string $content): static
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function isActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): static
+    {
+        $this->active = $active;
 
         return $this;
     }

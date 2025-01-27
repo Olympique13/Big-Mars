@@ -36,6 +36,9 @@ class EventSlot
     #[ORM\ManyToOne(inversedBy: 'eventSlots')]
     private ?Place $place = null;
 
+    #[ORM\Column]
+    private ?bool $active = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -115,5 +118,17 @@ class EventSlot
 
     public function __toString(): string {
         return 'Créneau du ' . $this->dateBegin->format('d-m-Y H:i:s') . ' au ' . $this->dateEnd->format('d-m-Y H:i:s') . ' - ' . $this->event->getTitle();
+    }
+
+    public function isActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): static
+    {
+        $this->active = $active;
+
+        return $this;
     }
 }

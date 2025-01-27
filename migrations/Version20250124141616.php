@@ -21,7 +21,6 @@ final class Version20250124141616 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE event_slot (id INT AUTO_INCREMENT NOT NULL, event_id INT DEFAULT NULL, place_id INT DEFAULT NULL, date_begin DATETIME NOT NULL, date_end DATETIME NOT NULL, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX IDX_B3C56CCC71F7E88B (event_id), INDEX IDX_B3C56CCCDA6A219 (place_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE messenger_messages (id BIGINT AUTO_INCREMENT NOT NULL, body LONGTEXT NOT NULL, headers LONGTEXT NOT NULL, queue_name VARCHAR(190) NOT NULL, created_at DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', available_at DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', delivered_at DATETIME DEFAULT NULL COMMENT \'(DC2Type:datetime_immutable)\', INDEX IDX_75EA56E0FB7336F0 (queue_name), INDEX IDX_75EA56E0E3BD61CE (available_at), INDEX IDX_75EA56E016BA31DB (delivered_at), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE event_slot ADD CONSTRAINT FK_B3C56CCC71F7E88B FOREIGN KEY (event_id) REFERENCES event (id)');
         $this->addSql('ALTER TABLE event_slot ADD CONSTRAINT FK_B3C56CCCDA6A219 FOREIGN KEY (place_id) REFERENCES place (id)');
         $this->addSql('ALTER TABLE event DROP event_date, CHANGE content content LONGTEXT NOT NULL');
@@ -34,7 +33,6 @@ final class Version20250124141616 extends AbstractMigration
         $this->addSql('ALTER TABLE event_slot DROP FOREIGN KEY FK_B3C56CCC71F7E88B');
         $this->addSql('ALTER TABLE event_slot DROP FOREIGN KEY FK_B3C56CCCDA6A219');
         $this->addSql('DROP TABLE event_slot');
-        $this->addSql('DROP TABLE messenger_messages');
         $this->addSql('ALTER TABLE event ADD event_date DATETIME NOT NULL COMMENT \'(DC2Type:datetime_immutable)\', CHANGE content content VARCHAR(255) NOT NULL');
         $this->addSql('ALTER TABLE place ADD ville VARCHAR(255) NOT NULL, ADD lieu VARCHAR(255) NOT NULL, DROP address, DROP zip_code, DROP city, DROP place');
     }
