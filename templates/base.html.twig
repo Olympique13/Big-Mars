@@ -14,8 +14,12 @@
 
 		{% block javascripts %}
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+			{{ encore_entry_script_tags('app') }}
 			<script src="/eventReg.js"></script>
+			<script src="/contactForm.js"></script>
 		{% endblock %}
+
+		{% block js_custom %}{% endblock %}
 	</head>
 	<body class="font-sanstext-gray-800bg-gray-100overflow-x-hidden" id="body">
 		{% for message in app.flashes('notice') %}
