@@ -5,6 +5,8 @@ namespace App\Controller\Admin;
 use App\Entity\Event;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
@@ -24,25 +26,25 @@ class EventCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-        ->setPageTitle('index', 'Nos événements')
-        ->setPageTitle('new', 'Ajouter un nouvel événement')
-        ->setPageTitle('edit', 'Modifier cet événement');
+            ->setPageTitle('index', 'Nos événements')
+            ->setPageTitle('new', 'Ajouter un nouvel événement')
+            ->setPageTitle('edit', 'Modifier cet événement');
     }
 
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id')->hideOnForm(),
+            TextField::new('title', 'Nom de l\'événement'),
             AssociationField::new('category', 'Catégorie'),
-            AssociationField::new('place', 'Lieux-dit'),
-            TextField::new('title', 'Titre'),
+
             SlugField::new('slug', 'Slug')->setTargetFieldName('title')->hideOnIndex(),
-            DateTimeField::new('eventDate', 'date de l\'évènement')->setFormat('dd MMM y HH:mm'),
             TextField::new('imageFile', 'Image')->setFormType(VichFileType::class)->onlyOnForms(),
             ImageField::new('imageName', 'Aperçu de l\'image')->setBasePath('images/events')->onlyOnIndex(),
             TextEditorField::new('content', 'Description'),
+            CollectionField::new('eventSlots', 'Crénaux')->setRequired(true)->renderExpanded()->setEntryIsComplex()->useEntryCrudForm(EventSlotCrudController::class)->allowDelete(true),
             DateTimeField::new('createdAt', 'Date de création')->setFormat('dd MMM y HH:mm')->hideOnForm(),
             DateTimeField::new('updatedAt', 'Dernière modification')->setFormat('dd MMM y HH:mm')->hideOnForm(),
+            BooleanField::new('active'),
         ];
     }
 }

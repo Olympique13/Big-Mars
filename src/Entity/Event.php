@@ -3,6 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\EventRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -32,19 +35,6 @@ class Event
     #[Gedmo\Slug(fields: ['title'])]
     private ?string $slug = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    #[Assert\NotBlank]
-    private ?Place $place = null;
-
-    #[ORM\Column]
-    #[Assert\Type('\DateTimeInterface')]
-    private ?\DateTimeImmutable $eventDate = null;
-
-    #[ORM\Column(length: 255)]
-    #[Assert\NotBlank]
-    private ?string $content = null;
-
     #[ORM\Column]
     #[Gedmo\Timestampable(on: 'create')]
     private ?\DateTimeImmutable $createdAt = null;
@@ -62,6 +52,23 @@ class Event
 
     #[ORM\Column]
     private ?int $imageSize = null;
+
+    /**
+     * @var Collection<int, EventSlot>
+     */
+    #[ORM\OneToMany(targetEntity: EventSlot::class, mappedBy: 'event' , cascade: ["persist"])]
+    private Collection $eventSlots;
+
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $content = null;
+
+    #[ORM\Column]
+    private ?bool $active = null;
+
+    public function __construct()
+    {
+        $this->eventSlots = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -100,42 +107,6 @@ class Event
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
-
-        return $this;
-    }
-
-    public function getPlace(): ?Place
-    {
-        return $this->place;
-    }
-
-    public function setPlace(?Place $place): static
-    {
-        $this->place = $place;
-
-        return $this;
-    }
-
-    public function getEventDate(): ?\DateTimeImmutable
-    {
-        return $this->eventDate;
-    }
-
-    public function setEventDate(\DateTimeImmutable $eventDate): static
-    {
-        $this->eventDate = $eventDate;
-
-        return $this;
-    }
-
-    public function getContent(): ?string
-    {
-        return $this->content;
-    }
-
-    public function setContent(string $content): static
-    {
-        $this->content = $content;
 
         return $this;
     }
@@ -204,5 +175,59 @@ class Event
     public function setImageSize(?int $imageSize): void
     {
         $this->imageSize = $imageSize;
+    }
+
+    /**
+     * @return Collection<int, EventSlot>
+     */
+    public function getEventSlots(): Collection
+    {
+        return $this->eventSlots;
+    }
+
+    public function addEventSlot(EventSlot $eventSlot): static
+    {
+        if (!$this->eventSlots->contains($eventSlot)) {
+            $this->eventSlots->add($eventSlot);
+            $eventSlot->setEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventSlot(EventSlot $eventSlot): static
+    {
+        if ($this->eventSlots->removeElement($eventSlot)) {
+            // set the owning side to null (unless already changed)
+            if ($eventSlot->getEvent() === $this) {
+                $eventSlot->setEvent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    public function setContent(string $content): static
+    {
+        $this->content = $content;
+
+        return $this;
+    }
+
+    public function isActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): static
+    {
+        $this->active = $active;
+
+        return $this;
     }
 }

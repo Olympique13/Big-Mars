@@ -35,7 +35,11 @@ class EventRegistration
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank]
-    #[Assert\Regex(pattern: '/^(\+33\s[1-9]{8})|(0[1-9]\s{8})$/')]
+    #[Assert\Regex(
+        pattern: '/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/i',
+        match: true,
+        message: 'Veuillez entrer un numéro de téléphone valide (ex: 0601010101 ou +33601010101)',
+    )]
     private ?string $phone = null;
 
     #[ORM\Column]
