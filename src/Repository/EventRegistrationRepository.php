@@ -16,28 +16,17 @@ class EventRegistrationRepository extends ServiceEntityRepository
         parent::__construct($registry, EventRegistration::class);
     }
 
-    //    /**
-    //     * @return EventRegistration[] Returns an array of EventRegistration objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('e')
-    //            ->andWhere('e.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('e.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    public function countRegistrationsByEvent(int $eventId): int
+    {
+        return $this->createQueryBuilder('e')
+            ->select('count(e.id)')
+            ->join('e.eventSlot', 'es')
+            ->join('es.event', 'ev')
+            ->andWhere('ev.id = :eventId')
+            ->setParameter('eventId', $eventId)
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
 
-    //    public function findOneBySomeField($value): ?EventRegistration
-    //    {
-    //        return $this->createQueryBuilder('e')
-    //            ->andWhere('e.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    
 }

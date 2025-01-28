@@ -14,11 +14,16 @@
 
 			<div>
 
-				{{ dump(event.eventSlots|length) }}
+				{# {{ dump(event.eventSlots|length) }}
 				{% for slot in event.eventSlots %}
 					{{ dump(loop.index) }}
-					{{ dump(slot) }}
-				{% endfor %}
+					{{ dump(slot.active) }}
+					{% if slot.active %}
+					bonjour
+					{% else %}
+					bonsoir
+					{% endif %}
+				{% endfor %} #}
 			</div>
 {#			<p class="text-gray-600 mb-4">Le#}
 {#				{{event.eventDate|date('d/m/y à H:m') }}</p>#}

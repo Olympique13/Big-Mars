@@ -10,10 +10,12 @@
 	<a href="{{ path ('app_register') }}">
 		s'inscrire</a>
 	<a href="{{ path ('app_event') }}">Voir event</a>
-	<a href="{{ path ('app_contact') }}">Nous contacter</a>
+	{# <a href="{{ path ('app_contact') }}">Nous contacter</a> #}
 	{% if is_granted('ROLE_ADMIN') %}
 		<a href="{{ path ('admin') }}">
 			Admin
 		</a>
 	{% endif %}
+
+	{% include './page/contact.html.twig' %}
 {% endblock %}

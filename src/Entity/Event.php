@@ -65,6 +65,9 @@ class Event
     #[ORM\Column]
     private ?bool $active = null;
 
+    #[ORM\Column]
+    private ?int $maxParticipant = null;
+
     public function __construct()
     {
         $this->eventSlots = new ArrayCollection();
@@ -227,6 +230,18 @@ class Event
     public function setActive(bool $active): static
     {
         $this->active = $active;
+
+        return $this;
+    }
+
+    public function getMaxParticipant(): ?int
+    {
+        return $this->maxParticipant;
+    }
+
+    public function setMaxParticipant(int $maxParticipant): static
+    {
+        $this->maxParticipant = $maxParticipant;
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EventSlotRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -38,6 +40,17 @@ class EventSlot
 
     #[ORM\Column]
     private ?bool $active = null;
+
+    /**
+     * @var Collection<int, EventRegistration>
+     */
+    #[ORM\OneToMany(targetEntity: EventRegistration::class, mappedBy: 'eventSlot')]
+    private Collection $eventRegistrations;
+
+    public function __construct()
+    {
+        $this->eventRegistrations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -116,8 +129,13 @@ class EventSlot
         return $this;
     }
 
-    public function __toString(): string {
-        return 'Créneau du ' . $this->dateBegin->format('d-m-Y H:i:s') . ' au ' . $this->dateEnd->format('d-m-Y H:i:s') . ' - ' . $this->event->getTitle();
+    public function __toString(): string
+    {
+        return $this->event->getId();
+    }
+
+    public function getCompleteDate(): string {
+        return 'Du ' . $this->dateBegin->format('d-m-Y H:i') . ' au ' . $this->dateEnd->format('d-m-Y H:i');
     }
 
     public function isActive(): ?bool
@@ -131,4 +149,35 @@ class EventSlot
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, EventRegistration>
+     */
+    public function getEventRegistrations(): Collection
+    {
+        return $this->eventRegistrations;
+    }
+
+    public function addEventRegistration(EventRegistration $eventRegistration): static
+    {
+        if (!$this->eventRegistrations->contains($eventRegistration)) {
+            $this->eventRegistrations->add($eventRegistration);
+            $eventRegistration->setEventSlot($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventRegistration(EventRegistration $eventRegistration): static
+    {
+        if ($this->eventRegistrations->removeElement($eventRegistration)) {
+            // set the owning side to null (unless already changed)
+            if ($eventRegistration->getEventSlot() === $this) {
+                $eventRegistration->setEventSlot(null);
+            }
+        }
+
+        return $this;
+    }
+
 }
