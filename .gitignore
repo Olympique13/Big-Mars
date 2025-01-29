@@ -21,7 +21,6 @@
 
 ###> symfony/asset-mapper ###
 /public/assets/
-/public/fonts/
 /assets/vendor/
 ###< symfony/asset-mapper ###
 
