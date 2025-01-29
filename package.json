@@ -2,8 +2,11 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@symfony/webpack-encore": "^5.0.1",
+    "alpinejs": "^3.14.8",
+    "aos": "^3.0.0-beta.6",
     "cleave.js": "^1.6.0",
     "run": "^1.5.0",
+    "swiper": "^11.2.1",
     "watch": "^0.13.0"
   },
   "scripts": {
@@ -22,6 +25,7 @@
     "@tailwindcss/forms": "^0.5.10",
     "autoprefixer": "^10.4.20",
     "core-js": "^3.38.0",
+    "file-loader": "^6.0.0",
     "postcss": "^8.4.49",
     "postcss-loader": "^8.1.1",
     "regenerator-runtime": "^0.13.9",
