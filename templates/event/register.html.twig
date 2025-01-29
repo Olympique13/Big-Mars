@@ -22,10 +22,13 @@
 			</div>
 			<div>
 				{{ form_label(eventReg.phone, "N° Téléphone", {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
-				{{ form_widget(eventReg.phone, {'attr': {'class': 'mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md', 'placeholder': 'Votre numéro'}}) }}
+				{{ form_widget(eventReg.phone, {'attr': {'class': 'input-phone mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md', 'placeholder': 'Votre numéro'}}) }}
+				{{ form_errors(eventReg.phone) }}
 			</div>
 			<div>
-				{{ form_widget(eventReg.event, {'value': id, 'attr': {'hidden': true}}) }}
+				{{ form_label(eventReg.eventSlot, "Créneaux", {'label_attr': {'class': 'block text-sm font-medium text-gray-700'}}) }}
+				{{ form_widget(eventReg.eventSlot, {'attr': {'class': 'mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md'}}) }}
+				{{ form_errors(eventReg.eventSlot) }}
 			</div>
 		</div>
 		<div>

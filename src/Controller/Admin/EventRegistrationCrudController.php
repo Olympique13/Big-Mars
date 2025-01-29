@@ -11,6 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class EventRegistrationCrudController extends AbstractCrudController
@@ -32,15 +33,16 @@ class EventRegistrationCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-        ->setPageTitle('index', 'Inscriptions aux événements');
+        ->setPageTitle('index', 'Participants aux événements');
     }
     
 
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id')->hideOnForm(),
-            AssociationField::new('event', 'Evénement'),
+            IdField::new('id')->hideOnForm()->hideOnIndex(),
+            AssociationField::new('eventSlot', 'Créneaux'),
+            TextField::new('eventSlot.event.title', 'Evénement'),
             TextField::new('firstName', 'Nom'),
             TextField::new('lastName', 'Prénom'),
             EmailField::new('email', '@Mail'),

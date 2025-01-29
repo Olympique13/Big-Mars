@@ -16,28 +16,12 @@ class EventSlotRepository extends ServiceEntityRepository
         parent::__construct($registry, EventSlot::class);
     }
 
-//    /**
-//     * @return EventSlot[] Returns an array of EventSlot objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('e')
-//            ->andWhere('e.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('e.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
-
-//    public function findOneBySomeField($value): ?EventSlot
-//    {
-//        return $this->createQueryBuilder('e')
-//            ->andWhere('e.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function findSlotsByEvent($eventId)
+    {
+        return $this->createQueryBuilder('es')
+            ->where('es.event = :event')
+            ->setParameter('event', $eventId)
+            ->getQuery()
+            ->getResult();
+    }
 }

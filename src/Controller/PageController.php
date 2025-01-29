@@ -15,12 +15,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 final class PageController extends AbstractController
 {
     #[Route('/', name: 'app_homepage')]
-    public function index(): Response
-    {
-        return $this->render('page/homepage.html.twig', array());
-    }
-
-    #[Route('/contact', name: 'app_contact')]
     public function contact(Request $request, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
     {
         $contact = new Contact();
@@ -49,7 +43,7 @@ final class PageController extends AbstractController
             //     $mailer->send($email);
             }
 
-        return $this->render('page/contact.html.twig', [
+        return $this->render('page/homepage.html.twig', [
             'contactForm' => $form->createView()
         ]);
     }

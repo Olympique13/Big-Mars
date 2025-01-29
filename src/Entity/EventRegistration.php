@@ -16,10 +16,6 @@ class EventRegistration
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Event $event = null;
-
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank]
     private ?string $firstName = null;
@@ -46,21 +42,13 @@ class EventRegistration
     #[Gedmo\Timestampable(on: 'create')]
     private ?\DateTimeImmutable $createdAt = null;
 
+    #[ORM\ManyToOne(inversedBy: 'eventRegistrations')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?EventSlot $eventSlot = null;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getevent(): ?Event
-    {
-        return $this->event;
-    }
-
-    public function setEvent(?Event $event): static
-    {
-        $this->event = $event;
-
-        return $this;
     }
 
     public function getFirstName(): ?string
@@ -124,4 +112,15 @@ class EventRegistration
         return $this;
     }
 
+    public function getEventSlot(): ?EventSlot
+    {
+        return $this->eventSlot;
+    }
+
+    public function setEventSlot(?EventSlot $eventSlot): static
+    {
+        $this->eventSlot = $eventSlot;
+
+        return $this;
+    }
 }
