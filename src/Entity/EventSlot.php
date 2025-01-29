@@ -131,7 +131,7 @@ class EventSlot
 
     public function __toString(): string
     { 
-        return $this->event->getId();
+        return 'Du ' . $this->dateBegin->format('d-m-Y H:i') . ' au ' . $this->dateEnd->format('d-m-Y H:i');
     }
 
     public function getCompleteDate(): string {

@@ -41,7 +41,7 @@ class EventRegistrationCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm()->hideOnIndex(),
-            AssociationField::new('eventSlot', 'Crénaux'),
+            AssociationField::new('eventSlot', 'Créneaux'),
             TextField::new('eventSlot.event.title', 'Evénement'),
             TextField::new('firstName', 'Nom'),
             TextField::new('lastName', 'Prénom'),
