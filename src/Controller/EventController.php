@@ -31,14 +31,14 @@ final class EventController extends AbstractController
     #[Route('/event/{slug}', name: 'show_event')]
     public function show(Request $request, EntityManagerInterface $entityManager, EventSlotRepository $eventSlotRepository, EventRepository $EventRepository, EventRegistrationRepository $eventRegistrationRepository, string $slug, MailerInterface $mailer): Response
     {
+        $event = $EventRepository->findOneBy(['slug' => $slug]);
         $eventReg = new EventRegistration();
-        $form = $this->createForm(EventRegType::class, $eventReg);
+        $form = $this->createForm(EventRegType::class, $eventReg, ['event' => $event]);
         $form->handleRequest($request);
         
-        $event = $EventRepository->findOneBy(['slug' => $slug]);
         $registrationCount = $eventRegistrationRepository->countRegistrationsByEvent($event->getId());
         $eventSlots = $eventSlotRepository->findSlotsByEvent($event->getId());
-        // dd($form->get('eventSlot')->getData()->getPlace());
+        // dd($eventSlots);
         
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($eventReg);

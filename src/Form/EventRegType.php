@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Event;
 use App\Entity\EventSlot;
+use App\Entity\EventRegistration;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,8 +24,16 @@ class EventRegType extends AbstractType
             ->add('eventSlot', EntityType::class,[
                 'class' => EventSlot::class,
                 'choice_label' => function (EventSlot $eventSlot){
-                    return $eventSlot->__toString();
-                }
+                    return $eventSlot->getCompleteDate();
+                },
+                'query_builder' => function (EntityRepository $er) use ($options) {
+                    return $er->createQueryBuilder('es')
+                        ->where('es.event = :event')
+                        ->andWhere('es.active = :active')
+                        ->setParameter('event', $options['event'])
+                        ->setParameter('active', true)
+                        ->orderBy('es.dateBegin', 'ASC');
+                },
             ])
             ->add('createdAt', HiddenType::class)
         ;
@@ -32,5 +41,9 @@ class EventRegType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver): void
     {
+        $resolver->setDefaults([
+        'data_class' => EventRegistration::class,
+        'event' => null,
+    ]);
     }
 }

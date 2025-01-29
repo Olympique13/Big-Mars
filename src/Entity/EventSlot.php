@@ -130,7 +130,7 @@ class EventSlot
     }
 
     public function __toString(): string
-    {
+    { 
         return $this->event->getId();
     }
 
