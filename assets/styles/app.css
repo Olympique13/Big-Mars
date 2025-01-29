@@ -11,11 +11,4 @@
 	src: url("../fonts/Graphit-Regular.otf") format("opentype");
 }
 
-h1,
-h2 {
-	font-family: "AtomicMarker", sans-serif;
-}
-p,
-a {
-	font-family: "Graphit-Regular", sans-serif;
-}
+

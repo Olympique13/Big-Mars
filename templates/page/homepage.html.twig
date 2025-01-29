@@ -3,6 +3,11 @@
 {% block title %}BigMars!
 {% endblock %}
 
+{% block css_js_custom %}
+	{{ encore_entry_link_tags('home') }}
+{% endblock %}
+
+
 {% block body %}
 	<p class="font-bold text-3xl">Bienvenue sur bigmars !</p>
 	<a href="{{ path ('app_login') }}">
