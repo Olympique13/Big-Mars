@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+	font-family: "AtomicMarker";
+	src: url("/public/fonts/AtomicMarker.otf") format("opentype");
+}
+@font-face {
+    font-family :"Graphit-Regular";
+    src: url("/public/fonts/Graphit-Regular.otf") format("opentype");
+}
+
+h1, h2 {
+	font-family: "AtomicMarker", sans-serif;
+}
+p, a{
+    font-family: "Graphit-Regular", sans-serif;
+}
