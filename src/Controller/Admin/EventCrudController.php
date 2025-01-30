@@ -36,6 +36,7 @@ class EventCrudController extends AbstractCrudController
     {
         return [
             TextField::new('title', 'Nom de l\'événement'),
+            TextField::new('shortDescription', 'Courte description'),
             AssociationField::new('category', 'Catégorie'),
             SlugField::new('slug', 'Slug')->setTargetFieldName('title')->hideOnIndex(),
             TextField::new('imageFile', 'Image')->setFormType(VichFileType::class)->onlyOnForms(),

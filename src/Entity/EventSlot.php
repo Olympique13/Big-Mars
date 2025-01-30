@@ -135,7 +135,7 @@ class EventSlot
     }
 
     public function getCompleteDate(): string {
-        return 'Du ' . $this->dateBegin->format('d-m-Y H:i') . ' au ' . $this->dateEnd->format('d-m-Y H:i');
+        return 'Le ' . $this->dateBegin->format('d/m/Y') . ' de ' . $this->dateBegin->format('H') . 'H'. $this->dateBegin->format('i') .' à ' . $this->dateEnd->format('H') . 'H'. $this->dateEnd->format('i');
     }
 
     public function isActive(): ?bool

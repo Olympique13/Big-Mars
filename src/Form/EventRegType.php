@@ -9,8 +9,10 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class EventRegType extends AbstractType
 {
@@ -21,6 +23,23 @@ class EventRegType extends AbstractType
             ->add('lastName')
             ->add('email')
             ->add('phone')
+            ->add('zipCode')
+            ->add('birthDate', DateType::class, [
+                'widget' => 'single_text',
+                'format' => 'dd/MM/yyyy',
+                'html5' => false,
+                'attr' => ['class' => 'input-birthDate'],
+            ])
+            ->add('status', ChoiceType::class, [
+                'choices' => [
+                    'Demandeur d\'emploi' => 'Demandeur d\'emploi',
+                    'Etudiant' => 'Etudiant',
+                    'Salarié' => 'Salarié',
+                    'Apprenti' => 'Apprenti',
+                    'Service Civique' => 'Service Civique',
+                    'Parent/Tuteur' => 'Parent/Tuteur' 
+                ]
+            ])
             ->add('eventSlot', EntityType::class,[
                 'class' => EventSlot::class,
                 'choice_label' => function (EventSlot $eventSlot){

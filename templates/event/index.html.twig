@@ -5,29 +5,144 @@
 
 {% block body %}
 
-	{% for event in events %}
-		<div class="bg-white border border-gray-200 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow pb-12 mb-12 w-2/4">
-			<a href="{{ path('show_event', {'slug': event.slug}) }}">
-				<h2 class="text-2xl font-bold mb-3 text-gray-800 hover:text-blue-600 transition-colors">{{ event.title }}</h2>
-			</a>
-			<p class="text-gray-600 mb-4">{{ event.content|raw }}</p>
 
-			<div>
+	<!-- Page wrapper -->
+	<div
+		class="flex flex-col min-h-screen overflow-hidden">
 
-				{# {{ dump(event.eventSlots|length) }} #}
-				{# {% for slot in event.eventSlots %} #}
-					{# {{ dump(loop.index) }}
-										{{ dump(slot.active) }} #}
-					{# {{ slot.dateBegin|date('d-m-y') }} #}
-						{# {% if slot.dateEnd|date('d-m-y') > "now"|date('d-m-y') %}
-					événement passé
-				{% endif %} #}
+		<!-- Page content -->
+		<main
+			class="grow">
 
-			{# {% endfor %} #}
-		</div>
-			{#			<p class="text-gray-600 mb-4">Le#}
-			{#				{{event.eventDate|date('d/m/y à H:m') }}</p>#}
-		</div>
+			<!-- Hero -->
+			<section
+				class="relative">
 
-	{% endfor %}
+				<!-- Background image -->
+				<div class="absolute inset-0 h-128 pt-16 box-content -z-1">
+					<img class="absolute inset-0 w-full h-full object-cover opacity-25" src="{{ asset('build/images/hero-bg.jpg') }}" width="1440" height="577" alt="About"/>
+					<div class="absolute inset-0 bg-gradient-to-t from-white dark:from-gray-900" aria-hidden="true"></div>
+				</div>
+
+				<div class="relative max-w-6xl mx-auto px-4 sm:px-6">
+					<div
+						class="pt-32 pb-12 md:pt-40 md:pb-16">
+
+						<!-- Featured article -->
+						<div class="max-w-3xl" data-aos="fade-down">
+							<article>
+								<header>
+									<!-- Title and excerpt -->
+									<div class="text-center md:text-left">
+										<h1 class="h1 mb-4 font">Découvrez tous nos événements à travers la France et la Réunion</h1>
+										<p class="text-xl text-gray-600 dark:text-gray-400">Tous nos événements sont en lien avec blablabla...</p>
+									</div>
+								</header>
+							</article>
+						</div>
+
+					</div>
+				</div>
+
+			</section>
+
+			<!-- Posts list -->
+			<section>
+				<div class="max-w-6xl mx-auto px-4 sm:px-6">
+					<div class="pb-12 md:pb-20">
+						<div
+							class="lg:flex lg:justify-between">
+
+							<!-- Main content -->
+							<div
+								class="lg:grow" data-aos="fade-down" data-aos-delay="200">
+
+								<!-- Section title -->
+								<h4 class="h3  mb-8">Nos derniers événements</h4>
+
+								<!-- Events container -->
+								<div class="grid gap-12 sm:grid-cols-2 sm:gap-x-6 md:gap-y-8 items-start">
+									{% for event in events|sort((a, b) => b.createdAt <=> a.createdAt) %}
+										{% if event.getStartDate()|date('Y-m-d') > "now"|date('Y-m-d') %}
+											<!-- liste d'événements -->
+											<article class="flex flex-col h-full">
+												<header>
+													<a class="block mb-4" href="{{ path('show_event', {'slug': event.slug}) }}">
+														<figure class="relative h-0 pb-9/16">
+															<img class="absolute inset-0 w-full h-full object-cover" src="/images/events/{{ event.imageName }}" width="352" height="198" alt="News 01"/>
+														</figure>
+													</a>
+													<a class="hover:underline" href="{{ path('show_event', {'slug': event.slug}) }}">
+														<h3 class="h4 mb-2">
+															{{ event.title }}
+														</h3>
+													</a>
+												</header>
+												<p class="text-gray-600 dark:text-gray-400 grow">{{ event.shortDescription }}</p>
+												<footer class="flex items-center mt-4">
+													<div class="text-sm text-gray-500 flex flex-row">
+														<svg class="w-4 h-4 fill-current text-gray-500 mr-2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+															<path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/>
+														</svg>
+														<span class="text-gray-500 mr-2">{{ event.getPlace().place }},</span>
+														<span class="text-gray-500">Le
+															{{ event.getStartDate()|format_datetime(locale: 'fr', pattern: 'd MMM Y') }}</span>
+													</div>
+												</footer>
+											</article>
+										{% endif %}
+									{% endfor %}
+								</div>
+
+								<!-- Load more button -->
+								<div class="flex justify-center mt-12 md:mt-16">
+									<a class="btn-sm text-gray-300 hover:text-gray-100 bg-gray-800 flex items-center" href="#0">
+										<span>See previous articles</span>
+										<svg class="w-4 h-4 shrink-0 ml-3" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+											<path class="fill-current text-gray-500" d="M14.7 9.3l-1.4-1.4L9 12.2V0H7v12.2L2.7 7.9 1.3 9.3 8 16z"/>
+										</svg>
+									</a>
+								</div>
+							</div>
+
+							<!-- Sidebar -->
+							<aside
+								class="relative mt-12 lg:mt-0 lg:w-64 lg:ml-16 lg:shrink-0" data-aos="fade-down" data-aos-delay="400">
+
+								<!-- Popular posts -->
+								<div class="mb-8">
+									<h4 class="h4 mb-5">Nos événements passés</h4>
+									<ul class="-my-3">
+										{% for event in events|slice(0,5)%}
+											{% if event.getStartDate()|date('Y-m-d') < "now"|date('Y-m-d') %}
+												<li class="flex py-3 border-b border-gray-200 dark:border-gray-800">
+													<div class="h4 w-12 text-gray-400 dark:text-gray-600 shrink-0 mt-1"></div>
+													<article>
+														<a class="hover:underline" href="{{ path('show_event', {'slug': event.slug}) }}">
+															<h3 class="font-bold tracking-tight mb-1">
+																{{event.title}}
+															</h3>
+														</a>
+														<div class="text-sm text-gray-500">
+															<span class="text-gray-500">Le
+																{{event.getStartDate()|date('d/m/y')}}</span>
+														</div>
+													</article>
+												</li>
+											{% endif %}
+										{% endfor %}
+									</ul>
+								</div>
+
+							</aside>
+
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</main>
+	</div>
+
 {% endblock %}

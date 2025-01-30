@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -47,7 +48,10 @@ class EventRegistrationCrudController extends AbstractCrudController
             TextField::new('lastName', 'Prénom'),
             EmailField::new('email', '@Mail'),
             TextField::new('phone', 'N° Téléphone'),
-            DateTimeField::new('createdAt', 'Date de création')->setFormat('dd MMM y HH:mm')->hideOnForm(),
+            TextField::new('zipCode', 'Code postal'),
+            DateField::new('birthDate', 'Date de naissance')->setFormat('dd MMM y'),
+            TextField::new('status', 'Statut'),
+            DateTimeField::new('createdAt', 'Inscrit le')->setFormat('dd MMM y HH:mm')->hideOnForm(),
         ];
     }
 }

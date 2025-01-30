@@ -47,4 +47,10 @@ final class PageController extends AbstractController
             'contactForm' => $form->createView()
         ]);
     }
+
+    #[Route('/about', name: 'app_about')]
+    public function about(): Response
+    {
+        return $this->render('page/about.html.twig');
+    }
 }
