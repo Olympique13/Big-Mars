@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Contact;
 use App\Form\ContactType;
+use App\Repository\EventRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,12 +16,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 final class PageController extends AbstractController
 {
     #[Route('/', name: 'app_homepage')]
-    public function contact(Request $request, EntityManagerInterface $entityManager, MailerInterface $mailer): Response
+    public function contact(Request $request, EntityManagerInterface $entityManager, MailerInterface $mailer, EventRepository $eventRepository): Response
     {
+        $events = $eventRepository->findBy(['active' => true]);
+
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
-        
+
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($contact);
             $entityManager->flush();
@@ -30,19 +33,20 @@ final class PageController extends AbstractController
                 ->subject($form->get('type')->getData())
                 ->htmlTemplate('email/contact.html.twig')
                 ->context([
-                    'firstName'=> $form->get('firstName')->getData(),
-                    'lastName'=> $form->get('lastName')->getData(),
-                    'phone'=> $form->get('phone')->getData(),
-                    'type'=> $form->get('type')->getData(),
-                    'message'=> $form->get('message')->getData()
+                    'firstName' => $form->get('firstName')->getData(),
+                    'lastName' => $form->get('lastName')->getData(),
+                    'phone' => $form->get('phone')->getData(),
+                    'type' => $form->get('type')->getData(),
+                    'message' => $form->get('message')->getData()
                 ]);
-            
+
             $mailer->send($email);
             return $this->redirectToRoute('app_homepage');
-            }
+        }
 
         return $this->render('page/homepage.html.twig', [
-            'contactForm' => $form->createView()
+            'contactForm' => $form->createView(),
+            'event' => $events
         ]);
     }
 

@@ -68,7 +68,7 @@ body {
     /* 1 */
     line-height: inherit;
     /* 2 */
-	font-family: "Graphit-Regular", sans-serif;
+    font-family: "Graphit-Regular", sans-serif;
 }
 
 /*
@@ -379,7 +379,8 @@ textarea {
 2. Set the default placeholder color to the user's configured gray 400 color.
 */
 
-input::-moz-placeholder, textarea::-moz-placeholder {
+input::-moz-placeholder,
+textarea::-moz-placeholder {
     opacity: 1;
     /* 1 */
     color: #A2A2A8;
@@ -447,7 +448,22 @@ video {
     display: none;
 }
 
-[type='text'], input:where(:not([type])), [type='email'], [type='url'], [type='password'], [type='number'], [type='date'], [type='datetime-local'], [type='month'], [type='search'], [type='tel'], [type='time'], [type='week'], [multiple], textarea, select {
+[type='text'],
+input:where(:not([type])),
+[type='email'],
+[type='url'],
+[type='password'],
+[type='number'],
+[type='date'],
+[type='datetime-local'],
+[type='month'],
+[type='search'],
+[type='tel'],
+[type='time'],
+[type='week'],
+[multiple],
+textarea,
+select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -464,10 +480,28 @@ video {
     --tw-shadow: 0 0 #0000;
 }
 
-[type='text']:focus, input:where(:not([type])):focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus {
+[type='text']:focus,
+input:where(:not([type])):focus,
+[type='email']:focus,
+[type='url']:focus,
+[type='password']:focus,
+[type='number']:focus,
+[type='date']:focus,
+[type='datetime-local']:focus,
+[type='month']:focus,
+[type='search']:focus,
+[type='tel']:focus,
+[type='time']:focus,
+[type='week']:focus,
+[multiple]:focus,
+textarea:focus,
+select:focus {
     outline: 2px solid transparent;
     outline-offset: 2px;
-    --tw-ring-inset: var(--tw-empty, /*!*/ /*!*/);
+    --tw-ring-inset: var(--tw-empty,
+            /*!*/
+            /*!*/
+        );
     --tw-ring-offset-width: 0px;
     --tw-ring-offset-color: #fff;
     --tw-ring-color: #2563eb;
@@ -477,12 +511,14 @@ video {
     border-color: #2563eb;
 }
 
-input::-moz-placeholder, textarea::-moz-placeholder {
+input::-moz-placeholder,
+textarea::-moz-placeholder {
     color: #6E6E76;
     opacity: 1;
 }
 
-input::placeholder, textarea::placeholder {
+input::placeholder,
+textarea::placeholder {
     color: #6E6E76;
     opacity: 1;
 }
@@ -500,7 +536,15 @@ input::placeholder, textarea::placeholder {
     display: inline-flex;
 }
 
-::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field, ::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field {
+::-webkit-datetime-edit,
+::-webkit-datetime-edit-year-field,
+::-webkit-datetime-edit-month-field,
+::-webkit-datetime-edit-day-field,
+::-webkit-datetime-edit-hour-field,
+::-webkit-datetime-edit-minute-field,
+::-webkit-datetime-edit-second-field,
+::-webkit-datetime-edit-millisecond-field,
+::-webkit-datetime-edit-meridiem-field {
     padding-top: 0;
     padding-bottom: 0;
 }
@@ -515,7 +559,8 @@ select {
     print-color-adjust: exact;
 }
 
-[multiple], [size]:where(select:not([size="1"])) {
+[multiple],
+[size]:where(select:not([size="1"])) {
     background-image: initial;
     background-position: initial;
     background-repeat: unset;
@@ -525,7 +570,8 @@ select {
     print-color-adjust: unset;
 }
 
-[type='checkbox'], [type='radio'] {
+[type='checkbox'],
+[type='radio'] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -556,10 +602,14 @@ select {
     border-radius: 100%;
 }
 
-[type='checkbox']:focus, [type='radio']:focus {
+[type='checkbox']:focus,
+[type='radio']:focus {
     outline: 2px solid transparent;
     outline-offset: 2px;
-    --tw-ring-inset: var(--tw-empty, /*!*/ /*!*/);
+    --tw-ring-inset: var(--tw-empty,
+            /*!*/
+            /*!*/
+        );
     --tw-ring-offset-width: 2px;
     --tw-ring-offset-color: #fff;
     --tw-ring-color: #2563eb;
@@ -568,7 +618,8 @@ select {
     box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
 }
 
-[type='checkbox']:checked, [type='radio']:checked {
+[type='checkbox']:checked,
+[type='radio']:checked {
     border-color: transparent;
     background-color: currentColor;
     background-size: 100% 100%;
@@ -600,7 +651,10 @@ select {
     }
 }
 
-[type='checkbox']:checked:hover, [type='checkbox']:checked:focus, [type='radio']:checked:hover, [type='radio']:checked:focus {
+[type='checkbox']:checked:hover,
+[type='checkbox']:checked:focus,
+[type='radio']:checked:hover,
+[type='radio']:checked:focus {
     border-color: transparent;
     background-color: currentColor;
 }
@@ -622,7 +676,8 @@ select {
     }
 }
 
-[type='checkbox']:indeterminate:hover, [type='checkbox']:indeterminate:focus {
+[type='checkbox']:indeterminate:hover,
+[type='checkbox']:indeterminate:focus {
     border-color: transparent;
     background-color: currentColor;
 }
@@ -642,7 +697,9 @@ select {
     outline: 1px auto -webkit-focus-ring-color;
 }
 
-*, ::before, ::after {
+*,
+::before,
+::after {
     --tw-border-spacing-x: 0;
     --tw-border-spacing-y: 0;
     --tw-translate-x: 0;
@@ -776,7 +833,10 @@ select {
     }
 }
 
-.form-input, .form-textarea, .form-select, .form-multiselect {
+.form-input,
+.form-textarea,
+.form-select,
+.form-multiselect {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -793,10 +853,16 @@ select {
     --tw-shadow: 0 0 #0000;
 }
 
-.form-input:focus, .form-textarea:focus, .form-select:focus, .form-multiselect:focus {
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus,
+.form-multiselect:focus {
     outline: 2px solid transparent;
     outline-offset: 2px;
-    --tw-ring-inset: var(--tw-empty, /*!*/ /*!*/);
+    --tw-ring-inset: var(--tw-empty,
+            /*!*/
+            /*!*/
+        );
     --tw-ring-offset-width: 0px;
     --tw-ring-offset-color: #fff;
     --tw-ring-color: #2563eb;
@@ -806,12 +872,14 @@ select {
     border-color: #2563eb;
 }
 
-.form-input::-moz-placeholder, .form-textarea::-moz-placeholder {
+.form-input::-moz-placeholder,
+.form-textarea::-moz-placeholder {
     color: #6E6E76;
     opacity: 1;
 }
 
-.form-input::placeholder, .form-textarea::placeholder {
+.form-input::placeholder,
+.form-textarea::placeholder {
     color: #6E6E76;
     opacity: 1;
 }
@@ -829,7 +897,15 @@ select {
     display: inline-flex;
 }
 
-.form-input::-webkit-datetime-edit, .form-input::-webkit-datetime-edit-year-field, .form-input::-webkit-datetime-edit-month-field, .form-input::-webkit-datetime-edit-day-field, .form-input::-webkit-datetime-edit-hour-field, .form-input::-webkit-datetime-edit-minute-field, .form-input::-webkit-datetime-edit-second-field, .form-input::-webkit-datetime-edit-millisecond-field, .form-input::-webkit-datetime-edit-meridiem-field {
+.form-input::-webkit-datetime-edit,
+.form-input::-webkit-datetime-edit-year-field,
+.form-input::-webkit-datetime-edit-month-field,
+.form-input::-webkit-datetime-edit-day-field,
+.form-input::-webkit-datetime-edit-hour-field,
+.form-input::-webkit-datetime-edit-minute-field,
+.form-input::-webkit-datetime-edit-second-field,
+.form-input::-webkit-datetime-edit-millisecond-field,
+.form-input::-webkit-datetime-edit-meridiem-field {
     padding-top: 0;
     padding-bottom: 0;
 }
@@ -854,7 +930,8 @@ select {
     print-color-adjust: unset;
 }
 
-.form-checkbox, .form-radio {
+.form-checkbox,
+.form-radio {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -885,10 +962,14 @@ select {
     border-radius: 100%;
 }
 
-.form-checkbox:focus, .form-radio:focus {
+.form-checkbox:focus,
+.form-radio:focus {
     outline: 2px solid transparent;
     outline-offset: 2px;
-    --tw-ring-inset: var(--tw-empty, /*!*/ /*!*/);
+    --tw-ring-inset: var(--tw-empty,
+            /*!*/
+            /*!*/
+        );
     --tw-ring-offset-width: 2px;
     --tw-ring-offset-color: #fff;
     --tw-ring-color: #2563eb;
@@ -897,7 +978,8 @@ select {
     box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
 }
 
-.form-checkbox:checked, .form-radio:checked {
+.form-checkbox:checked,
+.form-radio:checked {
     border-color: transparent;
     background-color: currentColor;
     background-size: 100% 100%;
@@ -929,7 +1011,10 @@ select {
     }
 }
 
-.form-checkbox:checked:hover, .form-checkbox:checked:focus, .form-radio:checked:hover, .form-radio:checked:focus {
+.form-checkbox:checked:hover,
+.form-checkbox:checked:focus,
+.form-radio:checked:hover,
+.form-radio:checked:focus {
     border-color: transparent;
     background-color: currentColor;
 }
@@ -951,7 +1036,8 @@ select {
     }
 }
 
-.form-checkbox:indeterminate:hover, .form-checkbox:indeterminate:focus {
+.form-checkbox:indeterminate:hover,
+.form-checkbox:indeterminate:focus {
     border-color: transparent;
     background-color: currentColor;
 }
@@ -1076,7 +1162,8 @@ select {
     line-height: 1.375;
 }
 
-.form-input::-moz-placeholder, .form-textarea::-moz-placeholder {
+.form-input::-moz-placeholder,
+.form-textarea::-moz-placeholder {
     --tw-placeholder-opacity: 1;
     color: rgb(110 110 118 / var(--tw-placeholder-opacity));
 }
@@ -1137,7 +1224,8 @@ select {
     border-color: rgb(110 110 118 / var(--tw-border-opacity));
 }
 
-.dark .form-input::-moz-placeholder, .dark .form-textarea::-moz-placeholder {
+.dark .form-input::-moz-placeholder,
+.dark .form-textarea::-moz-placeholder {
     --tw-placeholder-opacity: 1;
     color: rgb(162 162 168 / var(--tw-placeholder-opacity));
 }
@@ -1227,7 +1315,7 @@ input[type=range]::-moz-focus-outer {
     border-radius: 9999px;
 }
 
-.form-switch label > span:first-child {
+.form-switch label>span:first-child {
     position: absolute;
     display: block;
     border-radius: 9999px;
@@ -1239,12 +1327,12 @@ input[type=range]::-moz-focus-outer {
     transition: all .15s ease-out;
 }
 
-.form-switch input[type="checkbox"]:checked + label {
+.form-switch input[type="checkbox"]:checked+label {
     --tw-bg-opacity: 1;
     background-color: rgb(58 186 180 / var(--tw-bg-opacity));
 }
 
-.form-switch input[type="checkbox"]:checked + label > span:first-child {
+.form-switch input[type="checkbox"]:checked+label>span:first-child {
     left: 22px;
 }
 
@@ -1261,41 +1349,41 @@ input[type=range]::-moz-focus-outer {
 
 /* Hamburger button */
 
-.hamburger svg > *:nth-child(1),
-.hamburger svg > *:nth-child(2),
-.hamburger svg > *:nth-child(3) {
+.hamburger svg>*:nth-child(1),
+.hamburger svg>*:nth-child(2),
+.hamburger svg>*:nth-child(3) {
     transform-origin: center;
     transform: rotate(0deg);
 }
 
-.hamburger svg > *:nth-child(1) {
+.hamburger svg>*:nth-child(1) {
     transition: y 0.075s 0.12s ease, opacity 0.075s ease, transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 
-.hamburger svg > *:nth-child(2) {
+.hamburger svg>*:nth-child(2) {
     transition-property: transform;
     transition-duration: 0.075s;
     transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 
-.hamburger svg > *:nth-child(3) {
+.hamburger svg>*:nth-child(3) {
     transition: y 0.075s 0.12s ease, transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
 }
 
-.hamburger.active svg > *:nth-child(1) {
+.hamburger.active svg>*:nth-child(1) {
     opacity: 0;
     transform: rotate(45deg);
     y: 11;
     transition: y 0.075s ease, opacity 0.075s 0.12s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
-.hamburger.active svg > *:nth-child(2) {
+.hamburger.active svg>*:nth-child(2) {
     transform: rotate(45deg);
     transition-delay: 0.12s;
     transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
-.hamburger.active svg > *:nth-child(3) {
+.hamburger.active svg>*:nth-child(3) {
     y: 11;
     transform: rotate(-45deg);
     transition: y 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -1303,12 +1391,12 @@ input[type=range]::-moz-focus-outer {
 
 /* Light switch */
 
-.form-switch input[type="checkbox"].light-switch + label {
+.form-switch input[type="checkbox"].light-switch+label {
     --tw-bg-opacity: 1;
     background-color: rgb(58 186 180 / var(--tw-bg-opacity));
 }
 
-.dark .form-switch input[type="checkbox"].light-switch + label > span:first-child {
+.dark .form-switch input[type="checkbox"].light-switch+label>span:first-child {
     left: 22px;
 }
 
@@ -1322,7 +1410,7 @@ input[type=range]::-moz-focus-outer {
     opacity: .32;
 }
 
-.carousel .swiper-slide > div > div {
+.carousel .swiper-slide>div>div {
     opacity: 0;
 }
 
@@ -1338,8 +1426,8 @@ input[type=range]::-moz-focus-outer {
     opacity: 1;
 }
 
-.carousel .swiper-slide.swiper-slide-active > div > div,
-.carousel .swiper-slide.swiper-slide-duplicate-active > div > div {
+.carousel .swiper-slide.swiper-slide-active>div>div,
+.carousel .swiper-slide.swiper-slide-duplicate-active>div>div {
     opacity: 1;
 }
 
@@ -2138,7 +2226,9 @@ input[type=range]::-moz-focus-outer {
 }
 
 @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0);
     }
 
@@ -2258,25 +2348,25 @@ input[type=range]::-moz-focus-outer {
     row-gap: 2rem;
 }
 
-.space-x-4 > :not([hidden]) ~ :not([hidden]) {
+.space-x-4> :not([hidden])~ :not([hidden]) {
     --tw-space-x-reverse: 0;
     margin-right: calc(1rem * var(--tw-space-x-reverse));
     margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
-.divide-x > :not([hidden]) ~ :not([hidden]) {
+.divide-x> :not([hidden])~ :not([hidden]) {
     --tw-divide-x-reverse: 0;
     border-right-width: calc(1px * var(--tw-divide-x-reverse));
     border-left-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));
 }
 
-.divide-y > :not([hidden]) ~ :not([hidden]) {
+.divide-y> :not([hidden])~ :not([hidden]) {
     --tw-divide-y-reverse: 0;
     border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
     border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
 }
 
-.divide-gray-200 > :not([hidden]) ~ :not([hidden]) {
+.divide-gray-200> :not([hidden])~ :not([hidden]) {
     --tw-divide-opacity: 1;
     border-color: rgb(228 228 231 / var(--tw-divide-opacity));
 }
@@ -3298,7 +3388,7 @@ input[type=range]::-moz-focus-outer {
     display: none;
 }
 
-:is(.dark .dark\:divide-gray-700) > :not([hidden]) ~ :not([hidden]) {
+:is(.dark .dark\:divide-gray-700)> :not([hidden])~ :not([hidden]) {
     --tw-divide-opacity: 1;
     border-color: rgb(63 63 69 / var(--tw-divide-opacity));
 }
@@ -4126,10 +4216,9 @@ input[type=range]::-moz-focus-outer {
         font-family: "AtomicMarker";
         src: url("../fonts/AtomicMarker.otf") format("opentype");
     }
+
     @font-face {
         font-family: "Graphit-Regular";
         src: url("../fonts/Graphit-Regular.otf") format("opentype");
     }
 }
-
-

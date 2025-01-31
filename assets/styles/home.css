@@ -2,3 +2,7 @@
 	font-family: "AtomicMarker", sans-serif;
 	color: #ffd045;
 }
+
+body {
+	overflow-x: hidden;
+}
