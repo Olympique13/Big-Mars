@@ -4,7 +4,6 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
-  DEMO: "%env(DEMO)%"
   EMAIL_FROM: "%env(EMAIL_FROM)%"
   EMAIL_TO: "%env(EMAIL_TO)%"
   EMAIL_NOM: "%env(EMAIL_NOM)%"
@@ -27,6 +26,10 @@ services:
       - "../src/DependencyInjection/"
       - "../src/Entity/"
       - "../src/Kernel.php"
+
+  App\Service\BrevoService:
+    arguments:
+      $brevoApiKey: '%env(BREVO_KEY)%'
 
   # add more service definitions when explicit configuration is needed
   # please note that last definitions always *replace* previous ones
