@@ -22,35 +22,22 @@ class ContactType extends AbstractType
             ->add('lastName')
             ->add('email')
             ->add('phone')
+            ->add('message')
             ->add('type', ChoiceType::class, [
-                'data' => 'Talent',
+                'data' => 'Joueur',
                 'choices' => [
-                    'Un talent' => 'Talent',
+                    'Un joueur' => 'Joueur',
                     'Une entreprise' => 'Entreprise',
                 ],
                 'expanded' => true,
-                'multiple' => false
+                'multiple' => false,
+                'empty_data' => 'Joueur',
             ])
+            ->add('zipCode')
             ->add('company', TextType::class, [
                 'required' => false,
+                'empty_data' => '',
             ])
-            ->add('status', ChoiceType::class, [
-                'required' => false,
-                'choices' => [
-                    'Employé' => 'employé',
-                    'Etudiant' => 'étudiant',
-                    'Chomage' => 'chomage'
-                    ]
-                    ])
-            ->add('ageGroup', ChoiceType::class, [
-                'required' => false,
-                'choices' => [
-                    '15 - 17 ans' => '15 - 17 ans',
-                    '18 - 22 ans' => '18 - 22 ans',
-                    '23 ans et +' => '23 ans et +'
-                ]
-            ])
-            ->add('message')
             ->add('agreeContact', CheckboxType::class, [
                 'mapped' => false,
                 'required' => true,
@@ -71,7 +58,7 @@ class ContactType extends AbstractType
             'data_class' => Contact::class,
             'validation_groups' => function (FormInterface $form): array {
                 $entity = $form->getData();
-                return $entity->getType() === 'Entreprise' ? ['company'] : ['talent'];
+                return $entity->getType() === 'Entreprise' ? ['company'] : ['Default'];
             },
         ]);
     }

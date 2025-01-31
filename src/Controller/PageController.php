@@ -20,27 +20,25 @@ final class PageController extends AbstractController
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
-
         
         if ($form->isSubmitted() && $form->isValid()) {
-            // $this->addFlash('notice','Message envoyé');
             $entityManager->persist($contact);
             $entityManager->flush();
-            // $email = (new TemplatedEmail())
-            //     ->from($form->get('email')->getData())
-            //     ->to('neyssimodeur@gmail.com')
-            //     ->subject($form->get('type')->getData())
-            //     ->text($form->get('message')->getData())
-            //     ->htmlTemplate('email/contact.html.twig')
-            //     ->context([
-            //         'firstName'=> $form->get('firstName')->getData(),
-            //         'lastName'=> $form->get('lastName')->getData(),
-            //         'phone'=> $form->get('phone')->getData(),
-            //         'type'=> $form->get('type')->getData(),
-            //         'message'=> $form->get('message')->getData()
-            //     ]);
-              
-            //     $mailer->send($email);
+            $email = (new TemplatedEmail())
+                ->from($form->get('email')->getData())
+                ->to('neyssimodeur@gmail.com')
+                ->subject($form->get('type')->getData())
+                ->htmlTemplate('email/contact.html.twig')
+                ->context([
+                    'firstName'=> $form->get('firstName')->getData(),
+                    'lastName'=> $form->get('lastName')->getData(),
+                    'phone'=> $form->get('phone')->getData(),
+                    'type'=> $form->get('type')->getData(),
+                    'message'=> $form->get('message')->getData()
+                ]);
+            
+            $mailer->send($email);
+            return $this->redirectToRoute('app_homepage');
             }
 
         return $this->render('page/homepage.html.twig', [

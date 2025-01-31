@@ -35,21 +35,16 @@ class Contact
 
     #[ORM\Column(length: 255)]
     private ?string $type = null;
-
-    #[ORM\Column(type: Types::TEXT)]
-    private ?string $message = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
+    
+    #[ORM\Column(length: 10)]
+    private ?string $zipCode = null;
+    
+    #[ORM\Column(length: 255)]
     #[Assert\NotBlank(groups: ['company'], message: 'Vous devez entrez le nom de votre entreprise')]
     private ?string $company = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    #[Assert\NotBlank(groups: ['talent'], message: 'Sélectionnez votre statut')]
-    private ?string $status = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    #[Assert\NotBlank(groups: ['talent'], message: 'Sélectionnez votre tranche d\'âge')]
-    private ?string $ageGroup = null;
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $message = null;
 
     #[ORM\Column]
     #[Gedmo\Timestampable(on: 'create')]
@@ -136,43 +131,6 @@ class Contact
 
         return $this;
     }
-
-    
-    public function getCompany(): ?string
-    {
-        return $this->company;
-    }
-
-    public function setCompany(?string $company): static
-    {
-        $this->company = $company;
-        
-        return $this;
-    }
-    
-    public function getStatus(): ?string
-    {
-        return $this->status;
-    }
-    
-    public function setStatus(?string $status): static
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-    
-    public function getAgeGroup(): ?string
-    {
-        return $this->ageGroup;
-    }
-    
-    public function setAgeGroup(?string $ageGroup): static
-    {
-        $this->ageGroup = $ageGroup;
-        
-        return $this;
-    }
     
     public function getCreatedAt(): ?\DateTimeImmutable
     {
@@ -196,6 +154,30 @@ class Contact
     public function setUpdatedAt(): static
     {
         $this->updatedAt = new \DateTimeImmutable();
+        return $this;
+    }
+
+    public function getZipCode(): ?string
+    {
+        return $this->zipCode;
+    }
+
+    public function setZipCode(string $zipCode): static
+    {
+        $this->zipCode = $zipCode;
+
+        return $this;
+    }
+
+    public function getCompany(): ?string
+    {
+        return $this->company;
+    }
+
+    public function setCompany(string $company): static
+    {
+        $this->company = $company;
+
         return $this;
     }
 }
