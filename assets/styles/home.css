@@ -1,12 +1,25 @@
-#bigMars {
-	font-family: "AtomicMarker", sans-serif;
-	color: #ffd045;
-}
-
 body {
 	overflow-x: hidden;
 }
 
+#titre {
+	color: #ffd045;
+}
+
+.lien {
+	text-decoration: none;
+	color: #637df2;
+}
+
 #consortium {
 	height: -webkit-fill-available;
+}
+
+.b_li{
+	color:#665169;
+}
+
+.bigMars {
+	font-family: "AtomicMarker", sans-serif;
+	color: #ffd045;
 }

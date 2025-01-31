@@ -82,20 +82,20 @@ module.exports = {
         '1/1': '100%',
       },
       fontFamily: {
-        inter: ['Inter', 'sans-serif'],
-        'red-hat-display': ['"Red Hat Display"', 'sans-serif'],
+        'graphit': [ 'Graphit-Regular', 'sans-serif' ],
+        'AtomicMarker': [ '"AtomicMarker"', 'sans-serif' ],
       },
       fontSize: {
-        xs: ['0.75rem', { lineHeight: '1.5' }],
-        sm: ['0.875rem', { lineHeight: '1.5' }],
-        base: ['1rem', { lineHeight: '1.5' }],
-        lg: ['1.125rem', { lineHeight: '1.5' }],
-        xl: ['1.25rem', { lineHeight: '1.5' }],
-        '2xl': ['1.63rem', { lineHeight: '1.35' }],
-        '3xl': ['2.63rem', { lineHeight: '1.24' }],
-        '4xl': ['3.5rem', { lineHeight: '1.18' }],
-        '5xl': ['4rem', { lineHeight: '1.16' }],
-        '6xl': ['5.5rem', { lineHeight: '1.11' }],
+        xs: [ '0.75rem', { lineHeight: '1.5' } ],
+        sm: [ '0.875rem', { lineHeight: '1.5' } ],
+        base: [ '1rem', { lineHeight: '1.5' } ],
+        lg: [ '1.125rem', { lineHeight: '1.5' } ],
+        xl: [ '1.25rem', { lineHeight: '1.5' } ],
+        '2xl': [ '1.63rem', { lineHeight: '1.35' } ],
+        '3xl': [ '2.63rem', { lineHeight: '1.24' } ],
+        '4xl': [ '3.5rem', { lineHeight: '1.18' } ],
+        '5xl': [ '4rem', { lineHeight: '1.16' } ],
+        '6xl': [ '5.5rem', { lineHeight: '1.11' } ],
       },
       inset: {
         '1/2': '50%',
@@ -132,7 +132,7 @@ module.exports = {
   },
   plugins: [
     // eslint-disable-next-line global-require
-    require('@tailwindcss/forms'),
+    require( '@tailwindcss/forms' ),
   ],
 };
 
