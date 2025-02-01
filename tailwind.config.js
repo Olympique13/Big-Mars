@@ -83,7 +83,7 @@ module.exports = {
       },
       fontFamily: {
         'graphit': [ 'Graphit-Regular', 'sans-serif' ],
-        'AtomicMarker': [ '"AtomicMarker"', 'sans-serif' ],
+        'AtomicMarker': [ 'AtomicMarker', 'sans-serif' ],
       },
       fontSize: {
         xs: [ '0.75rem', { lineHeight: '1.5' } ],
