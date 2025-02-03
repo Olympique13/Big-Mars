@@ -7,12 +7,19 @@ body {
 }
 
 .lien {
-	text-decoration: none;
-	color: #637df2;
+	text-decoration: underline;
 }
 
 #consortium {
 	height: -webkit-fill-available;
+}
+
+.btn-bigMars{
+	background-color: #637df2;
+}
+
+.btn-bigMars:hover{
+	background-color: #7681b3;
 }
 
 .b_li {
@@ -22,6 +29,10 @@ body {
 .bigMars {
 	font-family: "AtomicMarker", sans-serif;
 	color: #ffd045;
+}
+
+.bg-card-event{
+	background-color: #665169;
 }
 
 .zoneIDF{
