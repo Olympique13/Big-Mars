@@ -10,9 +10,9 @@ if ( carouselEl.length > 0 ) {
         modules: [ Navigation ],
         slidesPerView: 'auto',
         grabCursor: true,
-        loop: true,
+        loop: false,
         centeredSlides: true,
-        initialSlide: 1,
+        initialSlide: 0,
         spaceBetween: 24,
         autoplay: {
             delay: 7000,

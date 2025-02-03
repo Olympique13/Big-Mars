@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@font-face {
+    font-family: "AtomicMarker";
+    src: url("../fonts/AtomicMarker.otf") format("opentype");
+}
+
+@font-face {
+    font-family: "Graphit-Regular";
+    src: url("../fonts/Graphit-Regular.otf") format("opentype");
+}
+
+
 /*
 ! tailwindcss v3.3.6 | MIT License | https://tailwindcss.com
 */
@@ -4211,15 +4223,5 @@ input[type=range]::-moz-focus-outer {
     .lg\:text-6xl {
         font-size: 5.5rem;
         line-height: 1.11;
-    }
-
-    @font-face {
-        font-family: "AtomicMarker";
-        src: url("../fonts/AtomicMarker.otf") format("opentype");
-    }
-
-    @font-face {
-        font-family: "Graphit-Regular";
-        src: url("../fonts/Graphit-Regular.otf") format("opentype");
     }
 }
