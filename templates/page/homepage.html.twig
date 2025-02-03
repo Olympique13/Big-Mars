@@ -249,6 +249,21 @@
 											</div>
 										</div>
 									</div>
+									{% elseif events.getStartDate()|date('Y-m-d H:i') > ("now"|date_modify('-1 week'))|date('Y-m-d H:i')%}
+									<div class="swiper-slide">
+										<div class="relative dark:bg-gray-200 bg-card-event shadow-lg rounded-lg overflow-hidden">
+											<img class="object-cover w-full h-56 sm:h-48 md:h-56" src="build/images/events/{{events.imageName}}" alt="{{events.title}}"/>
+											<div class="p-4 flex flex-col justify-between h-48 sm:h-40 md:h-48">
+												<div>
+													<h3 class="text-lg font-semibold text-white dark:text-gray-800">{{ events.title }}</h3>
+													<p class="text-sm text-gray-300 dark:text-gray-600 mt-2">Cet événement est terminé, mais vous pouvez voir son contenu</p>
+												</div>
+												<div class="mt-4">
+													<a class="inline-block px-4 py-2 text-sm font-medium text-white btn-bigMars rounded" href="{{ path('show_event', {'slug': events.slug}) }}">Découvrir cet événement</a>
+												</div>
+											</div>
+										</div>
+									</div>
 								{% endif %}
 							{% else %}
 								<div class="swiper-slide max-w-lg text-center text-gray-600">
@@ -259,6 +274,7 @@
 					</div>
 
 					<!-- Arrows -->
+					{% if event|length > 3 %}
 					<div class="max-w-6xl mx-auto px-4 sm:px-6">
 						<div class="flex items-center justify-between mt-12 md:mt-16">
 							<button class="carousel-prev relative z-20 w-12 h-12 p-1 box-content flex items-center justify-center group btn-bigMars dark:hover:bg-opacity-25 shadow-xl transition duration-150 ease-in-out">
@@ -275,6 +291,7 @@
 							</button>
 						</div>
 					</div>
+					{% endif %}
 				</div>
 			</section>
 
