@@ -5,8 +5,10 @@ namespace App\Controller;
 use App\Entity\Contact;
 use App\Form\ContactType;
 use App\Repository\EventRepository;
+use App\Service\BrevoService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
@@ -55,4 +57,16 @@ final class PageController extends AbstractController
     {
         return $this->render('page/about.html.twig');
     }
+
+    #[Route('/addList', name: 'add_list')]
+    public function addList(Request $request, BrevoService $brevoService) : JsonResponse {
+
+        $email = json_decode($request->getContent())->email;
+
+        return $brevoService->addContact($email);
+
+    }
+
+
+
 }

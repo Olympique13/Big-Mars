@@ -6,6 +6,7 @@ use Brevo\Client\Api\ContactsApi;
 use Brevo\Client\Configuration;
 use Brevo\Client\Model\AddContactToList;
 use GuzzleHttp\Client;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class BrevoService {
 
@@ -28,9 +29,21 @@ class BrevoService {
         $contactIdentifiers['emails'] = array($email);
 
         try {
-            $result = $apiInstance->addContactToList($this->listId, $contactIdentifiers);
+            
+            return new JsonResponse([
+                'code' => 200,
+                'message' => 'Merci ! Votre inscription à bien était prise en compte.'
+            ]);
+
         } catch (\Exception $e) {
+
             echo 'Exception when calling ContactsApi->addContactToList: ', $e->getMessage(), PHP_EOL;
+
+            return new JsonResponse([
+                'code' => 500,
+                'message' => 'Une erreur est survenu, veuillez essayer plus tard.',
+                'error' => 'Exception when calling ContactsApi->addContactToList: ' . $e->getMessage(), PHP_EOL,
+            ]);
         }
 
     }

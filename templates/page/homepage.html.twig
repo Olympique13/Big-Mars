@@ -81,11 +81,11 @@
 										</li>
 									</ul>
 
-									<!-- Newsletter form -->
-									<form class="mt-8" data-aos="fade-down" data-aos-delay="300">
+									<form class="mt-8 news-form" data-aos="fade-down" data-aos-delay="300">
 										<div class="flex flex-col sm:flex-row justify-center max-w-sm mx-auto sm:max-w-md md:mx-0">
-											<input type="tel" class="form-input w-full mb-2 sm:mb-0 sm:mr-2" placeholder="Adresse email" aria-label="Adresse email"/>
-											<a class="btn text-white btn-bigMars shrink-0" href="#0">S'inscrire à la Newsletter</a>
+											<label for="email" class="hidden"> Email : </label>
+											<input type="email" name="email" id="email" class="form-input w-full mb-2 sm:mb-0 sm:mr-2 input-newsletter" placeholder="Adresse email" aria-label="Adresse email"/>
+											<input type="submit" class="btn text-white btn-bigMars shrink-0 js-btn-newsletter" value="S'inscrire à la news" />
 										</div>
 										<!-- Success message -->
 										<!-- <p class="text-center md:text-left mt-2 opacity-75 text-sm">Thanks for subscribing!</p> -->
@@ -166,13 +166,12 @@
 								</ul>
 
 								<!-- Newsletter form -->
-								<form class="mt-8" data-aos="fade-down" data-aos-delay="300">
+								<form class="news-form mt-8" data-aos="fade-down" data-aos-delay="300">
 									<div class="flex flex-col sm:flex-row justify-center max-w-sm mx-auto sm:max-w-md md:mx-0">
-										<input type="tel" class="form-input w-full mb-2 sm:mb-0 sm:mr-2" placeholder="Adresse email" aria-label="Adresse email"/>
-										<a class="btn text-white btn-bigMars shrink-0" href="#0">S'inscrire à la Newsletter</a>
+										<label for="email" class="hidden"> Email : </label>
+										<input type="email" name="email" id="email" class="form-input w-full mb-2 sm:mb-0 sm:mr-2 input-newsletter" placeholder="Adresse email" aria-label="Adresse email"/>
+										<input type="submit" class="btn text-white btn-bigMars shrink-0 js-btn-newsletter" value="S'inscrire à la news" />
 									</div>
-									<!-- Success message -->
-									<!-- <p class="text-center md:text-left mt-2 opacity-75 text-sm">Thanks for subscribing!</p> -->
 								</form>
 							</div>
 
