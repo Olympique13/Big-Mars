@@ -15,21 +15,21 @@ Encore
     //.setManifestKeyPrefix('build/')
     .enablePostCssLoader()
 
-    .copyFiles({
+    .copyFiles( {
         from: './assets/images',
 
         // optional target path, relative to the output dir
         to: 'images/[path][name].[ext]',
 
-    })
+    } )
 
-    .copyFiles({
+    .copyFiles( {
         from: './assets/video',
 
         // optional target path, relative to the output dir
         to: 'video/[path][name].[ext]',
 
-    })
+    } )
 
     /*
      * ENTRY CONFIG
@@ -39,6 +39,8 @@ Encore
      */
     .addEntry( 'app', './assets/app.js' )
     .addEntry( 'home', './assets/home.js' )
+    .addEntry( 'event', './assets/event.js' )
+    .addEntry( 'contact', './assets/contact.js' )
     .addEntry( 'registration', './assets/registration.js' )
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.

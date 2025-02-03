@@ -68,6 +68,9 @@ class Event
     #[ORM\Column]
     private ?int $maxParticipant = null;
 
+    #[ORM\Column(length: 125)]
+    private ?string $shortDescription = null;
+
     public function __construct()
     {
         $this->eventSlots = new ArrayCollection();
@@ -244,5 +247,37 @@ class Event
         $this->maxParticipant = $maxParticipant;
 
         return $this;
+    }
+
+    public function getShortDescription(): ?string
+    {
+        return $this->shortDescription;
+    }
+
+    public function setShortDescription(string $shortDescription): static
+    {
+        $this->shortDescription = $shortDescription;
+
+        return $this;
+    }
+
+    public function getPlace(): ?Place
+    {
+        foreach ($this->eventSlots as $eventSlot) {
+            if ($eventSlot->getPlace()) {
+                return $eventSlot->getPlace();
+            }
+        }
+        return null;
+    }
+
+    public function getStartDate(): ?\DateTimeInterface
+    {
+        foreach ($this->eventSlots as $eventSlot) {
+            if ($eventSlot->getDateBegin()) {
+                return $eventSlot->getDateBegin();
+            }
+        }
+        return null;
     }
 }

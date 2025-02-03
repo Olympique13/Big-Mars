@@ -1,25 +1,18 @@
-<div style="max-width: 600px; margin: auto; padding: 20px; background-color: #ffffff; border-radius: 8px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); font-family: Arial, sans-serif;">
-	<h1 style="font-size: 26px; font-weight: bold; color: #f97316; text-align: center;">Vous avez un nouveau contact</h1>
-	<div style="margin-top: 20px; line-height: 1.6;">
-		<p>
-			<strong style="color: #333;">Nom:</strong>
-			<span style="color: #555;">{{ lastName }}</span>
+<section class="max-w-2xl px-6 py-8 mx-auto bg-white dark:bg-gray-900 shadow-lg rounded-lg">
+
+	<main class="mt-8">
+		<h2 class="text-2xl font-semibold text-gray-700 dark:text-gray-200">Salut
+			{{ lastName }},</h2>
+
+		<p class="mt-4 leading-relaxed text-gray-600 dark:text-gray-300">
+			Nous sommes heureux que vous nous portiez attention. Nous avons bien reçu votre demande de contact et nous la traiterons dans les plus bref délais.
 		</p>
-		<p>
-			<strong style="color: #333;">Prénom:</strong>
-			<span style="color: #555;">{{ firstName }}</span>
+
+		<p class="mt-4 text-gray-600 dark:text-gray-300">
+			Merci,
+			<br>
+			L'équipe
+			<span class="text-lg" style='font-family: "AtomicMarker";'>BigMars</span>
 		</p>
-		<p>
-			<strong style="color: #333;">N° Téléphone:</strong>
-			<span style="color: #555;">{{ phone }}</span>
-		</p>
-		<p>
-			<strong style="color: #333;">Sujet:</strong>
-			<span style="color: #555;">{{ type }}</span>
-		</p>
-		<p>
-			<strong style="color: #333;">Message:</strong>
-			<span>{{ message }}</span>
-		</p>
-	</div>
-</div>
+	</main>
+</section>

@@ -1,19 +1,18 @@
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
-// import Swiper and modules styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-const carouselEl = document.querySelectorAll('.carousel');
-if (carouselEl.length > 0) {
-    const carousel = new Swiper('.carousel', {
-        modules : [Navigation],
+const carouselEl = document.querySelectorAll( '.carousel' );
+if ( carouselEl.length > 0 ) {
+    const carousel = new Swiper( '.carousel', {
+        modules: [ Navigation ],
         slidesPerView: 'auto',
         grabCursor: true,
-        loop: true,
+        loop: false,
         centeredSlides: true,
-        initialSlide: 1,
+        initialSlide: 0,
         spaceBetween: 24,
         autoplay: {
             delay: 7000,
@@ -22,5 +21,5 @@ if (carouselEl.length > 0) {
             nextEl: '.carousel-next',
             prevEl: '.carousel-prev',
         },
-    });
+    } );
 }

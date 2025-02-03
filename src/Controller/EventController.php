@@ -27,10 +27,10 @@ final class EventController extends AbstractController
         ]);
     }
 
-
     #[Route('/event/{slug}', name: 'show_event')]
     public function show(Request $request, EntityManagerInterface $entityManager, EventSlotRepository $eventSlotRepository, EventRepository $EventRepository, EventRegistrationRepository $eventRegistrationRepository, string $slug, MailerInterface $mailer): Response
     {
+        $allEvent = $EventRepository->findBy(['active' => true]);
         $event = $EventRepository->findOneBy(['slug' => $slug]);
         $eventReg = new EventRegistration();
         $form = $this->createForm(EventRegType::class, $eventReg, ['event' => $event]);
@@ -43,22 +43,22 @@ final class EventController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($eventReg);
             $entityManager->flush();
-            // $email = (new TemplatedEmail())
-            //     ->from($form->get('email')->getData())
-            //     ->to('neyssimodeur@gmail.com')
-            //     ->subject($form->get('eventSlot')->getData())
-            //     ->text($form->get('phone')->getData())
-            //     ->htmlTemplate('email/eventRegistration.html.twig')
-            //     ->context([
-            //         'firstName'=> $form->get('firstName')->getData(),
-            //         'lastName'=> $form->get('lastName')->getData(),
-            //         'phone'=> $form->get('phone')->getData(),
-            //         'eventTitle' => $event->getTitle(),
-            //         'eventDate' => $form->get('eventSlot')->getData(),
-            //         'place' => $form->get('eventSlot')->getData()->getPlace(),
-            //     ]);
+            $email = (new TemplatedEmail())
+                ->from($form->get('email')->getData())
+                ->to('neyssimodeur@gmail.com')
+                ->subject($form->get('eventSlot')->getData())
+                 ->text($form->get('phone')->getData())
+                 ->htmlTemplate('email/eventRegistration.html.twig')
+                 ->context([
+                     'firstName'=> $form->get('firstName')->getData(),
+                     'lastName'=> $form->get('lastName')->getData(),
+                     'phone'=> $form->get('phone')->getData(),
+                     'eventTitle' => $event->getTitle(),
+                     'eventDate' => $form->get('eventSlot')->getData(),
+                     'place' => $form->get('eventSlot')->getData()->getPlace(),
+                 ]);
               
-            // $mailer->send($email);
+             $mailer->send($email);
             
             return $this->redirectToRoute('app_event');
         }
@@ -67,7 +67,8 @@ final class EventController extends AbstractController
             'events' => $event,
             'eventReg' => $form->createView(),
             'regCount' => $registrationCount,
-            'eventSlots' => $eventSlots
+            'eventSlots' => $eventSlots,
+            'event' => $allEvent
         ]);
     }
 }

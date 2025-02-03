@@ -1,3 +1,58 @@
-p {
+body {
+	overflow-x: hidden;
+}
+
+#titre {
+	color: #ffd045;
+}
+
+.lien {
+	text-decoration: underline;
+}
+
+#consortium {
+	height: -webkit-fill-available;
+}
+
+.btn-bigMars{
+	background-color: #637df2;
+}
+
+.btn-bigMars:hover{
+	background-color: #7681b3;
+}
+
+.b_li {
+	color: #665169;
+}
+
+.bigMars {
 	font-family: "AtomicMarker", sans-serif;
+	color: #ffd045;
+}
+
+.bg-card-event{
+	background-color: #665169;
+}
+
+.zoneIDF{
+	background-color: #7681b3;
+}
+
+.zonePACA{
+	background-color: #caa537
+}
+
+.zoneGEST{
+	background-color: #252233;
+}
+
+.zoneREUNION{
+	background-color: #637df2;
+}
+
+@media screen and (min-width: 426px) and (max-width: 768px) {
+	#contentTitle h1 {
+		font-size:xx-large;
+	}
 }
