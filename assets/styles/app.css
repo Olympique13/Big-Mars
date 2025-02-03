@@ -1342,7 +1342,7 @@ input[type=range]::-moz-focus-outer {
 
 .form-switch input[type="checkbox"]:checked+label {
     --tw-bg-opacity: 1;
-    background-color: rgb(58 186 180 / var(--tw-bg-opacity));
+    background-color: rgb(237 193 64 / var(--tw-bg-opacity));
 }
 
 .form-switch input[type="checkbox"]:checked+label>span:first-child {
@@ -1406,7 +1406,7 @@ input[type=range]::-moz-focus-outer {
 
 .form-switch input[type="checkbox"].light-switch+label {
     --tw-bg-opacity: 1;
-    background-color: rgb(58 186 180 / var(--tw-bg-opacity));
+    background-color: rgb(237 193 64 / var(--tw-bg-opacity));
 }
 
 .dark .form-switch input[type="checkbox"].light-switch+label>span:first-child {
@@ -1417,8 +1417,9 @@ input[type=range]::-moz-focus-outer {
 
 .carousel.swiper-container {
     overflow: visible;
+    width:100%;
 }
-
+/*
 .carousel .swiper-slide img {
     opacity: .32;
 }
@@ -1442,7 +1443,7 @@ input[type=range]::-moz-focus-outer {
 .carousel .swiper-slide.swiper-slide-active>div>div,
 .carousel .swiper-slide.swiper-slide-duplicate-active>div>div {
     opacity: 1;
-}
+} */
 
 /* Helper class to fix swipering carousel on Safari */
 

@@ -1,0 +1,8 @@
+.logoSocial{
+    color: white;
+    background-color: #caa537;
+}
+
+.logoSocial:hover{
+    background-color: #edc140;
+}
