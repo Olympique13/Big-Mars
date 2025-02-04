@@ -13,7 +13,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+
 
 final class PageController extends AbstractController
 {
@@ -26,24 +29,42 @@ final class PageController extends AbstractController
         $form = $this->createForm(ContactType::class, $contact);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($contact);
-            $entityManager->flush();
-            $email = (new TemplatedEmail())
-                ->from($form->get('email')->getData())
-                ->to('neyssimodeur@gmail.com')
-                ->subject($form->get('type')->getData())
-                ->htmlTemplate('email/contact.html.twig')
-                ->context([
-                    'firstName' => $form->get('firstName')->getData(),
-                    'lastName' => $form->get('lastName')->getData(),
-                    'phone' => $form->get('phone')->getData(),
-                    'type' => $form->get('type')->getData(),
-                    'message' => $form->get('message')->getData()
-                ]);
+        if($form->isSubmitted()) {
+            if($form->isValid()) {
+                $entityManager->persist($contact);
+                $entityManager->flush();
+                $email = (new TemplatedEmail())
+                    ->from($this->getParameter('EMAIL_FROM'))
+                    ->to($form->get('email')->getData())
+                    ->subject('Confirmation de contact')
+                    ->htmlTemplate('email/contact.html.twig')
+                    ->context([
+                        'firstName' => $form->get('firstName')->getData(),
+                        'lastName' => $form->get('lastName')->getData(),
+                        'phone' => $form->get('phone')->getData(),
+                        'type' => $form->get('type')->getData(),
+                        'message' => $form->get('message')->getData()
+                    ]);
 
-            $mailer->send($email);
-            return $this->redirectToRoute('app_homepage');
+                    $mailer->send($email);
+
+                    
+                    return new JsonResponse([
+                        'code' => 200,
+                        'message' => 'Merci ! Le formulaire est valide',
+                    ]);
+
+            } else {
+                $errors = [];
+                foreach ($form->getErrors(true) as $error) {
+                    $errors[$error->getOrigin()->getName()] = $error->getMessage();
+                }
+    
+                return new JsonResponse([
+                    'code' => 400,
+                    'errors' => $errors,
+                ]);
+            }
         }
 
         return $this->render('page/homepage.html.twig', [
