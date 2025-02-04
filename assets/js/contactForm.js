@@ -52,14 +52,19 @@ document.addEventListener( 'DOMContentLoaded', function () {
                     if(response.code === 400) {
                         // error
                         $('#errorContact').css('display', 'block');
+                        $('#successContact').css('display', 'none');
                         for (const [field, message] of Object.entries(response.errors)) {
                             const errorElement = $(`<div class="text-red-600 text-sm">${message}</div>`);
                             $(`#formContact [name="contact[${field}]"]`).after(errorElement);
                         }
                     } else {
                         $('#successContact').css('display', 'block');
-                        $('#formContact').trigger("reset");
+                        $('#errorContact').css('display', 'none');
+                        $('#formContact .text-red-600').remove(); // Remove previous error messages
+
                     }
+
+                    $('#formContact').trigger("reset");
                 },
                 error: function (error) {
                     console.log(error);
