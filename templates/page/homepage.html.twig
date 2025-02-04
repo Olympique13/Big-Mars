@@ -98,7 +98,7 @@
                                     <form class="mt-8 news-form" data-aos="fade-down" data-aos-delay="300">
                                         <div class="flex flex-col sm:flex-row justify-center max-w-sm mx-auto sm:max-w-md md:mx-0">
                                             <label for="email" class="hidden"> Email : </label>
-                                            <input type="email" name="email" id="email"
+                                            <input type="email" name="email"
                                                    class="form-input w-full mb-2 sm:mb-0 sm:mr-2 input-newsletter"
                                                    placeholder="Adresse email" aria-label="Adresse email"/>
                                             <input type="submit"
@@ -141,7 +141,7 @@
                                     </svg>
                                     <!-- Image inside mockup size: 290x624px (or 580x1248px for Retina devices) -->
                                     <img
-                                            class="absolute" src="{{ asset('build/images/mockup-image-01.jpg') }}"
+                                            class="absolute object-cover object-center" src="{{ asset('build/images/homepage/img_iphone.jpg') }}"
                                             width="290" height="624" style="max-width: 84.33%;"
                                             alt="Features illustration"/>
                                     <!-- iPhone mockup -->
@@ -225,7 +225,7 @@
                                 <form class="news-form mt-8" data-aos="fade-down" data-aos-delay="300">
                                     <div class="flex flex-col sm:flex-row justify-center max-w-sm mx-auto sm:max-w-md md:mx-0">
                                         <label for="email" class="hidden"> Email : </label>
-                                        <input type="email" name="email" id="email"
+                                        <input type="email" name="email"
                                                class="form-input w-full mb-2 sm:mb-0 sm:mr-2 input-newsletter"
                                                placeholder="Adresse email" aria-label="Adresse email"/>
                                         <input type="submit"
@@ -425,22 +425,22 @@
                             class="pt-6 pb-12 md:pt-1 md:pb-20">
                         <!-- images grid -->
                         <div class="grid grid-cols-12 gap-3 mt-8 md:mt-10" data-aos-id-gallery>
-                            <img class="col-span-4" src="{{ asset('build/images/about-grid-01.jpg') }}" width="360"
+                            <img class="col-span-4" src="{{ asset('build/images/homepage/image_gallery/1.jpg') }}" width="360"
                                  height="270" alt="About grid 01" data-aos="fade-down"
                                  data-aos-anchor="[data-aos-id-gallery]"/>
-                            <img class="col-span-3" src="{{ asset('build/images/about-grid-02.jpg') }}" width="270"
+                            <img class="col-span-3" src="{{ asset('build/images/homepage/image_gallery/2.jpg') }}" width="270"
                                  height="270" alt="About grid 02" data-aos="fade-down"
                                  data-aos-anchor="[data-aos-id-gallery]" data-aos-delay="100"/>
-                            <img class="col-span-5" src="{{ asset('build/images/about-grid-03.jpg') }}" width="450"
+                            <img class="col-span-5" src="{{ asset('build/images/homepage/image_gallery/3.jpg') }}" width="450"
                                  height="270" alt="About grid 03" data-aos="fade-down"
                                  data-aos-anchor="[data-aos-id-gallery]" data-aos-delay="200"/>
-                            <img class="col-span-3" src="{{ asset('build/images/about-grid-04.jpg') }}" width="270"
+                            <img class="col-span-3" src="{{ asset('build/images/homepage/image_gallery/4.jpg') }}" width="270"
                                  height="270" alt="About grid 04" data-aos="fade-down"
                                  data-aos-anchor="[data-aos-id-gallery]" data-aos-delay="300"/>
-                            <img class="col-span-5" src="{{ asset('build/images/about-grid-05.jpg') }}" width="450"
+                            <img class="col-span-5" src="{{ asset('build/images/homepage/image_gallery/5.jpg') }}" width="450"
                                  height="270" alt="About grid 05" data-aos="fade-down"
                                  data-aos-anchor="[data-aos-id-gallery]" data-aos-delay="400"/>
-                            <img class="col-span-4" src="{{ asset('build/images/about-grid-06.jpg') }}" width="360"
+                            <img class="col-span-4" src="{{ asset('build/images/homepage/image_gallery/6.jpg') }}" width="360"
                                  height="270" alt="About grid 06" data-aos="fade-down"
                                  data-aos-anchor="[data-aos-id-gallery]" data-aos-delay="500"/>
                         </div>
@@ -465,11 +465,11 @@
                                               d="M2.785 5.334C2.538 5.5-.2 2.944.011 2.646.826 1.483 2.183.836 3.62.5 5.064.158 6.582.117 7.92-.02c.017-.002.098.153.088.166-1.763 2.018-3.223 3.836-5.221 5.188zm3.676 6.519c-.862.184-1.937-3.403-1.07-3.711 3.422-1.22 7.078-1.671 10.728-1.766 3.655-.096 7.304.162 10.866.32.044.002.06.177.018.187-6.938 1.634-13.691 3.504-20.542 4.97z"/>
                                     </svg>
                                 </div>
-                                <blockquote class="text-sm md:text-xl text-gray-600 dark:text-gray-400">“ This is a
+                                <blockquote class="md:text-xl text-gray-600 dark:text-gray-400">“ This is a
                                     great app and the value is amazing. Since I purchased it I have been using it
                                     everyday! Highly recommend it. “
                                 </blockquote>
-                                <div class="text-sm md:text-xl font-bold mt-2">
+                                <div class="md:text-xl font-bold mt-2">
                                     <cite class="not-italic">Andy Croll</cite>
                                 </div>
                             </div>
@@ -485,11 +485,11 @@
                                               d="M2.785 5.334C2.538 5.5-.2 2.944.011 2.646.826 1.483 2.183.836 3.62.5 5.064.158 6.582.117 7.92-.02c.017-.002.098.153.088.166-1.763 2.018-3.223 3.836-5.221 5.188zm3.676 6.519c-.862.184-1.937-3.403-1.07-3.711 3.422-1.22 7.078-1.671 10.728-1.766 3.655-.096 7.304.162 10.866.32.044.002.06.177.018.187-6.938 1.634-13.691 3.504-20.542 4.97z"/>
                                     </svg>
                                 </div>
-                                <blockquote class="text-sm md:text-xl text-gray-600 dark:text-gray-400">“ This is a
+                                <blockquote class="md:text-xl text-gray-600 dark:text-gray-400">“ This is a
                                     great app and the value is amazing. Since I purchased it I have been using it
                                     everyday! Highly recommend it. “
                                 </blockquote>
-                                <div class="text-sm md:text-xl font-bold mt-2">
+                                <div class="md:text-xl font-bold mt-2">
                                     <cite class="not-italic">Patricia Lepisov</cite>
                                 </div>
                             </div>
@@ -505,11 +505,11 @@
                                               d="M2.785 5.334C2.538 5.5-.2 2.944.011 2.646.826 1.483 2.183.836 3.62.5 5.064.158 6.582.117 7.92-.02c.017-.002.098.153.088.166-1.763 2.018-3.223 3.836-5.221 5.188zm3.676 6.519c-.862.184-1.937-3.403-1.07-3.711 3.422-1.22 7.078-1.671 10.728-1.766 3.655-.096 7.304.162 10.866.32.044.002.06.177.018.187-6.938 1.634-13.691 3.504-20.542 4.97z"/>
                                     </svg>
                                 </div>
-                                <blockquote class="text-sm md:text-xl text-gray-600 dark:text-gray-400">“ This is a
+                                <blockquote class="md:text-xl text-gray-600 dark:text-gray-400">“ This is a
                                     great app and the value is amazing. Since I purchased it I have been using it
                                     everyday! Highly recommend it. “
                                 </blockquote>
-                                <div class="text-sm md:text-xl font-bold mt-2">
+                                <div class="md:text-xl font-bold mt-2">
                                     <cite class="not-italic">Zhenya Ritz</cite>
                                 </div>
                             </div>
@@ -525,11 +525,11 @@
                                               d="M2.785 5.334C2.538 5.5-.2 2.944.011 2.646.826 1.483 2.183.836 3.62.5 5.064.158 6.582.117 7.92-.02c.017-.002.098.153.088.166-1.763 2.018-3.223 3.836-5.221 5.188zm3.676 6.519c-.862.184-1.937-3.403-1.07-3.711 3.422-1.22 7.078-1.671 10.728-1.766 3.655-.096 7.304.162 10.866.32.044.002.06.177.018.187-6.938 1.634-13.691 3.504-20.542 4.97z"/>
                                     </svg>
                                 </div>
-                                <blockquote class="text-sm md:text-xl text-gray-600 dark:text-gray-400">“ This is a
+                                <blockquote class="md:text-xl text-gray-600 dark:text-gray-400">“ This is a
                                     great app and the value is amazing. Since I purchased it I have been using it
                                     everyday! Highly recommend it. “
                                 </blockquote>
-                                <div class="text-sm md:text-xl font-bold mt-2">
+                                <div class="md:text-xl font-bold mt-2">
                                     <cite class="not-italic">Lisa Champ</cite>
                                 </div>
                             </div>
@@ -807,17 +807,22 @@
                             <!-- Newsletter content -->
                             <div class="mb-6 lg:mr-16 lg:mb-0 text-center lg:text-left lg:w-1/2">
                                 <p class="text-lg md:text-2xl font-bold text-gray-100">Ne rate rien de l'aventure Big
-                                    Mars</p>
+                                    Mars, <br> <span
+                                            class="text-lg text-yellow-500">en t'inscrivant à notre newsletter</span>
+                                </p>
                             </div>
                             <!-- Newsletter form -->
-                            <form class="w-full lg:w-1/2">
+                            <form class="news-form w-full lg:w-1/2">
                                 <div class="flex flex-col sm:flex-row justify-center max-w-xs mx-auto sm:max-w-md lg:max-w-none">
-                                    <input type="email" class="form-input text-gray-100 w-full mb-2 sm:mb-0 sm:mr-2"
+                                    <input type="email" name="email"
+                                           class="form-input text-gray-100 w-full mb-2 sm:mb-0 sm:mr-2"
                                            placeholder="Adresse email" aria-label="Adresse email"/>
-                                    <a class="btn text-white btn-bigMars shrink-0" href="#0">S'inscrire</a>
+                                    <input type="submit"
+                                           class="btn text-white btn-bigMars shrink-0 js-btn-newsletter"
+                                           value="S'inscrire"/>
                                 </div>
                                 <!-- Success message -->
-                                {#                                <p class="js-success-message opacity-0 transition-all h-4 text-center md:text-left mt-2 text-sm"></p> #}
+                                <p class="js-success-message opacity-0 transition-all h-4 text-center md:text-left mt-2 text-sm"></p>
                             </form>
                         </div>
                     </div>
