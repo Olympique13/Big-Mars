@@ -18,9 +18,11 @@ class Contact
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le nom ne peut pas être vide')]
     private ?string $firstName = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le prénom ne peut pas être vide')]
     private ?string $lastName = null;
 
     #[ORM\Column(length: 255)]
@@ -29,14 +31,15 @@ class Contact
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: 'Le numéro de téléphone ne peut pas être vide')]
-    #[Assert\Length(min: 10, max: 14, minMessage: 'Votre numéro est incorrect', maxMessage: 'Votre numéro est incorrect')]
     #[Assert\Regex(pattern: '/^(0|\+33)[6-7]([-. ]?[0-9]{2}[-. ]?){4}$/', message: 'Votre numéro de téléphone n\'est pas valide (06.. ou 07..)')]
     private ?string $phone = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank()]
     private ?string $type = null;
     
     #[ORM\Column(length: 10)]
+    #[Assert\NotBlank()]
     private ?string $zipCode = null;
     
     #[ORM\Column(length: 255)]
@@ -44,6 +47,7 @@ class Contact
     private ?string $company = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank()]
     private ?string $message = null;
 
     #[ORM\Column]
