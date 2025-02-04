@@ -27,6 +27,7 @@ class Contact
 
     #[ORM\Column(length: 255)]
     #[Assert\Regex(pattern: '/^((?!\.)[\w._-]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/', message: 'Votre adresse mail n\'est pas valide')]
+    #[Assert\NotBlank(message: 'Veuillez entrer votre adresse mail')]
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
