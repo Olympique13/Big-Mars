@@ -4225,3 +4225,15 @@ input[type=range]::-moz-focus-outer {
         line-height: 1.11;
     }
 }
+
+
+/*contact form */
+
+#contact_type {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+#contact_type_1 {
+    margin-left: 10px;
+}
