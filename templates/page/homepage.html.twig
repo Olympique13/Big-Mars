@@ -142,7 +142,7 @@
                                     <!-- Image inside mockup size: 290x624px (or 580x1248px for Retina devices) -->
                                     <img
                                             class="absolute object-cover object-center"
-                                            src="{{ asset('build/images/homepage/img_iphone.jpg') }}"
+                                            src="{{ asset('build/images/homepage/img_iphone.png') }}"
                                             width="290" height="624" style="max-width: 84.33%;"
                                             alt="Features illustration"/>
                                     <!-- iPhone mockup -->
@@ -301,34 +301,75 @@
                         </div>
                     </div>
                     <div class="swiper slider-event swiper-container max-w-6xl sm:px-6 md:px-6 px-5">
-                        <div class="swiper-wrapper">
+                        <div class="swiper-wrapper h-full">
                             <!-- Carousel items -->
                             {% for events in event|sort((a, b) => b.createdAt <=> a.createdAt) %}
                                 {% if events.getStartDate()|date('Y-m-d H:i') > "now"|date('Y-m-d H:i') %}
-                                    <div class="swiper-slide">
-                                        <div class="relative dark:bg-gray-200 bg-card-event shadow-lg rounded-lg overflow-hidden">
-                                            <img class="object-cover w-full h-56 sm:h-48 md:h-56"
-                                                 src="build/images/events/{{ events.imageName }}"
-                                                 alt="{{ events.title }}"/>
-                                            <div class="p-4 flex flex-col justify-between h-48 sm:h-40 md:h-48">
+                                    <div class="swiper-slide h-auto">
+                                        <a href="{{ path('show_event', {'slug': events.slug}) }}"
+                                           class="card-event block relative h-full dark:bg-gray-200 bg-card-event shadow-lg rounded-lg overflow-hidden">
+                                            <div class="overflow-hidden">
+                                                <img class="img-event object-cover w-full h-56 sm:h-48 md:h-56"
+                                                     src="build/images/events/{{ events.imageName }}"
+                                                     alt="{{ events.title }}"/>
+                                            </div>
+
+                                            <div class="p-4 flex flex-col justify-between">
                                                 <div>
                                                     <h3 class="text-lg font-semibold text-white dark:text-gray-800">{{ events.title }}</h3>
                                                     <p class="text-sm text-gray-300 dark:text-gray-600 mt-2">{{ events.shortDescription|slice(0, 50) ~ '...' }}</p>
                                                 </div>
+                                                <div class="space-y-2 mt-2">
+                                                    {% for slot in events.eventSlots[0:2] %}
+                                                        <div class="flex items-center gap-2">
+                                                            <div>
+                                                                <svg class="{% if loop.index > 1 %} opacity-75 {% endif %}"
+                                                                     width="18px" height="18px" stroke-width="1.5"
+                                                                     viewBox="0 0 24 24" fill="none"
+                                                                     xmlns="http://www.w3.org/2000/svg" color="#edc140">
+                                                                    <path d="M15 4V2M15 4V6M15 4H10.5M3 10V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V10H3Z"
+                                                                          stroke="#edc140" stroke-width="1.5"
+                                                                          stroke-linecap="round"
+                                                                          stroke-linejoin="round"></path>
+                                                                    <path d="M3 10V6C3 4.89543 3.89543 4 5 4H7"
+                                                                          stroke="#edc140"
+                                                                          stroke-width="1.5" stroke-linecap="round"
+                                                                          stroke-linejoin="round"></path>
+                                                                    <path d="M7 2V6" stroke="#edc140" stroke-width="1.5"
+                                                                          stroke-linecap="round"
+                                                                          stroke-linejoin="round"></path>
+                                                                    <path d="M21 10V6C21 4.89543 20.1046 4 19 4H18.5"
+                                                                          stroke="#edc140" stroke-width="1.5"
+                                                                          stroke-linecap="round"
+                                                                          stroke-linejoin="round"></path>
+                                                                </svg>
+                                                            </div>
+                                                            <p class="{% if loop.index > 1 %} opacity-75 {% endif %} text-sm text-gray-300 dark:text-gray-600">
+                                                                {{ slot.dateBegin|format_datetime(pattern="dd MMMM y", locale='fr') }}
+                                                        </div>
+                                                    {% endfor %}
+                                                    {% if events.eventSlots|length > 2 %}
+                                                        <p class="text-sm text-gray-300 dark:text-gray-600 underline">
+                                                            Plusieurs dates disponibles</p>
+                                                    {% endif %}
+                                                </div>
                                                 <div class="mt-4">
-                                                    <a class="inline-block px-4 py-2 text-sm font-medium text-white btn-bigMars rounded"
-                                                       href="{{ path('show_event', {'slug': events.slug}) }}">Découvrir
-                                                        cet événement</a>
+                                                    <div class="inline-block px-4 py-2 text-sm font-medium bg-yellow-50 rounded text-black">
+                                                        Découvrir
+                                                        cet événement
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     </div>
                                 {% elseif events.getStartDate()|date('Y-m-d H:i') > ("now"|date_modify('-1 week'))|date('Y-m-d H:i') %}
                                     <div class="swiper-slide">
-                                        <div class="relative dark:bg-gray-200 bg-card-event shadow-lg rounded-lg overflow-hidden">
-                                            <img class="object-cover w-full h-56 sm:h-48 md:h-56"
-                                                 src="build/images/events/{{ events.imageName }}"
-                                                 alt="{{ events.title }}"/>
+                                        <div class="card-event relative dark:bg-gray-200 bg-card-event shadow-lg rounded-lg overflow-hidden">
+                                            <div class="overflow-hidden">
+                                                <img class="img-event object-cover w-full h-56 sm:h-48 md:h-56"
+                                                     src="build/images/events/{{ events.imageName }}"
+                                                     alt="{{ events.title }}"/>
+                                            </div>
                                             <div class="p-4 flex flex-col justify-between h-48 sm:h-40 md:h-48">
                                                 <div>
                                                     <h3 class="text-lg font-semibold text-white dark:text-gray-800">{{ events.title }}</h3>
@@ -354,18 +395,18 @@
 
                     <!-- Arrows -->
                     {% if event|length > 3 %}
-                        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                        <div class="hidden md:block max-w-6xl mx-auto px-4 sm:px-6">
                             <div class="flex items-center justify-between mt-12 md:mt-16">
-                                <button class="carousel-prev relative z-20 w-12 h-12 p-1 box-content flex items-center justify-center group btn-bigMars dark:hover:bg-opacity-25 shadow-xl transition duration-150 ease-in-out">
+                                <button class="carousel-prev relative z-20 w-12 h-12 p-1 box-content flex items-center justify-center group bg-yellow-50 dark:hover:bg-opacity-25 shadow-xl transition duration-150 ease-in-out">
                                     <span class="sr-only">Previous</span>
-                                    <svg class="w-4 h-4 fill-current text-white dark:text-gray-400 group-hover:text-white dark:group-hover:text-black transition duration-150 ease-in-out"
+                                    <svg class="w-4 h-4 fill-current text-white dark:group-hover:text-black group-hover:text-white dark:group-hover:text-black transition duration-150 ease-in-out"
                                          viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M6.7 14.7l1.4-1.4L3.8 9H16V7H3.8l4.3-4.3-1.4-1.4L0 8z"/>
                                     </svg>
                                 </button>
-                                <button class="carousel-next relative z-20 w-12 h-12 p-1 box-content flex items-center justify-center group btn-bigMars dark:hover:bg-opacity-25 shadow-xl transition duration-150 ease-in-out">
+                                <button class="carousel-next relative z-20 w-12 h-12 p-1 box-content flex items-center justify-center group bg-yellow-50 dark:hover:bg-opacity-25 shadow-xl transition duration-150 ease-in-out">
                                     <span class="sr-only">Next</span>
-                                    <svg class="w-4 h-4 fill-current text-white dark:text-gray-400 group-hover:text-white dark:group-hover:text-black transition duration-150 ease-in-out"
+                                    <svg class="w-4 h-4 fill-current text-white dark:group-hover:text-black group-hover:text-white dark:group-hover:text-black transition duration-150 ease-in-out"
                                          viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M9.3 14.7l-1.4-1.4L12.2 9H0V7h12.2L7.9 2.7l1.4-1.4L16 8z"/>
                                     </svg>
@@ -373,6 +414,7 @@
                             </div>
                         </div>
                     {% endif %}
+                    <div class="swiper-pagination"></div>
                 </div>
             </section>
 
@@ -405,19 +447,19 @@
                                 <ul class="md:text-lg w-full text-gray-400 dark:text-gray-400 mt-4">
                                     <li class="flex items-center mb-2">
 										<span>
-											<b class="b_li">Te challenger</b>
+											<b class="text-white">Te challenger</b>
 											: escape game, chasses au trésor et défis ludiques pour expérimenter les soft skills en action.
 										</span>
                                     </li>
                                     <li class="flex items-center mb-2">
 										<span>
-											<b class="b_li">Gagner des récompenses</b>
+											<b class="text-white">Gagner des récompenses</b>
 											: places de cinéma, cartes cadeaux et surprises à débloquer en relevant les défis.
 										</span>
                                     </li>
                                     <li class="flex items-center mb-4">
 										<span>
-											<b class="b_li">Faire un premier pas dans l'univers des soft skills</b>
+											<b class="text-white">Faire un premier pas dans l'univers des soft skills</b>
 											: comprendre leur utilité, apprendre à les développer et repartir avec des outils concrets pour ton avenir.
 										</span>
                                     </li>
@@ -682,44 +724,59 @@
                 <div class="max-w-6xl mx-auto px-4 sm:px-6">
                     <div class="pb-12 md:pb-20">
                         <!-- Items -->
-                        <div class="grid gap-2 grid-cols-2 md:grid-cols-3" data-aos-id-clients>
+                        <div class="grid gap-2 grid-cols-2 md:grid-cols-4" data-aos-id-clients>
                             <!-- Item -->
                             <div class="flex items-center justify-center h-24 border border-gray-200 dark:border-gray-800 p-2"
                                  data-aos="fade-up" data-aos-anchor="[data-aos-id-clients]">
-                                <img id="consortium"
+                                <img class="!h-[50px] object-contain" id="consortium"
                                      src="{{ asset('build/images/consortium/Logo-Synergie-Family.png') }}"
                                      alt="Logo Synergie Family"/>
                             </div>
                             <!-- Item -->
                             <div class="flex items-center justify-center h-24 border border-gray-200 dark:border-gray-800 p-2"
                                  data-aos="fade-up" data-aos-delay="100" data-aos-anchor="[data-aos-id-clients]">
-                                <img id="consortium" src="{{ asset('build/images/consortium/logo_qwantic.png') }}"
+                                <img class="!h-[70px] object-contain" id="consortium"
+                                     src="{{ asset('build/images/consortium/logo_qwantic.png') }}"
                                      alt="Logo Qwantic"/>
                             </div>
                             <!-- Item -->
                             <div class="flex items-center justify-center h-24 border border-gray-200 dark:border-gray-800 p-2"
                                  data-aos="fade-up" data-aos-delay="200" data-aos-anchor="[data-aos-id-clients]">
-                                <img id="consortium" src="{{ asset('build/images/consortium/Logo_unitel.png') }}"
+                                <img class="!h-[50px] object-contain" id="consortium"
+                                     src="{{ asset('build/images/consortium/Logo_unitel.png') }}"
                                      alt="Logo Unitel"/>
                             </div>
                             <!-- Item -->
                             <div class="flex items-center justify-center h-24 border border-gray-200 dark:border-gray-800 p-2"
                                  data-aos="fade-up" data-aos-delay="300" data-aos-anchor="[data-aos-id-clients]">
-                                <img id="consortium" src="{{ asset('build/images/consortium/logo_la_plateforme.png') }}"
+                                <img class="!h-[50px] object-contain" id="consortium"
+                                     src="{{ asset('build/images/consortium/logo_la_plateforme.png') }}"
                                      alt="Logo la plateforme"/>
                             </div>
                             <!-- Item -->
                             <div class="flex items-center justify-center h-24 border border-gray-200 dark:border-gray-800 p-2"
                                  data-aos="fade-up" data-aos-delay="400" data-aos-anchor="[data-aos-id-clients]">
-                                {% if app.request.cookies.get('dark-mode') == 'false' %}
-                                    <img id="consortium"
-                                         src="{{ asset('build/images/consortium/Logo_Dev_Id_White.png') }}"
-                                         alt="Logo Dev ID White"/>
-                                {% else %}
-                                    <img id="consortium"
-                                         src="{{ asset('build/images/consortium/Logo_Dev_Id_Black.png') }}"
-                                         alt="Logo Dev ID Black"/>
-                                {% endif %}
+                                <img id="consortium"
+                                     src="{{ asset('build/images/consortium/Logo_Dev_Id_Black.png') }}"
+                                     alt="Logo Dev ID Black"/>
+                            </div>
+                            <div class="flex items-center justify-center h-24 border border-gray-200 dark:border-gray-800 p-2"
+                                 data-aos="fade-up" data-aos-delay="500" data-aos-anchor="[data-aos-id-clients]">
+                                <img id="consortium"
+                                     src="{{ asset('build/images/consortium/BANQUE_TERRITOIRES.jpg') }}"
+                                     alt="Logo Dev ID Black"/>
+                            </div>
+                            <div class="flex items-center justify-center h-24 border border-gray-200 dark:border-gray-800 p-2"
+                                 data-aos="fade-up" data-aos-delay="600" data-aos-anchor="[data-aos-id-clients]">
+                                <img id="consortium"
+                                     src="{{ asset('build/images/consortium/ministere_travail.png') }}"
+                                     alt="Logo Dev ID Black"/>
+                            </div>
+                            <div class="flex items-center justify-center h-24 border border-gray-200 dark:border-gray-800 p-2"
+                                 data-aos="fade-up" data-aos-delay="700" data-aos-anchor="[data-aos-id-clients]">
+                                <img id="consortium"
+                                     src="{{ asset('build/images/consortium/saint-denis.png') }}"
+                                     alt="Logo Dev ID Black"/>
                             </div>
                         </div>
                     </div>

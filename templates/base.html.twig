@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="dark">
 	<head>
 		<meta charset="UTF-8">
 		<title>
-			{% block title %}BigMars!
-			{% endblock %}
+			{% block title %}BigMars!{% endblock %}
 		</title>
 
 		<meta name="viewport" content="width=device-width,initial-scale=1">
@@ -18,11 +17,12 @@
 		{% block javascripts %}
 			{{ encore_entry_script_tags('app') }}
 			<script>
-				if (localStorage.getItem('dark-mode') == 'true' || !('dark-mode' in localStorage)) {
-					document.querySelector('html').classList.add('dark');
-				} else {
-					document.querySelector('html').classList.remove('dark');
-				}
+				// if (localStorage.getItem('dark-mode') == 'true' || !('dark-mode' in localStorage)) {
+				// 	document.querySelector('html').classList.add('dark');
+				// } else {
+				// 	document.querySelector('html').classList.remove('dark');
+				// }
+				// document.querySelector('html').classList.add('dark');
 			</script>
 		{% endblock %}
 

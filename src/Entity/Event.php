@@ -68,7 +68,7 @@ class Event
     #[ORM\Column]
     private ?int $maxParticipant = null;
 
-    #[ORM\Column(length: 125)]
+    #[ORM\Column(type: Types::TEXT)]
     private ?string $shortDescription = null;
 
     public function __construct()
