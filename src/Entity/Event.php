@@ -71,6 +71,16 @@ class Event
     #[ORM\Column(length: 125)]
     private ?string $shortDescription = null;
 
+    #[Vich\UploadableField(mapping: 'BGEvent', fileNameProperty: 'bgImageName', size: 'bgImageSize')]
+    #[Assert\File(maxSize: '20M', mimeTypes: ['image/jpeg', 'image/png', 'image/gif'])]
+    private ?File $bgImageFile = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $bgImageName = null;
+
+    #[ORM\Column]
+    private ?int $bgImageSize = null;
+
     public function __construct()
     {
         $this->eventSlots = new ArrayCollection();
@@ -279,5 +289,43 @@ class Event
             }
         }
         return null;
+    }
+
+    public function setBgImageFile(?File $bgImageFile = null): void
+    {
+        $this->bgImageFile = $bgImageFile;
+
+        if (null !== $bgImageFile) {
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getBgImageFile(): ?File
+    {
+        return $this->bgImageFile;
+    }
+
+    public function getBgImageName(): ?string
+    {
+        return $this->bgImageName;
+    }
+
+    public function setBgImageName(string $bgImageName): static
+    {
+        $this->bgImageName = $bgImageName;
+
+        return $this;
+    }
+
+    public function getBgImageSize(): ?int
+    {
+        return $this->bgImageSize;
+    }
+
+    public function setBgImageSize(int $bgImageSize): static
+    {
+        $this->bgImageSize = $bgImageSize;
+
+        return $this;
     }
 }

@@ -41,6 +41,8 @@ class EventCrudController extends AbstractCrudController
             SlugField::new('slug', 'Slug')->setTargetFieldName('title')->hideOnIndex(),
             TextField::new('imageFile', 'Image')->setFormType(VichFileType::class)->onlyOnForms()->setRequired(true),
             ImageField::new('imageName', 'Aperçu de l\'image')->setBasePath('build/images/events')->onlyOnIndex(),
+            TextField::new('bgImageFile', 'Arrière plan')->setFormType(VichFileType::class)->onlyOnForms()->setRequired(true),
+            ImageField::new('bgImageName', 'Image d\'arrière plan')->setBasePath('build/images/bgEvent')->onlyOnIndex(),
             TextEditorField::new('content', 'Description'),
             IntegerField::new('maxParticipant', 'Nombre de participants max')->setRequired(true),
             CollectionField::new('eventSlots', 'Crénaux')->setRequired(true)->setEntryIsComplex()->useEntryCrudForm(EventSlotCrudController::class)->allowDelete(true),
