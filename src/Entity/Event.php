@@ -47,10 +47,10 @@ class Event
     #[Assert\File(maxSize: '20M', mimeTypes: ['image/jpeg', 'image/png', 'image/gif'])]
     private ?File $imageFile = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $imageName = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $imageSize = null;
 
     /**
@@ -75,10 +75,10 @@ class Event
     #[Assert\File(maxSize: '20M', mimeTypes: ['image/jpeg', 'image/png', 'image/gif'])]
     private ?File $bgImageFile = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $bgImageName = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $bgImageSize = null;
 
     public function __construct()

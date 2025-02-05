@@ -44,7 +44,7 @@ class EventRegistrationCrudController extends AbstractCrudController
         return $crud
         ->setPageTitle('index', 'Participants aux événements');
     }
-    
+
 
     public function configureFields(string $pageName): iterable
     {
