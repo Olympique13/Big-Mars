@@ -44,7 +44,7 @@ class EventCrudController extends AbstractCrudController
             ImageField::new('bgImageName', 'Image d\'arrière plan')->setBasePath('build/images/bgEvent')->onlyOnIndex(),
             TextEditorField::new('content', 'Description'),
             IntegerField::new('maxParticipant', 'Nombre de participants max')->setRequired(true),
-            CollectionField::new('eventSlots', 'Crénaux')->setRequired(true)->setEntryIsComplex()->useEntryCrudForm(EventSlotCrudController::class)->allowDelete(true),
+            CollectionField::new('eventSlots', 'Créneaux')->setRequired(true)->setEntryIsComplex()->useEntryCrudForm(EventSlotCrudController::class)->allowDelete(true),
             DateTimeField::new('createdAt', 'Date de création')->setFormat('dd MMM y HH:mm')->hideOnForm(),
             DateTimeField::new('updatedAt', 'Dernière modification')->setFormat('dd MMM y HH:mm')->hideOnForm(),
             BooleanField::new('active'),
