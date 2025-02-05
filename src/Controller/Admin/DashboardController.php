@@ -45,7 +45,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('événement');
         yield MenuItem::linkToCrud('Nos événements', 'fas fa-calendar-days', Event::class);
         yield MenuItem::linkToCrud('Catégories', 'fas fa-layer-group', Category::class);
-        yield MenuItem::linkToCrud('Participants', 'fas fa-address-card', EventRegistration::class);
+        yield MenuItem::linkToCrud('Inscriptions', 'fas fa-address-card', EventRegistration::class);
 
         yield MenuItem::section('Utilisateur')->setPermission('ROLE_ADMIN_SUPER');
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class)->setPermission('ROLE_ADMIN_SUPER');

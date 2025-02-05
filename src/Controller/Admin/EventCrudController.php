@@ -39,7 +39,7 @@ class EventCrudController extends AbstractCrudController
             TextField::new('shortDescription', 'Courte description'),
             AssociationField::new('category', 'Catégorie'),
             SlugField::new('slug', 'Slug')->setTargetFieldName('title')->hideOnIndex(),
-            TextField::new('imageFile', 'Image')->setFormType(VichFileType::class)->onlyOnForms(),
+            TextField::new('imageFile', 'Image')->setFormType(VichFileType::class)->onlyOnForms()->setRequired(true),
             ImageField::new('imageName', 'Aperçu de l\'image')->setBasePath('build/images/events')->onlyOnIndex(),
             TextEditorField::new('content', 'Description'),
             IntegerField::new('maxParticipant', 'Nombre de participants max')->setRequired(true),
