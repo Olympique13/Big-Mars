@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Form\EventRegType;
 use App\Entity\EventRegistration;
-use App\Repository\EventRegistrationRepository;
 use App\Repository\EventRepository;
 use App\Repository\EventSlotRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -13,6 +12,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use App\Repository\EventRegistrationRepository;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 final class EventController extends AbstractController
@@ -40,27 +41,44 @@ final class EventController extends AbstractController
         $eventSlots = $eventSlotRepository->findSlotsByEvent($event->getId());
         // dd($eventSlots);
         
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($eventReg);
-            $entityManager->flush();
-            $email = (new TemplatedEmail())
-                ->from($form->get('email')->getData())
-                ->to('neyssimodeur@gmail.com')
-                ->subject($form->get('eventSlot')->getData())
-                 ->text($form->get('phone')->getData())
-                 ->htmlTemplate('email/eventRegistration.html.twig')
-                 ->context([
-                     'firstName'=> $form->get('firstName')->getData(),
-                     'lastName'=> $form->get('lastName')->getData(),
-                     'phone'=> $form->get('phone')->getData(),
-                     'eventTitle' => $event->getTitle(),
-                     'eventDate' => $form->get('eventSlot')->getData(),
-                     'place' => $form->get('eventSlot')->getData()->getPlace(),
-                 ]);
-              
-             $mailer->send($email);
-            
-            return $this->redirectToRoute('app_event');
+        if ($form->isSubmitted()) {
+            if ($form->isValid()){
+                $entityManager->persist($eventReg);
+                $entityManager->flush();
+                $email = (new TemplatedEmail())
+                    ->from($form->get('email')->getData())
+                    ->to('neyssimodeur@gmail.com')
+                    ->subject($form->get('eventSlot')->getData())
+                    ->text($form->get('phone')->getData())
+                    ->htmlTemplate('email/eventRegistration.html.twig')
+                    ->context([
+                        'firstName'=> $form->get('firstName')->getData(),
+                        'lastName'=> $form->get('lastName')->getData(),
+                        'phone'=> $form->get('phone')->getData(),
+                        'eventTitle' => $event->getTitle(),
+                        'eventDate' => $form->get('eventSlot')->getData(),
+                        'place' => $form->get('eventSlot')->getData()->getPlace(),
+                    ]);
+                
+                $mailer->send($email);
+                
+
+                return new JsonResponse([
+                    'code' => 200,
+                    'message' => 'Merci ! Le formulaire est valide',
+                ]);
+
+            } else {
+                $errors = [];
+                foreach ($form->getErrors(true) as $error) {
+                    $errors[$error->getOrigin()->getName()] = $error->getMessage();
+                }
+
+                return new JsonResponse([
+                    'code' => 400,
+                    'errors' => $errors,
+                ]);
+            }
         }
 
         return $this->render('event/show_event.html.twig', [

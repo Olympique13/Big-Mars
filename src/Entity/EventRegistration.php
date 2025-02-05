@@ -18,20 +18,20 @@ class EventRegistration
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(message: 'Le prénom ne peut pas être vide')]
     private ?string $firstName = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(message:'Le nom ne peut pas être vide')]
     private ?string $lastName = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(message: 'Entre une adresse mail valide')]
     #[Assert\Email]
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(message: 'Le numéro de téléphone ne peut pas être vide')]
     #[Assert\Regex(
         pattern: '/^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$/i',
         match: true,
@@ -48,12 +48,16 @@ class EventRegistration
     private ?EventSlot $eventSlot = null;
 
     #[ORM\Column(length: 20)]
+    #[Assert\NotBlank(message: 'Entrez un code postal valide')]
+    #[Assert\Length(min:5, max: 5, minMessage:'Entrez un code postal valide (France/Réunion)', maxMessage:'Entrez un code postal valide (France/Réunion)')]
     private ?string $zipCode = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank()]
     private ?string $status = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\NotBlank()]
     private ?\DateTimeInterface $birthDate = null;
 
     public function getId(): ?int

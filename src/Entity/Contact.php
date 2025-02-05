@@ -18,11 +18,11 @@ class Contact
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message: 'Le nom ne peut pas être vide')]
+    #[Assert\NotBlank(message: 'Le prénom ne peut pas être vide')]
     private ?string $firstName = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message: 'Le prénom ne peut pas être vide')]
+    #[Assert\NotBlank(message: 'Le nom ne peut pas être vide')]
     private ?string $lastName = null;
 
     #[ORM\Column(length: 255)]

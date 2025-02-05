@@ -19,6 +19,7 @@ class EventRegType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->setAttribute('attr', ['name' => 'event_registration'])
             ->add('firstName')
             ->add('lastName')
             ->add('email')
@@ -54,8 +55,7 @@ class EventRegType extends AbstractType
                         ->orderBy('es.dateBegin', 'ASC');
                 },
             ])
-            ->add('createdAt', HiddenType::class)
-        ;
+            ->add('createdAt', HiddenType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
