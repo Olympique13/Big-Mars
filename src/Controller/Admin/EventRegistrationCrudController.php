@@ -48,7 +48,6 @@ class EventRegistrationCrudController extends AbstractCrudController
         $queryBuilder = $this->createIndexQueryBuilder($context->getSearch(), $context->getEntity(), $fields, $filters);
 
         $filters = $context->getRequest()->query->all('filters');
-
         $filterValue = $filters['event']['value'] ?? 'Global';
         // dd($filterValue);
 
