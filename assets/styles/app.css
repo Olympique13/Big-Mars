@@ -4238,3 +4238,12 @@ input[type=range]::-moz-focus-outer {
 #contact_type_1 {
     margin-left: 10px;
 }
+
+/*slider*/
+
+.img-event{
+    transition: all .4s ease;
+}
+.card-event:hover .img-event {
+    transform: scale(1.2);
+}
