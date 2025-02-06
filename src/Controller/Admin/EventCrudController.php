@@ -27,6 +27,8 @@ class EventCrudController extends AbstractCrudController
     {
         return $crud
             ->setPageTitle('index', 'Nos événements')
+            ->setPaginatorPageSize(15)
+            ->setPaginatorRangeSize(3)
             ->setPageTitle('new', 'Ajouter un nouvel événement')
             ->setPageTitle('edit', 'Modifier cet événement');
     }
@@ -43,7 +45,7 @@ class EventCrudController extends AbstractCrudController
             TextField::new('bgImageFile', 'Arrière plan')->setFormType(VichFileType::class)->onlyOnForms()->setRequired($pageName !== Crud::PAGE_EDIT),
             ImageField::new('bgImageName', 'Image d\'arrière plan')->setBasePath('build/images/bgEvent')->onlyOnIndex(),
             TextEditorField::new('content', 'Description'),
-            IntegerField::new('maxParticipant', 'Nombre de participants max')->setRequired(true),
+            IntegerField::new('maxParticipant', 'Participants max')->setRequired(true),
             CollectionField::new('eventSlots', 'Créneaux')->setRequired(true)->setEntryIsComplex()->useEntryCrudForm(EventSlotCrudController::class)->allowDelete(true),
             DateTimeField::new('createdAt', 'Date de création')->setFormat('dd MMM y HH:mm')->hideOnForm(),
             DateTimeField::new('updatedAt', 'Dernière modification')->setFormat('dd MMM y HH:mm')->hideOnForm(),

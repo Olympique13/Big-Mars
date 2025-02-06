@@ -22,7 +22,11 @@ class ContactCrudController extends AbstractCrudController
 
     public function configureCrud(Crud $crud): Crud
     {
-        return $crud->setDefaultSort(['createdAt' => 'DESC'])->setPageTitle('index', 'Message de contact');
+        return $crud
+        ->setDefaultSort(['createdAt' => 'DESC'])
+        ->setPaginatorPageSize(15)
+        ->setPaginatorRangeSize(3)
+        ->setPageTitle('index', 'Message de contact');
     }
 
     public function configureActions(Actions $actions): Actions

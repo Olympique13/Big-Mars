@@ -3,19 +3,27 @@
 namespace App\Controller\Admin;
 
 use App\Entity\EventSlot;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class EventSlotCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
         return EventSlot::class;
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+        ->setPaginatorPageSize(15)
+        ->setPaginatorRangeSize(3);
     }
 
 

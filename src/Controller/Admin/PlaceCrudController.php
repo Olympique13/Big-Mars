@@ -21,6 +21,8 @@ class PlaceCrudController extends AbstractCrudController
     {
         return $crud
         ->setPageTitle('index', 'Lieux')
+        ->setPaginatorPageSize(15)
+        ->setPaginatorRangeSize(3)
         ->setPageTitle('new', 'Ajouter un nouvel emplacement')
         ->setPageTitle('edit', 'Modifier cet emplacement');
     }

@@ -43,7 +43,9 @@ class EventRegistrationCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-        ->setPageTitle('index', 'Participants aux événements');
+        ->setPageTitle('index', 'Participants aux événements')
+        ->setPaginatorPageSize(15)
+        ->setPaginatorRangeSize(3);
     }
 
 
