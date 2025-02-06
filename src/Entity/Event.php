@@ -68,7 +68,7 @@ class Event
     #[ORM\Column]
     private ?int $maxParticipant = null;
 
-    #[ORM\Column(length: 125)]
+    #[ORM\Column(type: Types::TEXT)]
     private ?string $shortDescription = null;
 
     #[Vich\UploadableField(mapping: 'BGEvent', fileNameProperty: 'bgImageName', size: 'bgImageSize')]

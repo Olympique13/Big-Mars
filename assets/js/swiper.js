@@ -14,6 +14,7 @@ if ( carouselEl.length > 0 ) {
         // centeredSlides: true,
         // initialSlide: 0,
         spaceBetween: 24,
+        speed: 600,
         autoplay: {
             delay: 7000,
         },
@@ -28,6 +29,9 @@ if ( carouselEl.length > 0 ) {
             1024 : {
                 slidesPerView: 3,
             }
+        },
+        pagination : {
+            el : '.swiper-pagination'
         }
     } );
 }
