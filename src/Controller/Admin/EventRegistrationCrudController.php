@@ -15,7 +15,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Filter\EntityFilter;
+use App\Filter\EventNameFilter;
 
 class EventRegistrationCrudController extends AbstractCrudController
 {
@@ -36,7 +36,8 @@ class EventRegistrationCrudController extends AbstractCrudController
     public function configureFilters(Filters $filters): Filters
     {
         return $filters
-            ->add('eventSlot');
+            ->add('eventSlot')
+            ->add(EventNameFilter::new('event', 'Evénement'));
     }
 
     public function configureCrud(Crud $crud): Crud
