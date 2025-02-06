@@ -381,8 +381,7 @@
                                                     <p class="text-sm text-gray-300 dark:text-gray-600 mt-2">{{ events.shortDescription|slice(0, 50) ~ '...' }}</p>
                                                 </div>
                                                 <div class="space-y-2 mt-2">
-                                                    {% set sorted_slots = events.eventSlots|sort((a, b) => a.dateBegin <=> b.dateBegin) %}
-                                                    {% for slot in sorted_slots [0:2] %}
+                                                    {% for slot in events.eventSlots|sort((a,b) => a.dateBegin <=> b.dateBegin) [0:2] %}
                                                         <div class="flex items-center gap-2">
                                                             <div>
                                                                 <svg class="{% if loop.index > 1 %} opacity-75 {% endif %}"
