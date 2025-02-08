@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
+use App\Entity\Place;
 
 #[ORM\Entity(repositoryClass: EventRepository::class)]
 #[ORM\HasLifecycleCallbacks]
@@ -80,6 +81,10 @@ class Event
 
     #[ORM\Column(nullable: true)]
     private ?int $bgImageSize = null;
+
+    #[ORM\ManyToOne(targetEntity: Place::class)]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Place $place = null;
 
     public function __construct()
     {
@@ -271,16 +276,6 @@ class Event
         return $this;
     }
 
-    public function getPlace(): ?Place
-    {
-        foreach ($this->eventSlots as $eventSlot) {
-            if ($eventSlot->getPlace()) {
-                return $eventSlot->getPlace();
-            }
-        }
-        return null;
-    }
-
     public function getStartDate(): ?\DateTimeInterface
     {
         foreach ($this->eventSlots as $eventSlot) {
@@ -325,6 +320,18 @@ class Event
     public function setBgImageSize(int $bgImageSize): static
     {
         $this->bgImageSize = $bgImageSize;
+
+        return $this;
+    }
+
+    public function getPlace(): ?Place
+    {
+        return $this->place;
+    }
+
+    public function setPlace(?Place $place): static
+    {
+        $this->place = $place;
 
         return $this;
     }

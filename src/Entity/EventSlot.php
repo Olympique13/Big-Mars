@@ -35,9 +35,6 @@ class EventSlot
     #[ORM\ManyToOne(inversedBy: 'eventSlots')]
     private ?Event $event = null;
 
-    #[ORM\ManyToOne(inversedBy: 'eventSlots')]
-    private ?Place $place = null;
-
     #[ORM\Column]
     private ?bool $active = null;
 
@@ -113,18 +110,6 @@ class EventSlot
     public function setEvent(?Event $event): static
     {
         $this->event = $event;
-
-        return $this;
-    }
-
-    public function getPlace(): ?Place
-    {
-        return $this->place;
-    }
-
-    public function setPlace(?Place $place): static
-    {
-        $this->place = $place;
 
         return $this;
     }

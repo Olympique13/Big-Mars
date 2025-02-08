@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
+use App\Entity\Event;
 
 #[ORM\Entity(repositoryClass: PlaceRepository::class)]
 #[ORM\HasLifecycleCallbacks]
@@ -26,12 +27,6 @@ class Place
     #[Gedmo\Timestampable(on: 'update')]
     private ?\DateTimeImmutable $updatedAt = null;
 
-    /**
-     * @var Collection<int, EventSlot>
-     */
-    #[ORM\OneToMany(targetEntity: EventSlot::class, mappedBy: 'place')]
-    private Collection $eventSlots;
-
     #[ORM\Column(length: 255)]
     private ?string $address = null;
 
@@ -47,11 +42,17 @@ class Place
     private ?string $city = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $place = null;
+    private ?string $placeName = null;
+
+    /**
+     * @var Collection<int, Event>
+     */
+    #[ORM\OneToMany(mappedBy: 'place', targetEntity: Event::class)]
+    private Collection $events;
 
     public function __construct()
     {
-        $this->eventSlots = new ArrayCollection();
+        $this->events = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -89,43 +90,13 @@ class Place
     public function __toString(): string
     {
         $formattedAddress = $this->adresseComplete();
-        $place = $this->place;
-        return $formattedAddress . '(' . $place .')';
+        $placeName = $this->placeName;
+        return $formattedAddress . '(' . $placeName .')';
     }
 
     private function adresseComplete(): string
     {
         return $this->address . ', ' . $this->zipCode . ' ' . $this->city . ' ';
-    }
-
-    /**
-     * @return Collection<int, EventSlot>
-     */
-    public function getEventSlots(): Collection
-    {
-        return $this->eventSlots;
-    }
-
-    public function addEventSlot(EventSlot $eventSlot): static
-    {
-        if (!$this->eventSlots->contains($eventSlot)) {
-            $this->eventSlots->add($eventSlot);
-            $eventSlot->setPlace($this);
-        }
-
-        return $this;
-    }
-
-    public function removeEventSlot(EventSlot $eventSlot): static
-    {
-        if ($this->eventSlots->removeElement($eventSlot)) {
-            // set the owning side to null (unless already changed)
-            if ($eventSlot->getPlace() === $this) {
-                $eventSlot->setPlace(null);
-            }
-        }
-
-        return $this;
     }
 
     public function getAddress(): ?string
@@ -164,15 +135,45 @@ class Place
         return $this;
     }
 
-    public function getPlace(): ?string
+    public function getPlaceName(): ?string
     {
-        return $this->place;
+        return $this->placeName;
     }
 
-    public function setPlace(string $place): static
+    public function setPlaceName(string $placeName): static
     {
-        $this->place = $place;
+        $this->placeName = $placeName;
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Event>
+     */
+    public function getEvents(): Collection
+    {
+        return $this->events;
+    }
+
+    // public function addEvent(Event $event): static
+    // {
+    //     if (!$this->events->contains($event)) {
+    //         $this->events->add($event);
+    //         $event->setPlace($this);
+    //     }
+
+    //     return $this;
+    // }
+
+    // public function removeEvent(Event $event): static
+    // {
+    //     if ($this->events->removeElement($event)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($event->getPlace() === $this) {
+    //             $event->setPlace(null);
+    //         }
+    //     }
+
+    //     return $this;
+    // }
 }

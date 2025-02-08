@@ -35,7 +35,6 @@ class EventSlotCrudController extends AbstractCrudController
             DateTimeField::new('createdAt' , 'Date de création')->onlyOnIndex(),
             DateTimeField::new('updatedAt' , 'Date de modification')->onlyOnIndex(),
             AssociationField::new('event' , 'Événement')->onlyOnIndex(),
-            AssociationField::new('place' , 'Lieu'),
             BooleanField::new('active'),
         ];
     }

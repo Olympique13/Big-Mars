@@ -32,7 +32,7 @@ class PlaceCrudController extends AbstractCrudController
         return [
             TextField::new('city', 'Ville'),
             TextField::new('address', 'Adresse'),
-            TextField::new('place', 'Lieu'),
+            TextField::new('placeName', 'Lieu'),
             TextField::new('zipCode', 'Code Postal'),
             DateTimeField::new('createdAt', 'Date de création')->setFormat('dd MMM y HH:mm')->hideOnForm(),
             DateTimeField::new('updatedAt', 'Dernière modification')->setFormat('dd MMM y HH:mm')->hideOnForm(),
