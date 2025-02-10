@@ -94,7 +94,7 @@ class Place
         return $formattedAddress . '(' . $placeName .')';
     }
 
-    private function adresseComplete(): string
+    public function adresseComplete(): string
     {
         return $this->address . ', ' . $this->zipCode . ' ' . $this->city . ' ';
     }

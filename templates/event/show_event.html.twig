@@ -72,12 +72,14 @@
                                                           stroke-linejoin="round"></path>
                                                 </svg>
                                             </div>
-                                            <div>Le
-                                                {{ events.eventSlots[0].dateBegin|format_datetime(locale: 'fr', pattern: 'd MMM Y') }}
+                                            <div>
+                                                {% set event = events.eventSlots|sort((a,b) => a.dateBegin <=> b.dateBegin)|first %}
+                                                Le
+                                                {{ event.dateBegin|format_datetime(locale: 'fr', pattern: 'd MMM Y') }}
                                                 de
-                                                {{ events.eventSlots[0].dateBegin|date('H') }}h{{ events.eventSlots[0].dateBegin|date('i') }}
+                                                {{ event.dateBegin|date('H') }}h{{ event.dateBegin|date('i') }}
                                                 à
-                                                {{ events.eventSlots[0].dateEnd|date('H') }}h{{ events.eventSlots[0].dateEnd|date('i') }}
+                                                {{ event.dateEnd|date('H') }}h{{ event.dateEnd|date('i') }}
                                             </div>
                                         </div>
                                     </div>
@@ -117,50 +119,50 @@
                                                                         {{ form_errors(eventReg) }}
                                                                         <div class="flex flex-wrap -mx-3 mb-5">
                                                                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                                                                                {{ form_label(eventReg.lastName, "Nom", {'label_attr': {'class': 'block text-gray-800 dark:text-gray-300 text-sm font-medium mb-1'}}) }}
+                                                                                {{ form_label(eventReg.lastName, "Nom <span class='text-red-500'>*</span>", {'label_attr': {'class': 'block text-gray-800 dark:text-gray-300 text-sm font-medium mb-1'}, 'label_html': true}) }}
                                                                                 {{ form_widget(eventReg.lastName, {'attr': {'class': 'form-input w-full', 'placeholder': 'Entrez votre nom'}}) }}
                                                                                 {{ form_errors(eventReg.lastName) }}
                                                                             </div>
                                                                             <div class="w-full md:w-1/2 px-3">
-                                                                                {{ form_label(eventReg.firstName, "Prénom", {'label_attr': {'class': 'block text-gray-800 dark:text-gray-300 text-sm font-medium mb-1'}}) }}
+                                                                                {{ form_label(eventReg.firstName, "Prénom <span class='text-red-500'>*</span>", {'label_attr': {'class': 'block text-gray-800 dark:text-gray-300 text-sm font-medium mb-1'}, 'label_html': true}) }}
                                                                                 {{ form_widget(eventReg.firstName, {'attr': {'class': 'form-input w-full', 'placeholder': 'Entrez votre prénom'}}) }}
                                                                                 {{ form_errors(eventReg.firstName) }}
                                                                             </div>
                                                                         </div>
                                                                         <div class="flex flex-wrap -mx-3 mb-5">
                                                                             <div class="w-full px-3">
-                                                                                {{ form_label(eventReg.email, "Email", {'label_attr': {'class': 'block text-gray-800 dark:text-gray-300 text-sm font-medium mb-1'}}) }}
+                                                                                {{ form_label(eventReg.email, "Email <span class='text-red-500'>*</span>", {'label_attr': {'class': 'block text-gray-800 dark:text-gray-300 text-sm font-medium mb-1'}, 'label_html': true}) }}
                                                                                 {{ form_widget(eventReg.email, {'attr': {'class': 'form-input w-full', 'placeholder': 'Entrez votre adresse email'}}) }}
                                                                                 {{ form_errors(eventReg.email) }}
                                                                             </div>
                                                                         </div>
                                                                         <div class="flex flex-wrap -mx-3 mb-5">
                                                                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                                                                                {{ form_label(eventReg.phone, "N° téléphone", {'label_attr': {'class': 'block text-gray-800 dark:text-gray-300 text-sm font-medium mb-1'}}) }}
+                                                                                {{ form_label(eventReg.phone, "N° téléphone <span class='text-red-500'>*</span>", {'label_attr': {'class': 'block text-gray-800 dark:text-gray-300 text-sm font-medium mb-1'}, 'label_html': true}) }}
                                                                                 {{ form_widget(eventReg.phone, {'attr': {'class': 'input-phone form-input w-full', 'placeholder': 'Entrez votre N° de téléphone'}}) }}
                                                                                 {{ form_errors(eventReg.phone) }}
                                                                             </div>
                                                                             <div class="w-full md:w-1/2 px-3">
-                                                                                {{ form_label(eventReg.zipCode, "Code Postal", {'label_attr': {'class': 'block text-gray-800 dark:text-gray-300 text-sm font-medium mb-1'}}) }}
+                                                                                {{ form_label(eventReg.zipCode, "Code Postal <span class='text-red-500'>*</span>", {'label_attr': {'class': 'block text-gray-800 dark:text-gray-300 text-sm font-medium mb-1'}, 'label_html': true}) }}
                                                                                 {{ form_widget(eventReg.zipCode, {'attr': {'class': 'input-zipcode form-input w-full', 'placeholder': 'Entrez votre code postal'}}) }}
                                                                                 {{ form_errors(eventReg.zipCode) }}
                                                                             </div>
                                                                         </div>
                                                                         <div class="flex flex-wrap -mx-3 mb-5">
                                                                             <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
-                                                                                {{ form_label(eventReg.birthDate, "Date de naissance", {'label_attr': {'class': 'block text-gray-800 dark:text-gray-300 text-sm font-medium mb-1'}}) }}
+                                                                                {{ form_label(eventReg.birthDate, "Date de naissance <span class='text-red-500'>*</span>", {'label_attr': {'class': 'block text-gray-800 dark:text-gray-300 text-sm font-medium mb-1'}, 'label_html': true}) }}
                                                                                 {{ form_widget(eventReg.birthDate, {'attr': {'class': 'input-birthDate form-input w-full', 'placeholder': 'JJ/MM/AAAA', 'type': 'text'}}) }}
                                                                                 {{ form_errors(eventReg.birthDate) }}
                                                                             </div>
                                                                             <div class="w-full md:w-1/2 px-3">
-                                                                                {{ form_label(eventReg.status, "Votre statut", {'label_attr': {'class': 'block text-gray-800 dark:text-gray-300 text-sm font-medium mb-1'}}) }}
+                                                                                {{ form_label(eventReg.status, "Votre statut <span class='text-red-500'>*</span>", {'label_attr': {'class': 'block text-gray-800 dark:text-gray-300 text-sm font-medium mb-1'}, 'label_html': true}) }}
                                                                                 {{ form_widget(eventReg.status, {'attr': {'class': 'input-zipcode form-input w-full', 'placeholder': 'Séléctionnez votre statut actuel'}}) }}
                                                                                 {{ form_errors(eventReg.status) }}
                                                                             </div>
                                                                         </div>
                                                                         <div class="flex flex-wrap -mx-3 mb-5">
                                                                             <div class="w-full px-3">
-                                                                                {{ form_label(eventReg.eventSlot, "Créneaux", {'label_attr': {'class': 'block text-gray-800 dark:text-gray-300 text-sm font-medium mb-1'}}) }}
+                                                                                {{ form_label(eventReg.eventSlot, "Créneaux <span class='text-red-500'>*</span>", {'label_attr': {'class': 'block text-gray-800 dark:text-gray-300 text-sm font-medium mb-1'}, 'label_html': true}) }}
                                                                                 {{ form_widget(eventReg.eventSlot, {'attr': {'class': 'form-input w-full'}}) }}
                                                                                 {{ form_errors(eventReg.eventSlot) }}
                                                                             </div>
