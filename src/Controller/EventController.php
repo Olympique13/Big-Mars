@@ -43,6 +43,7 @@ final class EventController extends AbstractController
         
         if ($form->isSubmitted()) {
             if ($form->isValid()){
+                // dd($event->getPlace()->__toString());
                 $entityManager->persist($eventReg);
                 $entityManager->flush();
                 $email = (new TemplatedEmail())
@@ -57,10 +58,10 @@ final class EventController extends AbstractController
                         'phone'=> $form->get('phone')->getData(),
                         'eventTitle' => $event->getTitle(),
                         'eventDate' => $form->get('eventSlot')->getData(),
-                        'place' => $form->get('eventSlot')->getData()->getPlace(),
+                        'place' => $event->getPlace()->__toString(),
                     ]);
                 
-                $mailer->send($email);
+                // $mailer->send($email);
                 
 
                 return new JsonResponse([

@@ -82,9 +82,7 @@
                                         </div>
                                     </div>
                                 </header>
-                                <hr
-                                        class="w-5 h-px pt-px bg-gray-400 dark:bg-gray-500 border-0 mb-8"
-                                        data-aos="fade-down" data-aos-delay="450"/>
+                                <hr class="w-5 h-px pt-px bg-gray-400 dark:bg-gray-500 border-0 mb-8" data-aos="fade-down" data-aos-delay="450"/>
 
                                 <!-- Article content -->
                                 <div class="text-lg text-gray-600 dark:text-gray-400 mb-1" data-aos="fade-up"
@@ -228,13 +226,12 @@
                             <h4 class="h4 font-red-hat-display mb-8">Nos événements récents</h4>
 
                             <!-- événement container -->
-                            <div
-                                    class="grid gap-4 sm:gap-6 sm:grid-cols-2" data-aos-id-relposts>
+                            <div class="grid gap-4 sm:gap-6 sm:grid-cols-2" data-aos-id-relposts>
 
                                 <!-- liste de 2 événements -->
                                 {% for events in event|slice(0, 2) %}
-                                    <article class="relative group p-6 text-white" data-aos="fade-down"
-                                             data-aos-anchor="[data-aos-id-relposts]">
+                                    <article class="relative group p-6 text-white" data-aos="fade-down" data-aos-anchor="[data-aos-id-relposts]">
+                                    <a href="{{ path('show_event', {'slug': events.slug}) }}">
                                         <figure>
                                             <img class="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-75 transition duration-700 ease-out"
                                                  src="{{ asset('build/images/events/' ~ events.imageName) }}"
@@ -254,13 +251,17 @@
                                             </header>
                                             <footer class="mt-2">
 												<span class="text-sm opacity-80">
-													{% for slot in eventSlots %}
-                                                        Le
-                                                        {{ slot.dateBegin|date('d/m/y') }}
-                                                    {% endfor %}
+                                                    {% if events.eventSlots|length > 1 %}
+                                                        <p class="text-sm underline">Plusieurs dates disponibles</p>
+                                                    {% else %}
+                                                        {% for slot in events.eventSlots %}
+                                                            Le {{ slot.dateBegin|date('d/m/y') }}
+                                                        {% endfor %}
+                                                    {% endif %}
 												</span>
                                             </footer>
                                         </div>
+                                    </a>
                                     </article>
                                 {% endfor %}
 
