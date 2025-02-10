@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Contact;
 use App\Form\ContactType;
+use App\Repository\BannerRepository;
 use App\Repository\EventRepository;
 use App\Service\BrevoService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -20,8 +21,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 final class PageController extends AbstractController
 {
     #[Route('/', name: 'app_homepage')]
-    public function contact(Request $request, EntityManagerInterface $entityManager, MailerInterface $mailer, EventRepository $eventRepository): Response
+    public function contact(Request $request, EntityManagerInterface $entityManager, MailerInterface $mailer, EventRepository $eventRepository, BannerRepository $bannerRepository): Response
     {
+        $banner = $bannerRepository->findOneBy(['isActive' => true]);
+
         $events = $eventRepository->findBy(['active' => true]);
 
         $contact = new Contact();
@@ -68,7 +71,8 @@ final class PageController extends AbstractController
 
         return $this->render('page/homepage.html.twig', [
             'contactForm' => $form->createView(),
-            'event' => $events
+            'event' => $events,
+            'banner' => $banner
         ]);
     }
 

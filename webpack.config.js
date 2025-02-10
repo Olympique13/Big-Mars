@@ -41,6 +41,7 @@ Encore
     .addEntry( 'home', './assets/home.js' )
     .addEntry( 'event', './assets/event.js' )
     .addEntry( 'contact', './assets/contact.js' )
+    .addEntry( 'banner', './assets/banner.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()

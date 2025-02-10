@@ -2,6 +2,10 @@ body {
 	overflow-x: hidden;
 }
 
+/* #banner-top {
+
+} */
+
 .robotPosture2{
 	transform: rotateZ(36deg);
 }

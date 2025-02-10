@@ -2,12 +2,13 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Contact;
 use App\Entity\User;
-use App\Entity\Category;
 use App\Entity\Event;
-use App\Entity\EventRegistration;
 use App\Entity\Place;
+use App\Entity\Banner;
+use App\Entity\Contact;
+use App\Entity\Category;
+use App\Entity\EventRegistration;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -49,6 +50,9 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::section('Utilisateur')->setPermission('ROLE_ADMIN_SUPER');
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class)->setPermission('ROLE_ADMIN_SUPER');
+
+        yield MenuItem::section('En tête');
+        yield MenuItem::linkToCrud('Bannière', 'fas fa-font-awesome', Banner::class);
 
         yield MenuItem::section('Information');
         yield MenuItem::linkToCrud('Contact', 'fas fa-circle-question', Contact::class);
