@@ -24,7 +24,7 @@ if ( carouselEl.length > 0 ) {
         },
         breakpoints : {
             768 : {
-                slidesPerView: 2,
+                slidesPerView: 2.2,
             },
             1024 : {
                 slidesPerView: 3,

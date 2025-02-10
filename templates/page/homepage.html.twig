@@ -113,8 +113,7 @@
                             <!-- Mobile mockup -->
                             <div class="md:col-span-5 lg:col-span-5 text-center md:text-right"
                                  x-data="{ modalExpanded: false }" data-aos="fade-up" data-aos-delay="450">
-                                <div
-                                        class="inline-flex relative justify-center items-center">
+                                <div class="inline-flex relative justify-center items-center">
                                     <!-- Glow illustration -->
                                     <svg class="absolute mr-12 mt-32 pointer-events-none -z-1 dark:opacity-40"
                                          aria-hidden="true" width="678" height="634" viewbox="0 0 678 634" fill="none"
@@ -138,12 +137,14 @@
                                             </radialGradient>
                                         </defs>
                                     </svg>
-                                    <!-- Image inside mockup size: 290x624px (or 580x1248px for Retina devices) -->
+                                    <!-- Image Robot -->
+                                    <img src="build/images/robot/posture2.png" alt="Robot posture 2" class="robotPosture2 hidden md:block md:absolute md:bottom-48 md:left-1/2">
                                     <img
-                                            class="absolute object-cover object-center"
-                                            src="{{ asset('build/images/homepage/img_iphone.png') }}"
-                                            width="290" height="624" style="max-width: 84.33%;"
-                                            alt="Features illustration"/>
+                                    class="absolute object-cover object-center"
+                                    src="{{ asset('build/images/homepage/img_iphone.png') }}"
+                                    width="290" height="624" style="max-width: 84.33%;"
+                                    alt="Features illustration"/>
+                                    <!-- Image inside mockup size: 290x624px (or 580x1248px for Retina devices) -->
                                     <!-- iPhone mockup -->
                                     <img
                                             class="relative max-w-full mx-auto md:mr-0 md:max-w-none h-auto pointer-events-none"

@@ -2,6 +2,10 @@ body {
 	overflow-x: hidden;
 }
 
+.robotPosture2{
+	transform: rotateZ(33deg);
+}
+
 #titre {
 	color: #ffd045;
 }
