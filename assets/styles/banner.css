@@ -1,0 +1,13 @@
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        height: auto;
+    }
+    to {
+        opacity: 0;
+        height: 0;
+    }
+}
+#banner-top.closing {
+    animation: fadeOut 0.5s forwards;
+}
