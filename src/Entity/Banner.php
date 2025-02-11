@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\BannerRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: BannerRepository::class)]
 #[ORM\HasLifecycleCallbacks]
@@ -19,6 +20,7 @@ class Banner
     private ?string $title = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Length(max: 255, maxMessage: 'Le message ne peut pas dépasser 255 caractères. Vous avez mis {{ value_length }} caractères.')]
     private ?string $content = null;
 
     #[ORM\Column]

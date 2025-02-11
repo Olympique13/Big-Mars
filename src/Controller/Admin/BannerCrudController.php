@@ -29,7 +29,7 @@ class BannerCrudController extends AbstractCrudController
     {
         return [
             TextField::new('title', 'Titre'),
-            TextEditorField::new('content', 'Message'),
+            TextEditorField::new('content', 'Message')->setNumOfRows(2),
             BooleanField::new('isActive', 'est actif'),
             DateTimeField::new('createdAt', 'Date de création')->setFormat('dd MMMM y HH:mm')->hideOnForm(),
             DateTimeField::new('updatedAt', 'Dernière modification')->setFormat('dd MMMM y HH:mm')->hideOnForm(),

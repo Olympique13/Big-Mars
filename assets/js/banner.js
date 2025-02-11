@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
    if (banner && btnCloseBanner) {
        if (sessionStorage.getItem('bannerClosed') !== 'true') {
-           banner.style.display = 'block';
+           banner.style.display = 'flex';
        } else {
            banner.style.display = 'none';
        }
