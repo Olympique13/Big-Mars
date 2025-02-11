@@ -5,7 +5,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
    if (banner && btnCloseBanner) {
        if (sessionStorage.getItem('bannerClosed') !== 'true') {
-           banner.style.display = 'flex';
+           banner.style.height = '32px';
+           banner.style.opacity = '.5';
+           banner.style.height = '0';
+           banner.style.visibility ='hidden';
        } else {
            banner.style.display = 'none';
        }

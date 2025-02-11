@@ -41,22 +41,6 @@
             <section>
                 <div class="max-w-6xl mx-auto px-4 sm:px-6">
                     <div class="pt-32 pb-10 md:pt-40 md:pb-16">
-                        <!-- Banner -->
-                        {% if banner is not null and banner.isActive == true %}
-                        <div class="grid grid-cols-10 gap-4 items-center justify-between bg-yellow-500 text-gray-500 py-2 md:py-4 rounded-lg shadow-lg mb-6 md:mb-12" id="banner-top">
-                        <div class="col-span-9 text-start pl-1 md:pl-4 w-fit" id="bannerContent">
-                            <h2 class="text-lg">{{ banner.content|raw }}</h2>
-                        </div>
-                        <div class="col-span-1 text-end pr-2 flex items-center justify-end">
-                            <button onclick="document.getElementById('banner-top').style.display='none'" id="btnCloseBanner" class="flex items-center">
-                                <svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
-                    
-                        {% endif %}
                         <!-- Hero content -->
                         <div class="md:grid md:grid-cols-12 md:gap-12 lg:gap-20 items-center" id="contentTitle">
                             <!-- Content -->
@@ -494,16 +478,31 @@
                                     <div class="swiper-slide h-auto">
                                         <a href="{{ path('show_event', {'slug': events.slug}) }}"
                                            class="card-event block relative h-full dark:bg-gray-200 bg-card-event shadow-lg rounded-lg overflow-hidden">
-                                            <div class="overflow-hidden">
-                                                <img class="img-event object-cover w-full h-56 sm:h-48 md:h-56"
-                                                     src="build/images/events/{{ events.imageName }}"
-                                                     alt="{{ events.title }}"/>
-                                            </div>
+                                           <div class="overflow-hidden relative">
+                                           <img class="img-event object-cover w-full h-56 sm:h-48 md:h-56"
+                                                src="build/images/events/{{ events.imageName }}"
+                                                alt="{{ events.title }}"/>
+                                           <div class="absolute bottom-2 left-2">
+                                               <ul class="flex flex-wrap align-center gap-2">
+                                                   <li class="bg-yellow-50 px-2 py-1 rounded-full text-white text-xs opacity-90">prochain événement</li>
+                                               </ul>
+                                           </div>
+                                       </div>
 
                                             <div class="p-4 flex flex-col justify-between">
-                                                <div>
                                                     <h3 class="text-lg font-semibold text-white dark:text-gray-800">{{ events.title }}</h3>
                                                     <p class="text-sm text-gray-300 dark:text-gray-600 mt-2">{{ events.shortDescription|slice(0, 50) ~ '...' }}</p>
+                                                <div class="space-y-2 mt-2">
+                                                    <div class="flex items-center gap-2">
+                                                        <div>
+                                                            <svg width="18px" height="18px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#edc140">
+                                                                <path d="M20 10C20 14.4183 12 22 12 22C12 22 4 14.4183 4 10C4 5.58172 7.58172 2 12 2C16.4183 2 20 5.58172 20 10Z" stroke="#edc140" stroke-width="1.5"></path>
+                                                                <path d="M12 11C12.5523 11 13 10.5523 13 10C13 9.44772 12.5523 9 12 9C11.4477 9 11 9.44772 11 10C11 10.5523 11.4477 11 12 11Z" fill="#edc140" stroke="#edc140" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                                                </path>
+                                                            </svg>
+                                                        </div>
+                                                        <p class="text-sm text-gray-600">{{ events.place.getCity() }}</p>
+                                                    </div>
                                                 </div>
                                                 <div class="space-y-2 mt-2">
                                                     {% for slot in events.eventSlots|sort((a,b) => a.dateBegin <=> b.dateBegin) [0:2] %}
@@ -533,13 +532,6 @@
                                                             </div>
                                                             <p class="{% if loop.index > 1 %} opacity-75 {% endif %} text-sm text-gray-300 dark:text-gray-600 pr-4">
                                                             {{ slot.dateBegin|format_datetime(pattern="dd MMMM y", locale='fr') }}</p>
-
-                                                            <svg width="18px" height="18px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#edc140">
-                                                                <path d="M20 10C20 14.4183 12 22 12 22C12 22 4 14.4183 4 10C4 5.58172 7.58172 2 12 2C16.4183 2 20 5.58172 20 10Z" stroke="#edc140" stroke-width="1.5"></path>
-                                                                <path d="M12 11C12.5523 11 13 10.5523 13 10C13 9.44772 12.5523 9 12 9C11.4477 9 11 9.44772 11 10C11 10.5523 11.4477 11 12 11Z" fill="#edc140" stroke="#edc140" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                                                                </path>
-                                                            </svg>
-                                                            <p class="{% if loop.index > 1 %} opacity-75  {% endif %}text-sm text-gray-600">{{ events.place.getCity() }}</p>
                                                         </div>
                                                     {% endif %}
                                                     {% endfor %}
@@ -556,27 +548,80 @@
                                         </a>
                                     </div>
                                 {% elseif events.getStartDate()|date('Y-m-d H:i') > ("now"|date_modify('-1 week'))|date('Y-m-d H:i') %}
-                                    <div class="swiper-slide">
-                                        <div class="card-event relative dark:bg-gray-200 bg-card-event shadow-lg rounded-lg overflow-hidden">
-                                            <div class="overflow-hidden">
-                                                <img class="img-event object-cover w-full h-56 sm:h-48 md:h-56"
-                                                     src="build/images/events/{{ events.imageName }}"
-                                                     alt="{{ events.title }}"/>
-                                            </div>
-                                            <div class="p-4 flex flex-col justify-between h-48 sm:h-40 md:h-48">
+                                <div class="swiper-slide h-auto">
+                                <a href="{{ path('show_event', {'slug': events.slug}) }}"
+                                   class="card-event block relative h-full dark:bg-gray-200 bg-card-event shadow-lg rounded-lg overflow-hidden">
+                                    <div class="overflow-hidden relative">
+                                        <img class="img-event object-cover w-full h-56 sm:h-48 md:h-56"
+                                             src="build/images/events/{{ events.imageName }}"
+                                             alt="{{ events.title }}"/>
+                                        <div class="absolute bottom-2 left-2">
+                                            <ul class="flex flex-wrap align-center gap-2">
+                                                <li class="bg-yellow-50 px-2 py-1 rounded-full text-white text-xs opacity-90">événement terminé</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="p-4 flex flex-col justify-between">
+                                            <h3 class="text-lg font-semibold text-white dark:text-gray-800">{{ events.title }}</h3>
+                                            <p class="text-sm text-gray-300 dark:text-gray-600 mt-2">{{ events.shortDescription|slice(0, 50) ~ '...' }}</p>
+                                        <div class="space-y-2 mt-2">
+                                            <div class="flex items-center gap-2">
                                                 <div>
-                                                    <h3 class="text-lg font-semibold text-white dark:text-gray-800">{{ events.title }}</h3>
-                                                    <p class="text-sm text-gray-300 dark:text-gray-600 mt-2">Cet
-                                                        événement est terminé, mais vous pouvez voir son contenu</p>
+                                                    <svg width="18px" height="18px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#edc140">
+                                                        <path d="M20 10C20 14.4183 12 22 12 22C12 22 4 14.4183 4 10C4 5.58172 7.58172 2 12 2C16.4183 2 20 5.58172 20 10Z" stroke="#edc140" stroke-width="1.5"></path>
+                                                        <path d="M12 11C12.5523 11 13 10.5523 13 10C13 9.44772 12.5523 9 12 9C11.4477 9 11 9.44772 11 10C11 10.5523 11.4477 11 12 11Z" fill="#edc140" stroke="#edc140" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                                        </path>
+                                                    </svg>
                                                 </div>
-                                                <div class="mt-4">
-                                                    <a class="inline-block px-4 py-2 text-sm font-medium text-white btn-bigMars rounded"
-                                                       href="{{ path('show_event', {'slug': events.slug}) }}">Découvrir
-                                                        cet événement</a>
-                                                </div>
+                                                <p class="text-sm text-gray-600">{{ events.place.getCity() }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="space-y-2 mt-2">
+                                            {% for slot in events.eventSlots|sort((a,b) => a.dateBegin <=> b.dateBegin) %}
+                                            {% if slot.active %}
+                                            {% if slot.dateBegin > "now"|date_modify('-1 week') %}
+                                                <div class="flex items-center gap-2">
+                                                    <div>
+                                                        <svg class="{% if loop.index > 1 %} opacity-75 {% endif %}"
+                                                             width="18px" height="18px" stroke-width="1.5"
+                                                             viewBox="0 0 24 24" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg" color="#edc140">
+                                                            <path d="M15 4V2M15 4V6M15 4H10.5M3 10V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V10H3Z"
+                                                                  stroke="#edc140" stroke-width="1.5"
+                                                                  stroke-linecap="round"
+                                                                  stroke-linejoin="round"></path>
+                                                            <path d="M3 10V6C3 4.89543 3.89543 4 5 4H7"
+                                                                  stroke="#edc140"
+                                                                  stroke-width="1.5" stroke-linecap="round"
+                                                                  stroke-linejoin="round"></path>
+                                                            <path d="M7 2V6" stroke="#edc140" stroke-width="1.5"
+                                                                  stroke-linecap="round"
+                                                                  stroke-linejoin="round"></path>
+                                                            <path d="M21 10V6C21 4.89543 20.1046 4 19 4H18.5"
+                                                                  stroke="#edc140" stroke-width="1.5"
+                                                                  stroke-linecap="round"
+                                                                  stroke-linejoin="round"></path>
+                                                        </svg>
+                                                    </div>
+                                                    <p class="text-sm text-gray-300 dark:text-gray-600 pr-4">
+                                                         {{ slot.dateBegin|format_datetime(pattern="dd MMMM y", locale='fr') }}</p>
+                                                    </div>
+                                            {% endif %}
+                                            {% endif %}
+                                            {% endfor %}
+                                            {% if events.eventSlots|length > 2 %}
+                                                <p class="text-sm text-gray-300 dark:text-gray-600 underline">Plusieurs dates disponibles</p>
+                                            {% endif %}
+                                        </div>
+                                        <div class="mt-4">
+                                            <div class="inline-block px-4 py-2 text-sm font-medium bg-yellow-50 rounded text-black">
+                                                Découvrir cet événement
                                             </div>
                                         </div>
                                     </div>
+                                </a>
+                            </div>
                                 {% endif %}
                             {% else %}
                                 <div class="swiper-slide max-w-lg text-center text-gray-600">

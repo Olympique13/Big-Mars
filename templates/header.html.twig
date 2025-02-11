@@ -1,8 +1,24 @@
 <!-- Site header -->
-<header class="absolute w-full z-30 pt-6">
+<header class="absolute w-full z-30">
+	<!-- Banner -->
+	{% if banner is not null and banner.isActive == true %}
+		<div class="grid grid-cols-10 gap-4 items-center justify-items-center justify-between bg-yellow-500 text-gray-500 py-2 md:py-4 max-h-16" id="banner-top">
+			<div class="col-span-9 text-start pl-1 md:pl-4 w-fit" id="bannerContent">
+				<h2 class="text-sm">{{ banner.content|raw }}</h2>
+			</div>
+			<div class="col-span-1 text-end pr-2 flex items-center justify-end">
+				<button onclick="document.getElementById('banner-top').style.display='none'" id="btnCloseBanner" class="flex items-center">
+					<svg class="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+					</svg>
+				</button>
+			</div>
+		</div>
+	{% endif %}
+
 	<div class="max-w-6xl mx-auto px-4 sm:px-6">
-		<div
-			class="flex items-center justify-between h-20">
+
+		<div class="flex items-center justify-between h-20 pt-6">
 
 			<!-- Site branding -->
 			<div
