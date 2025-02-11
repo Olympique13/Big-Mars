@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Form\EventRegType;
 use App\Entity\EventRegistration;
+use App\Repository\BannerRepository;
 use App\Repository\EventRepository;
 use App\Repository\EventSlotRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -19,18 +20,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 final class EventController extends AbstractController
 {
     #[Route('/event/unvailable/here', name: 'app_event')]
-    public function index(EventRepository $EventRepository): Response
+    public function index(EventRepository $EventRepository, BannerRepository $bannerRepository): Response
     {
-        $events = $EventRepository->findBy(['active' => true]);
+        $banner = $bannerRepository->findOneBy(['isActive' => true]);
 
+        $events = $EventRepository->findBy(['active' => true]);
+        
         return $this->render('event/index.html.twig', [
-            'events' => $events
+            'events' => $events,
+            'banner' => $banner
         ]);
     }
 
     #[Route('/event/{slug}', name: 'show_event')]
-    public function show(Request $request, EntityManagerInterface $entityManager, EventSlotRepository $eventSlotRepository, EventRepository $EventRepository, EventRegistrationRepository $eventRegistrationRepository, string $slug, MailerInterface $mailer): Response
+    public function show(Request $request, BannerRepository $bannerRepository, EntityManagerInterface $entityManager, EventSlotRepository $eventSlotRepository, EventRepository $EventRepository, EventRegistrationRepository $eventRegistrationRepository, string $slug, MailerInterface $mailer): Response
     {
+
+        $banner = $bannerRepository->findOneBy(['isActive' => true]);
+
         $allEvent = $EventRepository->findBy(['active' => true]);
         $event = $EventRepository->findOneBy(['slug' => $slug]);
         $eventReg = new EventRegistration();
@@ -87,7 +94,8 @@ final class EventController extends AbstractController
             'eventReg' => $form->createView(),
             'regCount' => $registrationCount,
             'eventSlots' => $eventSlots,
-            'allEvent' => $allEvent
+            'allEvent' => $allEvent,
+            'banner' => $banner,
         ]);
     }
 }

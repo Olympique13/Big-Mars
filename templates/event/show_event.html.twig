@@ -6,6 +6,8 @@
 {% block css_js_custom %}
     {{ encore_entry_link_tags('home') }}
     {{ encore_entry_script_tags('event') }}
+    {{ encore_entry_script_tags('banner') }}
+    {{ encore_entry_link_tags('banner') }}
 {% endblock %}
 
 {% block body %}
@@ -104,6 +106,7 @@
                                         {% if regCount < events.maxParticipant %}
                                             {% if slot.dateBegin|date('Y-m-d') > "now"|date('Y-m-d') %}
                                                 {% if loop.first %}
+                                                <hr class="w-5 h-px pt-px bg-gray-400 dark:bg-gray-500 border-0 mb-8" data-aos="fade-down" data-aos-delay="450"/>
                                                     <div class="flex flex-col overflow-hidden">
                                                         <main class="grow">
                                                             <section class="relative">
@@ -213,6 +216,7 @@
                                         {% endif %}
                                     {% endfor %}
                                 </div>
+                                <hr class="w-5 h-px mt-5 pt-px bg-gray-400 dark:bg-gray-500 border-0 mb-8" data-aos="fade-down" data-aos-delay="450"/>
                             </article>
 
                         </div>
