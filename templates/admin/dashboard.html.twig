@@ -2,27 +2,79 @@
 
 {% block content %}
 
-	<section>
+	<section style="overflow-x:hidden;">
 		<h1 style="padding : 3vh 0;">
 			Bienvenue sur le panel admin de BigMars !</h1>
 
 		<p>Vous pouvez revenir à tout moment sur cette documentation en cliquant sur la maison.</p>
 		<p>
 			Possibilité d'agrandir/réduire le menu en cliquant sur la bordure de gauche.</p>
+
+		<div id="creerEvent">
+			<h2>
+				Comment créer un événement ?
+			</h2>
+
+			<p>
+				Rendez-vous dans la section "Evénement" puis selectionner la rubrique "Nos événement".
+			</p>
+			<p>
+				Dans cette rubrique vous avez plusieurs possibilités :
+			</p>
+			<ul>
+				<li>Création d'un nouvel événement -> Bouton "Créer Event"</li>
+				<li>Modification d'un événement -> bouton "..." puis "Modifier"</li>
+				<li>Suppression d'un événement -> bouton "..." puis "Supprimer"</li>
+			</ul>
+
+			<h3>
+				Les contraintes
+			</h3>
+
+			<p>Plusieurs contraintes ont été définies concernant le nombre de caractères de certains champs, pour un visuel propre au format mobile.</p>
+			<ul>
+				<li>
+					Le champ "Titre" est limité à
+					<b>255</b>
+					caractères.</li>
+				<li>
+					Le champ "Courte description" est limité à
+					<b>125</b>
+					caractères.
+				</li>
+				<li>
+					Les images ne peuvent pas dépasser les
+					<b>2Mo</b>.
+				</li>
+				<li>
+					<b>Toujours</b>
+					avoir un emplacement associé à un événement.
+				</li>
+				<li>
+					Un événement doit
+					<b>toujours</b>
+					avoir une catégorie.
+				</li>
+			</ul>
+		</div>
+
+		<hr style="width:55rem;margin:2rem 0;">
+
+		<div id="creerBannier">
 		<h2>
-			Comment créer un événement ?
+			Comment créer une bannière ?
 		</h2>
 
 		<p>
-			Rendez-vous dans la section "Evénement" puis selectionner la rubrique "Nos événement".
+			Rendez-vous dans la section "EN TÊTE" puis selectionner la rubrique "Bannière".
 		</p>
 		<p>
 			Dans cette rubrique vous avez plusieurs possibilités :
 		</p>
 		<ul>
-			<li>Création d'un nouvel événement -> Bouton "Créer Event"</li>
-			<li>Modification d'un événement -> bouton "..." puis "Modifier"</li>
-			<li>Suppression d'un événement -> bouton "..." puis "Supprimer"</li>
+			<li>Création d'une nouvelle bannière -> Bouton "Créer Banner"</li>
+			<li>Modification d'une bannière -> bouton "..." puis "Modifier"</li>
+			<li>Suppression d'une bannière -> bouton "..." puis "Supprimer"</li>
 		</ul>
 
 		<h3>
@@ -32,28 +84,20 @@
 		<p>Plusieurs contraintes ont été définies concernant le nombre de caractères de certains champs, pour un visuel propre au format mobile.</p>
 		<ul>
 			<li>
-				Le champ "Titre" est limité à
+				Le champ "Message" est limité à
 				<b>255</b>
 				caractères.</li>
 			<li>
-				Le champ "Courte description" est limité à
-				<b>125</b>
+				Le champ "Titre" est limité à
+				<b>100</b>
 				caractères.
 			</li>
 			<li>
-				Les images ne peuvent pas dépasser les
-				<b>2Mo</b>.
-			</li>
-			<li>
-				<b>Toujours</b>
-				avoir un emplacement associé à un événement.
-			</li>
-			<li>
-				Un événement doit
-				<b>toujours</b>
-				avoir une catégorie.
+				<b>Une seule</b> bannière 
+					peut être visible.
 			</li>
 		</ul>
+		</div>
 
 	</section>
 

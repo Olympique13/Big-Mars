@@ -17,6 +17,7 @@ class Banner
     private ?int $id = null;
 
     #[ORM\Column(length: 100)]
+    #[Assert\Length(max: 100, maxMessage: 'Le titre de la bannière ne peut pas dépasser les 10 caractères, vous avez mis {{ value_length }} caractères .')]
     private ?string $title = null;
 
     #[ORM\Column(length: 255)]
