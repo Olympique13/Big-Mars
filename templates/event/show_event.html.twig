@@ -231,7 +231,7 @@
                             <div class="grid gap-4 sm:gap-6 sm:grid-cols-2" data-aos-id-relposts>
 
                                 <!-- liste de 2 événements -->
-                                {% for events in event|slice(0, 2) %}
+                                {% for events in allEvent|slice(0, 2) %}
                                     <article class="relative group p-6 text-white" data-aos="fade-down" data-aos-anchor="[data-aos-id-relposts]">
                                     <a href="{{ path('show_event', {'slug': events.slug}) }}">
                                         <figure>

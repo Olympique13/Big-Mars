@@ -18,7 +18,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 final class EventController extends AbstractController
 {
-    #[Route('/event', name: 'app_event')]
+    #[Route('/event/unvailable/here', name: 'app_event')]
     public function index(EventRepository $EventRepository): Response
     {
         $events = $EventRepository->findBy(['active' => true]);
@@ -66,7 +66,7 @@ final class EventController extends AbstractController
 
                 return new JsonResponse([
                     'code' => 200,
-                    'message' => 'Merci ! Le formulaire est valide',
+                    'message' => 'Merci ! Le formulaire est validé',
                 ]);
 
             } else {
@@ -87,7 +87,7 @@ final class EventController extends AbstractController
             'eventReg' => $form->createView(),
             'regCount' => $registrationCount,
             'eventSlots' => $eventSlots,
-            'event' => $allEvent
+            'allEvent' => $allEvent
         ]);
     }
 }
