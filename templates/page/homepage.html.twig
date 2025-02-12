@@ -140,7 +140,7 @@
                                         </defs>
                                     </svg>
                                     <!-- Image Robot -->
-                                    <img src="build/images/robot/posture2.png" alt="Robot posture 2" class="robotPosture2 hidden md:block md:absolute ">
+                                    <img src="build/images/robot/posture2.png" alt="Robot posture 2" class="robotPosture2 md:robotPosture2 hidden md:block md:absolute ">
                                     <img
                                     class="absolute object-cover object-center"
                                     src="{{ asset('build/images/homepage/img_iphone.png') }}"
@@ -148,10 +148,9 @@
                                     alt="Features illustration"/>
                                     <!-- Image inside mockup size: 290x624px (or 580x1248px for Retina devices) -->
                                     <!-- iPhone mockup -->
-                                    <img
-                                            class="relative max-w-full mx-auto md:mr-0 md:max-w-none h-auto pointer-events-none"
-                                            src="{{ asset('build/images/iphone-mockup.png') }}" width="344" height="674"
-                                            alt="iPhone mockup" aria-hidden="true"/>
+                                    <img class="relative mx-auto md:mr-0 w-[344px] md:w-[290px] max-w-md h-auto pointer-events-none"
+                                        src="/build/images/iphone-mockup.png" alt="iPhone mockup">
+
                                     <!-- Play button -->
                                     <a class="absolute hover:opacity-75 transition duration-150 ease-in-out"
                                        @click.prevent="modalExpanded = true" href="#0" aria-controls="modal">
@@ -355,7 +354,7 @@
 
                         <!-- Section header -->
                         <div class="max-w-3xl mx-auto text-center pb-12 md:pb-20" data-aos="fade-up" data-aos-delay="100">
-                            <h2 class="h2 font-red-hat-display mb-4">Build and style every element to perfection</h2>
+                            <h2 class="text-lg md:text-3xl font-bold mb-2 lg:h1">Découvrez l'application</h2>
                             <p class="text-xl text-gray-600 dark:text-gray-400">Duis aute irure dolor in reprehenderit
                                 in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat
                                 cupidatat.</p>
@@ -439,8 +438,9 @@
                                 </div>
                                 <!-- Mobile mockup -->
                                 <div class="inline-flex relative justify-center items-center">
-                                <img src="build/images/robot/posture_telephone.png" alt="Robot posture téléphone" class="robotPostureTelephone background hidden lg:hidden md:block md:absolute">
 
+                                {# Posture robot téléphone #}
+                                <img src="build/images/robot/posture_telephone.png" alt="Robot posture téléphone" class="robotPostureTelephone hidden xl:block xl:absolute">
                                     <!-- Image inside mockup size: 290x624px (or 580x1248px for Retina devices) -->
                                     <img class="absolute" src="{{ asset('build/images/mockup-image-04.jpg') }}"
                                          width="290" height="624" style="max-width: 84.33%;" alt="App screen 04"/>
@@ -448,6 +448,10 @@
                                     <img class="relative max-w-full mx-auto h-auto pointer-events-none"
                                          src="{{ asset('build/images/iphone-mockup.png') }}" width="344" height="674"
                                          alt="iPhone mockup" aria-hidden="true"/>
+
+                                {# Posture robot assis #}
+                                <img src="build/images/robot/posture1.png" alt="Robot posture assis" class="robotPosture1 hidden md:block md:absolute">
+
                                 </div>
                             </div>
 
