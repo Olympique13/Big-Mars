@@ -50,6 +50,10 @@ body {
 	top: 0;
 }
 
+.swiper-pagination-bullet-active-prev, .swiper-pagination-bullet-active-next, .swiper-pagination-bullet-active-next-next {
+	background : #637df2;
+}
+
 .swiper-pagination-bullet-active {
 	background: #caa537;
 }
@@ -74,8 +78,9 @@ body {
 	background-color: #637df2;
 }
 
-@media screen and (min-width: 426px) and (max-width: 768px) {
-	#contentTitle h1 {
-		font-size:xx-large;
+@media screen and (min-width: 320px) and (max-width: 425px) {
+	.swiper-pagination-horizontal.swiper-pagination-bullets.swiper-pagination-bullets-dynamic {
+		left: 20%;
+		top: 0;
 	}
 }

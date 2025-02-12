@@ -28,6 +28,12 @@ if ( carouselEl.length > 0 ) {
             dynamicBullets: true,
         },
         breakpoints : {
+            375 : {
+                pagination : {
+                    el : '.swiper-pagination-mobile',
+                    dynamicBullets : true,
+                },
+            },
             768 : {
                 slidesPerView: 2.2,
             },
