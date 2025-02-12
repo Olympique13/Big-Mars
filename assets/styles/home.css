@@ -39,6 +39,42 @@ body {
 	animation: rotateRobot 1.5s linear forwards;
 }
 
+.robotPostureTelephone {
+	transform: rotateY(180deg);
+}
+
+@keyframes rotateRobotTelephone {
+	0% {
+		top: 0;
+		bottom: 0;
+		height: 0;
+	}
+	25% {
+		left: 4rem;
+		top: 7.5%;
+		height: 8rem;
+	}
+	50% {
+		left: 8rem;
+		top: 15%;
+		height: 16rem;
+	}
+	75% {
+		left: 12rem;
+		top: 22.5%;
+		height: 24rem;
+	}
+	100% {
+		left: 16rem;
+		top:30%;
+		height: 32rem;
+	}
+}
+
+.robotPostureTelephone {
+	animation: rotateRobotTelephone 1.5s linear forwards;
+}
+
 #titre {
 	color: #ffd045;
 }
