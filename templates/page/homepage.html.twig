@@ -294,10 +294,10 @@
                     <div class="pt-12 md:py-16">
                         <!-- Section header -->
                         <div class="max-w-5xl mx-auto text-center pb-4" data-aos="fade-down" data-aos-delay="450">
-                            <p class="mb-4 text-2xl md:text-3xl text-white">
+                            <p class="mb-4 text-2xl md:text-3xl text-white" data-aos="fade-up" data-aos-delay="500">
                                 <span class="bigMars">Big Mars</span>, c'est quoi ?
                             </p>
-                            <div class="text-left">
+                            <div class="text-left" data-aos="fade-up" data-aos-delay="600">
                                 <p class="md:text-lg text-gray-400 mb-4">
                                     Big Mars, c'est une aventure qui t'aide à découvrir tes talents et à trouver ta voie
                                     de manière fun et motivante.
@@ -354,7 +354,7 @@
                     <div class="py-12 md:py-20 border-t border-gray-200 dark:border-gray-800">
 
                         <!-- Section header -->
-                        <div class="max-w-3xl mx-auto text-center pb-12 md:pb-20" data-aos="fade-down" data-aos-delay="100">
+                        <div class="max-w-3xl mx-auto text-center pb-12 md:pb-20" data-aos="fade-up" data-aos-delay="100">
                             <h2 class="h2 font-red-hat-display mb-4">Build and style every element to perfection</h2>
                             <p class="text-xl text-gray-600 dark:text-gray-400">Duis aute irure dolor in reprehenderit
                                 in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat
@@ -382,7 +382,7 @@
                         </svg>
 
                         <!-- Items -->
-                        <div class="max-w-sm mx-auto grid gap-12 md:gap-x-6 lg:gap-x-12 md:grid-cols-3 items-start md:max-w-none">
+                        <div class="max-w-sm mx-auto grid gap-12 md:gap-x-6 lg:gap-x-12 md:grid-cols-3 items-start md:max-w-none" data-aos="fade-up" data-aos-delay="500">
 
                             <!-- 1st item -->
                             <div class="relative flex flex-col items-center">
@@ -461,17 +461,18 @@
                     <div class="py-12 md:py-16 border-t dark:border-gray-800">
                     <!-- Section header -->
                         <div class="max-w-3xl mx-auto text-center md:text-balance pb-12 md:pb-16">
-                            <p class="text-lg md:text-3xl font-bold mb-2 lg:h1" data-aos="fade-down"
-                               data-aos-delay="100">Les événements Big Mars</p>
+                            <p class="text-lg md:text-3xl font-bold mb-2 lg:h1" data-aos="fade-up"
+                               data-aos-delay="200">Les événements Big Mars</p>
                             <p class="text-sm md:text-lg text-balance text-gray-600 dark:text-gray-400"
-                               data-aos="fade-down" data-aos-delay="150">
+                               data-aos="fade-up" data-aos-delay="300">
                                 Participe à nos événements et ateliers immersifs pour découvrir les softs skills et en
                                 savoir
                                 plus sur tes propres forces tout en t'amusant.
                             </p>
                         </div>
                     </div>
-                    <div class="swiper slider-event swiper-container max-w-6xl sm:px-6 md:px-6 px-5">
+
+                    <div class="swiper slider-event swiper-container max-w-6xl sm:px-6 md:px-6 px-5" data-aos="fade-right" data-aos-delay="600">
                         <div class="swiper-wrapper h-full">
                             <!-- Carousel items -->
                             {% for events in event|sort((a, b) => a.createdAt <=> b.createdAt) %}
@@ -634,7 +635,7 @@
 
                     <!-- Arrows -->
                     {% if event|length > 3 %}
-                        <div class="hidden md:block max-w-6xl mx-auto px-4 sm:px-6">
+                        <div class="hidden md:block max-w-6xl mx-auto px-4 sm:px-6" data-aos="fade-right" data-aos-delay="600">
                             <div class="flex items-center justify-between mt-12 md:mt-16">
                                 <button class="carousel-prev relative z-20 w-12 h-12 p-1 box-content flex items-center justify-center group bg-yellow-50 dark:hover:bg-opacity-25 shadow-xl transition duration-150 ease-in-out">
                                     <span class="sr-only">Previous</span>
@@ -669,8 +670,8 @@
 
                          <!-- Section header -->
                         <div class="max-w-3xl mx-auto text-center pb-12 md:pb-16">
-                            <h2 class="h2 font-red-hat-display mb-4">Build and style every element to perfection</h2>
-                            <p class="text-xl text-gray-600 dark:text-gray-400">Duis aute irure dolor in reprehenderit
+                            <h2 class="h2 font-red-hat-display mb-4" data-aos="fade-up" data-aos-delay="200">Build and style every element to perfection</h2>
+                            <p class="text-xl text-gray-600 dark:text-gray-400" data-aos="fade-up" data-aos-delay="300">Duis aute irure dolor in reprehenderit
                                 in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat
                                 cupidatat.</p>
                         </div>
@@ -710,9 +711,9 @@
                 <div class="max-w-6xl mx-auto px-4 sm:px-6">
                     <div class="py-12 md:py-20 border-t border-transparent dark:border-gray-800">
                         <!-- Testimonials -->
-                        <div class="max-w-sm mx-auto grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:gap-12 items-start sm:max-w-none md:max-w-2xl lg:max-w-none">
+                        <div class="max-w-sm mx-auto grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:gap-12 items-start sm:max-w-none md:max-w-2xl lg:max-w-none" data-aos-id-testimonial>
                             <!-- 1st testimonial -->
-                            <div class="text-center">
+                            <div class="text-center" data-aos="fade-down-right" data-aos-anchor="[data-aos-id-testimonial]">
                                 <div class="relative inline-flex flex-col mb-4">
                                     <img class="rounded-full" src="{{ asset('build/images/testimonial-01.jpg') }}"
                                          width="56" height="56" alt="Testimonial 01"/>
@@ -732,7 +733,7 @@
                             </div>
 
                             <!-- 2nd testimonial -->
-                            <div class="text-center">
+                            <div class="text-center" data-aos="fade-down-left" data-aos-anchor="[data-aos-id-testimonial]" data-aos-delay="100">
                                 <div class="relative inline-flex flex-col mb-4">
                                     <img class="rounded-full" src="{{ asset('build/images/testimonial-02.jpg') }}"
                                          width="56" height="56" alt="Testimonial 02"/>
@@ -752,7 +753,7 @@
                             </div>
 
                             <!-- 3rd testimonial -->
-                            <div class="text-center">
+                            <div class="text-center" data-aos="fade-up-right" data-aos-anchor="[data-aos-id-testimonial]" data-aos-delay="200">
                                 <div class="relative inline-flex flex-col mb-4">
                                     <img class="rounded-full" src="{{ asset('build/images/testimonial-03.jpg') }}"
                                          width="56" height="56" alt="Testimonial 03"/>
@@ -772,7 +773,7 @@
                             </div>
 
                             <!-- 4th testimonial -->
-                            <div class="text-center">
+                            <div class="text-center" data-aos="fade-up-left" data-aos-anchor="[data-aos-id-testimonial]" data-aos-delay="300">
                                 <div class="relative inline-flex flex-col mb-4">
                                     <img class="rounded-full" src="{{ asset('build/images/testimonial-04.jpg') }}"
                                          width="56" height="56" alt="Testimonial 04"/>
@@ -800,12 +801,13 @@
                 <div class="max-w-6xl mx-auto px-4 sm:px-6">
                     <div class="py-12 md:py-20 border-y border-gray-200 dark:border-gray-800">
                         <!-- Section header -->
-                        <div class="max-w-3xl mx-auto text-center pb-4">
-                            <p class="text-2xl md:text-3xl">Big Mars, c'est près de <span
-                                        class="bigMars">chez toi </span>!</p>
+                        <div class="max-w-3xl mx-auto text-center pb-4" data-aos="fade-up" data-aos-delay="100">
+                            <p class="text-2xl md:text-3xl">Big Mars, c'est près de 
+                                <span class="bigMars">chez toi </span>!
+                            </p>
                         </div>
 
-                        <div class="max-w-3xl mx-auto text-center pb-12 md:pb-16 text-balance">
+                        <div class="max-w-3xl mx-auto text-center pb-12 md:pb-16 text-balance" data-aos="fade-up" data-aos-delay="300">
                             <p class="text-sm md:text-xl text-gray-600 dark:text-gray-400">
                                 Nous sommes présents dans
                                 <b>4 zones d'intervention</b>
@@ -815,19 +817,15 @@
 
                         <!-- Les zones -->
                         <div class="max-w-xs mx-auto sm:max-w-none md:max-w-xl lg:max-w-none grid sm:grid-cols-2 gap-4 lg:gap-6 lg:grid-cols-4"
-                             data-aos-id-featbl>
+                             data-aos-id-zonesinter>
                             <!-- 1ère zone -->
                             <a class="zoneIDF flex flex-col p-5 group text-white shadow-2xl" href="#0"
-                               data-aos="fade-down" data-aos-anchor="[data-aos-id-featbl]">
-                                <svg class="w-8 h-8 mb-3" viewbox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                                    <path class="fill-current"
-                                          d="M19 18.414l-4 4L9.586 17l.707-.707L12 14.586V8.414l-5-5L4.414 6l6.293 6.293-1.414 1.414L1.586 6 7 .586l7 7v5l8.463-8.463a3.828 3.828 0 115.414 5.414L21 16.414v6.172l5 5L28.586 25l-6.293-6.293 1.414-1.414L31.414 25 26 30.414l-7-7v-5zm-4 1.172L26.463 8.123a1.828 1.828 0 10-2.586-2.586L12.414 17 15 19.586zM11 30v2C4.925 32 0 27.075 0 21h2a9 9 0 009 9zm0-5v2a6 6 0 01-6-6h2a4 4 0 004 4z"
-                                          fill-rule="nonzero"/>
-                                </svg>
+                               data-aos="fade-down" data-aos-anchor="[data-aos-id-zonesinter]">
+                                <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#ffffff"><path d="M7 9.01L7.01 8.99889" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11 9.01L11.01 8.99889" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7 13.01L7.01 12.9989" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11 13.01L11.01 12.9989" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M7 17.01L7.01 16.9989" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11 17.01L11.01 16.9989" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M15 21H3.6C3.26863 21 3 20.7314 3 20.4V5.6C3 5.26863 3.26863 5 3.6 5H9V3.6C9 3.26863 9.26863 3 9.6 3H14.4C14.7314 3 15 3.26863 15 3.6V9M15 21H20.4C20.7314 21 21 20.7314 21 20.4V9.6C21 9.26863 20.7314 9 20.4 9H15M15 21V17M15 9V13M15 13H17M15 13V17M15 17H17" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                                 <div class=" font-bold text-xl tracking-tighter mb-1">Région Île-de-France</div>
                                 <div class="grow opacity-80 mb-4">113 Rue Saint-Maur</div>
                                 <div class="grow opacity-80 mb-4">75011 Paris</div>
-                                <svg class="w-6 h-6 self-end transform -translate-x-2 group-hover:translate-x-0 transition duration-150 ease-in-out"
+                                <svg class="w-6 h-6 self-end transform -translate-x-2 group-hover:translate-x-0 transition duration-300 ease-in-out"
                                      viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path class="fill-current"
                                           d="M13 11V5.057L22.72 12 13 18.943V13H2v-2h11zm2 4.057L19.28 12 15 8.943v6.114z"/>
@@ -835,15 +833,12 @@
                             </a>
                             <!-- 2nd zone -->
                             <a class="zonePACA flex flex-col p-5 group text-white shadow-2xl" href="#0"
-                               data-aos="fade-down" data-aos-anchor="[data-aos-id-featbl]" data-aos-delay="100">
-                                <svg class="w-8 h-8 mb-3" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path class="fill-current"
-                                          d="M12 4a1 1 0 011-1h2a1 1 0 110 2h-2a1 1 0 01-1-1zm0 14a1 1 0 011 1v2a1 1 0 11-2 0v-2a1 1 0 011-1zm10-6a1 1 0 110 2h-2a1 1 0 110-2h2zM4 12a1 1 0 110 2H2a1 1 0 110-2h2zm14.95-7.05a1 1 0 011.414 0l1.414 1.414a1 1 0 11-1.414 1.414L17.95 6.364a1 1 0 010-1.414zm-11.314 0a1 1 0 010 1.414L4.222 7.778a1 1 0 11-1.414-1.414L4.222 4.95a1 1 0 011.414 0zm11.314 11.314a1 1 0 011.414 0l1.414 1.414a1 1 0 11-1.414 1.414l-1.414-1.414a1 1 0 010-1.414zm-11.314 0a1 1 0 010 1.414L4.222 19.95a1 1 0 11-1.414-1.414l1.414-1.414a1 1 0 011.414 0zM12 8a4 4 0 100 8 4 4 0 000-8z"/>
-                                </svg>
+                               data-aos="fade-down" data-aos-anchor="[data-aos-id-zonesinter]" data-aos-delay="100">
+                                <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#ffffff"><path d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18Z" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M22 12L23 12" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 2V1" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 23V22" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 20L19 19" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M20 4L19 5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 20L5 19" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M4 4L5 5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M1 12L2 12" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                                 <div class=" text-xl font-bold tracking-tighter mb-1">Région PACA</div>
                                 <div class="grow opacity-80 mb-4">4 Rue Berthelot</div>
                                 <div class="grow opacity-80 mb-4">13014 Marseille</div>
-                                <svg class="w-6 h-6 self-end transform -translate-x-2 group-hover:translate-x-0 transition duration-150 ease-in-out"
+                                <svg class="w-6 h-6 self-end transform -translate-x-2 group-hover:translate-x-0 transition duration-300 ease-in-out"
                                      viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path class="fill-current"
                                           d="M13 11V5.057L22.72 12 13 18.943V13H2v-2h11zm2 4.057L19.28 12 15 8.943v6.114z"/>
@@ -851,16 +846,11 @@
                             </a>
                             <!-- 3ème zone -->
                             <a class="zoneGEST flex flex-col p-5 group text-white shadow-2xl" href="#0"
-                               data-aos="fade-down" data-aos-anchor="[data-aos-id-featbl]" data-aos-delay="200">
-                                <svg class="w-8 h-8 mb-3" viewbox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                                    <path class="fill-current"
-                                          d="M19 5.612V25a6 6 0 11-2-4.472V0h2v2.961A5.98 5.98 0 0023.497 5a8.476 8.476 0 018.444 9.474l-.253 2.13-1.469-1.563A6.472 6.472 0 0025.5 13c-1.842 0-3.634-.6-5.103-1.713l1.206-1.594A6.455 6.455 0 0025.5 11c1.557 0 3.068.428 4.376 1.217A6.475 6.475 0 0023.5 7 7.981 7.981 0 0119 5.612zM13 29a4 4 0 100-8 4 4 0 000 8zM0 5V3h14v2H0zm0 5V8h14v2H0zm0 5v-2h14v2H0z"
-                                          fill-rule="nonzero"/>
-                                </svg>
-                                <div class=" text-xl font-bold tracking-tighter mb-1">Région Grand-Est</div>
+                               data-aos="fade-down" data-aos-anchor="[data-aos-id-zonesinter]" data-aos-delay="200">
+                                <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path fill="#ffffff" d="M256 32c12.5 0 24.1 6.4 30.8 17L503.4 394.4c5.6 8.9 8.6 19.2 8.6 29.7c0 30.9-25 55.9-55.9 55.9L55.9 480C25 480 0 455 0 424.1c0-10.5 3-20.8 8.6-29.7L225.2 49c6.6-10.6 18.3-17 30.8-17zm65 192L256 120.4 176.9 246.5l18.3 24.4c6.4 8.5 19.2 8.5 25.6 0l25.6-34.1c6-8.1 15.5-12.8 25.6-12.8l49 0z"/></svg>                                <div class=" text-xl font-bold tracking-tighter mb-1">Région Grand-Est</div>
                                 <div class="grow opacity-80 mb-4">59-61 Avenue Aristide Briand</div>
                                 <div class="grow opacity-80 mb-4">68200 Mulhouse</div>
-                                <svg class="w-6 h-6 self-end transform -translate-x-2 group-hover:translate-x-0 transition duration-150 ease-in-out"
+                                <svg class="w-6 h-6 self-end transform -translate-x-2 group-hover:translate-x-0 transition duration-300 ease-in-out"
                                      viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path class="fill-current"
                                           d="M13 11V5.057L22.72 12 13 18.943V13H2v-2h11zm2 4.057L19.28 12 15 8.943v6.114z"/>
@@ -868,16 +858,12 @@
                             </a>
                             <!-- 4ème zone -->
                             <a class="zoneREUNION flex flex-col p-5 group text-white shadow-2xl" href="#0"
-                               data-aos="fade-down" data-aos-anchor="[data-aos-id-featbl]" data-aos-delay="300">
-                                <svg class="w-8 h-8 mb-3" viewbox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                                    <path class="fill-current"
-                                          d="M20.243 6.757l.707.707-1.414 1.414-.707-.707a4 4 0 00-5.658 0l-.707.707-1.414-1.414.707-.707a6 6 0 018.486 0zm3.535-3.535l.707.707-1.414 1.414-.707-.707a9 9 0 00-12.728 0l-.707.707L7.515 3.93l.707-.707c4.296-4.296 11.26-4.296 15.556 0zM9 17.212V16a7 7 0 00-7-7H1V7h1a9 9 0 019 9v.788l2.302 5.18L11 23.117V24a4 4 0 01-4 4H5v3H3v-5h4a2 2 0 002-2v-2.118l1.698-.85L9 17.213zm12-.424V16a9 9 0 019-9h1v2h-1a7 7 0 00-7 7v1.212l-1.698 3.82 1.698.85V24a2 2 0 002 2h4v5h-2v-3h-2a4 4 0 01-4-4v-.882l-2.302-1.15L21 16.787zM16 12a1 1 0 110-2 1 1 0 010 2z"
-                                          fill-rule="nonzero"/>
-                                </svg>
+                               data-aos="fade-down" data-aos-anchor="[data-aos-id-zonesinter]" data-aos-delay="300">
+                                <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#ffffff"><path d="M22 7C22 7 22.5001 3 18 3C13.4999 3 14 7 14 7M22 7H14M22 7L21.7857 10M14 7L14.2143 10M21.7857 10L21.199 18.2137C21.0869 19.7837 19.7806 21 18.2067 21H17.7934C16.2195 21 14.9131 19.7837 14.801 18.2137L14.2143 10M21.7857 10H14.2143" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M10.0001 7C10.0001 7 10.5001 3 6.00007 3C1.5 3 2.00007 7 2.00007 7M10.0001 7H2.00007M10.0001 7L9.78579 10M2.00007 7L2.21436 10M9.78579 10L9.19909 18.2137C9.08695 19.7837 7.78063 21 6.20671 21H5.79343C4.21951 21 2.91319 19.7837 2.80105 18.2137L2.21436 10M9.78579 10H2.21436" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
                                 <div class=" text-xl font-bold tracking-tighter mb-1">Île de la Réunion</div>
                                 <div class="grow opacity-80 mb-4">62 Boulevard du Chaudron</div>
                                 <div class="grow opacity-80 mb-4">97490 Saint-Denis</div>
-                                <svg class="w-6 h-6 self-end transform -translate-x-2 group-hover:translate-x-0 transition duration-150 ease-in-out"
+                                <svg class="w-6 h-6 self-end transform -translate-x-2 group-hover:translate-x-0 transition duration-300 ease-in-out"
                                      viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                     <path class="fill-current"
                                           d="M13 11V5.057L22.72 12 13 18.943V13H2v-2h11zm2 4.057L19.28 12 15 8.943v6.114z"/>
@@ -895,21 +881,21 @@
                     <section class="relative">
                         <div class="max-w-6xl mx-auto px-4 sm:px-6 relative">
                             <div class="pt-16 pb-20">
-                                <div class="max-w-3xl mx-auto text-center pb-4">
+                                <div class="max-w-3xl mx-auto text-center pb-4" data-aos="fade-up" data-aos-delay="100">
                                     <p class="text-2xl md:text-3xl">Tu veux en savoir plus sur <span class="bigMars">Big Mars </span>?
                                     </p>
                                 </div>
 
-                                <div class="max-w-3xl mx-auto text-center pb-12 md:pb-16 text-balance">
+                                <div class="max-w-3xl mx-auto text-center pb-12 md:pb-16 text-balance" data-aos="fade-up" data-aos-delay="200">
                                     <p class="text-sm md:text-xl text-gray-600 dark:text-gray-400"> Une question ?
                                         Besoin de plus d'informations ? Contactez-nous, nous vous répondrons
                                         rapidement !</p>
                                 </div>
                                 <!-- Contact form -->
-                                <div class="max-w-xl mx-auto">
+                                <div class="max-w-xl mx-auto" data-aos-id-contactForm>
                                     {{ form_start(contactForm, { 'attr' : {'id': 'formContact', 'class': 'max-w-lg mx-auto' } }) }}
                                     {{ form_errors(contactForm) }}
-                                    <div class="flex flex-wrap -mx-3 mb-5">
+                                    <div class="flex flex-wrap -mx-3 mb-5" data-aos="fade-up" data-aos-anchor="[data-aos-id-contactForm]">
                                         <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                             {{ form_label(contactForm.lastName, "Nom <span class='text-red-500'>*</span>", {'label_attr': {'class': 'block text-gray-800 dark:text-gray-300 text-sm font-medium mb-1'}, 'label_html': true}) }}
                                             {{ form_widget(contactForm.lastName, {'attr': {'class': 'form-input w-full', 'placeholder': 'Entrez votre nom'}}) }}
@@ -921,14 +907,14 @@
                                             {{ form_errors(contactForm.firstName) }}
                                         </div>
                                     </div>
-                                    <div class="flex flex-wrap -mx-3 mb-5">
+                                    <div class="flex flex-wrap -mx-3 mb-5" data-aos="fade-up" data-aos-anchor="[data-aos-id-contactForm]" data-aos-delay="100">
                                         <div class="w-full px-3">
                                             {{ form_label(contactForm.email, "Email <span class='text-red-500'>*</span>", {'label_attr': {'class': 'block text-gray-800 dark:text-gray-300 text-sm font-medium mb-1'}, 'label_html': true}) }}
                                             {{ form_widget(contactForm.email, {'attr': {'class': 'form-input w-full', 'placeholder': 'Entrez votre adresse email'}}) }}
                                             {{ form_errors(contactForm.email) }}
                                         </div>
                                     </div>
-                                    <div class="flex flex-wrap -mx-3 mb-5">
+                                    <div class="flex flex-wrap -mx-3 mb-5" data-aos="fade-up" data-aos-anchor="[data-aos-id-contactForm]" data-aos-delay="200">
                                         <div class="w-full md:w-1/2 px-3 mb-4 md:mb-0">
                                             {{ form_label(contactForm.phone, "N° téléphone <span class='text-red-500'>*</span>", {'label_attr': {'class': 'block text-gray-800 dark:text-gray-300 text-sm font-medium mb-1'}, 'label_html': true}) }}
                                             {{ form_widget(contactForm.phone, {'attr': {'class': 'input-phone form-input w-full', 'placeholder': 'Entrez votre N° de téléphone'}}) }}
@@ -940,28 +926,28 @@
                                             {{ form_errors(contactForm.zipCode) }}
                                         </div>
                                     </div>
-                                    <div class="flex flex-wrap -mx-3 mb-5">
+                                    <div class="flex flex-wrap -mx-3 mb-5" data-aos="fade-up" data-aos-anchor="[data-aos-id-contactForm]" data-aos-delay="300">
                                         <div class="w-full px-3">
                                             {{ form_label(contactForm.type, "Vous êtes : <span class='text-red-500'>*</span>", {'label_attr': {'class': 'block text-gray-800 dark:text-gray-300 text-sm font-medium mb-3'}, 'label_html': true}) }}
                                             {{ form_widget(contactForm.type, {'attr': {'class': 'text-sm text-gray-600 dark:text-gray-400 ml-3'}}) }}
                                             {{ form_errors(contactForm.type) }}
                                         </div>
                                     </div>
-                                    <div class="flex flex-wrap -mx-3 mb-5" id="company-groups">
+                                    <div class="flex flex-wrap -mx-3 mb-5" id="company-groups" data-aos="fade-up" data-aos-anchor="[data-aos-id-contactForm]" data-aos-delay="400">
                                         <div class="w-full px-3">
                                             {{ form_label(contactForm.company, "Nom de l'entreprise <span class='text-red-500'>*</span>", {'label_attr': {'class': 'block text-gray-800 dark:text-gray-300 text-sm font-medium mb-1'}, 'label_html': true}) }}
                                             {{ form_widget(contactForm.company, {'attr': {'class': 'form-input w-full', 'placeholder': 'Entrez votre le nom de l\'entreprise'}}) }}
                                             {{ form_errors(contactForm.company) }}
                                         </div>
                                     </div>
-                                    <div class="flex flex-wrap -mx-3 mb-5">
+                                    <div class="flex flex-wrap -mx-3 mb-5" data-aos="fade-up" data-aos-anchor="[data-aos-id-contactForm]" data-aos-delay="500">
                                         <div class="w-full px-3">
                                             {{ form_label(contactForm.message, "Message <span class='text-red-500'>*</span>", {'label_attr': {'class': 'block text-gray-800 dark:text-gray-300 text-sm font-medium mb-1'}, 'label_html': true}) }}
                                             {{ form_widget(contactForm.message, {'attr': {'class': 'form-input w-full', 'placeholder': 'Nous sommes curieux de ce que vous avez à dire'}}) }}
                                             {{ form_errors(contactForm.message) }}
                                         </div>
                                     </div>
-                                    <div>
+                                    <div data-aos="fade-up" data-aos-anchor="[data-aos-id-contactForm]" data-aos-delay="600">
                                         {{ form_label(contactForm.agreeContact, "Accepter d'être recontacté par BigMars <span class='text-red-500'>*</span>", {'label_attr': {'class': 'block text-gray-800 dark:text-gray-300 text-sm font-medium mb-1'}, 'label_html': true}) }}
                                         {{ form_widget(contactForm.agreeContact) }}
                                         {{ form_errors(contactForm.agreeContact) }}
@@ -978,7 +964,7 @@
                                         <span class="font-medium">Une erreur est survenue !</span> Veuillez réessayer.
                                     </div>
                                     <div class="flex flex-wrap -mx-3 mt-6">
-                                        <div class="w-full px-3">
+                                        <div class="w-full px-3" data-aos="fade-up" data-aos-anchor="[data-aos-id-contactForm]" data-aos-delay="700">
                                             <button type="submit" class="btn text-white btn-bigMars w-full flex items-center">
                                                 Envoyer
                                                 <svg class="w-3 h-3 shrink-0 mt-px ml-2" viewBox="0 0 12 12"
@@ -987,7 +973,7 @@
                                                           d="M6.602 11l-.875-.864L9.33 6.534H0v-1.25h9.33L5.727 1.693l.875-.875 5.091 5.091z"/>
                                                 </svg>
                                             </button>
-                                            <p class="text-sm dark:text-gray-400 pt-1">(<span class='text-red-500'>*</span>) : Champs obligatoire</p>
+                                            <p class="text-sm dark:text-gray-400 pt-1" data-aos="fade-up" data-aos-anchor="[data-aos-id-contactForm]" data-aos-delay="800">(<span class='text-red-500'>*</span>) : Champs obligatoire</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1064,7 +1050,7 @@
 
             <!-- Newsletter -->
             <section>
-                <div class="max-w-6xl mx-auto px-4 sm:px-6 pb-12 md:pb-20">
+                <div class="max-w-6xl mx-auto px-4 sm:px-6 pb-12 md:pb-20" data-aos="fade-up" data-aos-delay="200">
                     <!-- Newsletter box -->
                     <div class="dark relative bg-gray-800 py-10 px-8 md:py-16 md:px-12">
                         <!-- Background illustration -->
