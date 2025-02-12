@@ -7,8 +7,36 @@ body {
 	color: white;
 }
 
-.robotPosture2{
-	transform: rotateZ(36deg);
+@keyframes rotateRobot {
+	0% {
+		transform: rotateZ(0deg);
+		left: 0;
+		bottom: 0;
+	}
+	25% {
+		transform: rotateZ(9deg);
+		left: 12%;
+		bottom: 2rem;
+	}
+	50% {
+		transform: rotateZ(18deg);
+		left: 24%;
+		bottom: 5rem;
+	}
+	75% {
+		transform: rotateZ(27deg);
+		left: 36%;
+		bottom: 7rem;
+	}
+	100% {
+		transform: rotateZ(36deg);
+		left: 50%;
+		bottom: 9rem;
+	}
+}
+
+.robotPosture2 {
+	animation: rotateRobot 1.5s linear forwards;
 }
 
 #titre {
