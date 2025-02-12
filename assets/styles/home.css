@@ -40,6 +40,20 @@ body {
 	color: #ffd045;
 }
 
+.swiper-pagination-bullet {
+	height: 1rem;
+	width: 1rem;
+}
+
+.swiper-pagination-horizontal.swiper-pagination-bullets.swiper-pagination-bullets-dynamic {
+	left: 5%;
+	top: 0;
+}
+
+.swiper-pagination-bullet-active {
+	background: #caa537;
+}
+
 .bg-card-event{
 	background-color: #665169;
 }

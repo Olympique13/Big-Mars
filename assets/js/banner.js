@@ -4,7 +4,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
    if (banner && btnCloseBanner) {
        if (sessionStorage.getItem('bannerClosed') == 'true') {
-           banner.style.display = 'none';
+            // setTimeout(() => {
+                banner.style.display = 'none';
+            // }, 500)
+           
         }
 
        btnCloseBanner.addEventListener('click', function() {

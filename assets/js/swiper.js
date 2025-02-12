@@ -7,7 +7,7 @@ import 'swiper/css/pagination';
 const carouselEl = document.querySelectorAll( '.slider-event' );
 if ( carouselEl.length > 0 ) {
     const carousel = new Swiper( '.slider-event', {
-        modules: [ Navigation ],
+        modules: [ Navigation, Pagination ],
         slidesPerView: 1.2,
         // grabCursor: true,
         loop: true,
@@ -22,6 +22,11 @@ if ( carouselEl.length > 0 ) {
             nextEl: '.carousel-next',
             prevEl: '.carousel-prev',
         },
+        pagination : {
+            el : '.swiper-pagination',
+            clickable: true,
+            dynamicBullets: true,
+        },
         breakpoints : {
             768 : {
                 slidesPerView: 2.2,
@@ -30,8 +35,5 @@ if ( carouselEl.length > 0 ) {
                 slidesPerView: 3,
             }
         },
-        pagination : {
-            el : '.swiper-pagination'
-        }
     } );
 }
