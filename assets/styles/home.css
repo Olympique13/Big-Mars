@@ -119,6 +119,48 @@ body {
 	}
 }
 
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+	/* Pose robot 2 */
+	@keyframes rotateRobotMobile {
+		0% {
+			left: 0;
+			top: 0;
+		}
+		100% {
+			left: 31px;
+			top: -115px;
+		}
+	}
+
+	.robotPosture2 {
+		animation: rotateRobotMobile 1.5s linear forwards;
+	}
+
+	/* Pose robot téléphone */
+	@keyframes rotateRobotAssis {
+		0% {
+			bottom: 0;
+			left: 0;
+			opacity: 0;
+		}
+		90% {
+			opacity: 0.1;
+		}
+		98% {
+			opacity: 0.5;
+		}
+		100% {
+			bottom:465px;
+			left: -100px;
+			opacity: 1;
+		}
+	}
+	
+	.robotPosture1 {
+		animation: rotateRobotAssis 1.5s linear forwards;
+	}
+}
+
 #titre {
 	color: #ffd045;
 }
