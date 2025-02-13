@@ -7,7 +7,7 @@ body {
 	color: white;
 }
 
-/* Pose robot 1 */
+/* Pose robot 1 et reverse*/
 @keyframes rotateRobot {
 	0% {
 		transform: rotateZ(0deg);
@@ -40,7 +40,39 @@ body {
 	animation: rotateRobot 1.5s linear forwards;
 }
 
-/* Pose robot 2 */
+@keyframes rotateRobotReverse {
+	0% {
+		transform: rotateZ(36deg);
+		left: 50%;
+		bottom: 9rem;
+	}
+	25% {
+		transform: rotateZ(27deg);
+		left: 36%;
+		bottom: 7rem;
+	}
+	50% {
+		transform: rotateZ(18deg);
+		left: 24%;
+		bottom: 5rem;
+	}
+	75% {
+		transform: rotateZ(9deg);
+		left: 12%;
+		bottom: 2rem;
+	}
+	100% {
+		transform: rotateZ(0deg);
+		left: 0;
+		bottom: 0;
+	}
+}
+
+.robotPosture2_reverse {
+	animation: rotateRobotReverse 1.5s linear forwards;
+}
+
+/* Pose robot 2 & reverse*/
 @keyframes rotateRobotTelephone {
 	0% {
 		top: 0;
@@ -71,10 +103,40 @@ body {
 
 .robotPostureTelephone {
 	transform: rotateY(180deg);
+	animation: rotateRobotTelephone 1s linear forwards;
 }
 
-.robotPostureTelephone {
-	animation: rotateRobotTelephone 1.5s linear forwards;
+@keyframes rotateRobotTelephoneReverse {
+	0% {
+		left: 16rem;
+		top:30%;
+		height: 32rem;
+	}
+	25% {
+		
+		left: 12rem;
+		top: 22.5%;
+		height: 24rem;
+	}
+	50% {
+		left: 8rem;
+		top: 15%;
+		height: 16rem;
+	}
+	75% {
+		left: 4rem;
+		top: 7.5%;
+		height: 8rem;
+	}
+	100% {
+		left: 0;
+		top:0;
+		height: 0;
+	}
+}
+
+.robotPostureTelephone_reverse {
+	animation: rotateRobotTelephoneReverse 1.5s linear forwards;
 }
 
 /* Tablette */
@@ -93,6 +155,21 @@ body {
 
 	.robotPosture2 {
 		animation: rotateRobotMobile 1.5s linear forwards;
+	}
+
+	@keyframes rotateRobotMobileReverse {
+		0% {
+			left: 31px;
+			top: -115px;
+		}
+		100% {
+			left: 0;
+			top: 0;
+		}
+	}
+
+	.robotPosture2_reverse {
+		animation: rotateRobotMobileReverse 1.5s linear forwards;
 	}
 
 	/* Pose robot téléphone */
@@ -137,6 +214,21 @@ body {
 		animation: rotateRobotMobile 1.5s linear forwards;
 	}
 
+	@keyframes rotateRobotMobileReverse {
+		0% {
+			left: 31px;
+			top: -115px;
+		}
+		100% {
+			left: 0;
+			top: 0;
+		}
+	}
+
+	.robotPosture2_reverse {
+		animation: rotateRobotMobileReverse 1.5s linear forwards;
+	}
+
 	/* Pose robot téléphone */
 	@keyframes rotateRobotAssis {
 		0% {
@@ -159,6 +251,26 @@ body {
 	
 	.robotPosture1 {
 		animation: rotateRobotAssis 1.5s linear forwards;
+	}
+
+	@keyframes rotateRobotAssisReverse {
+		0% {
+			bottom:465px;
+			left: -100px;
+			opacity: 1;
+		}
+		1% {
+			opacity: 0;
+		}
+		100% {
+			bottom:0;
+			left: 0;
+			opacity:0;
+		}
+	}
+	
+	.robotPosture1_reverse {
+		animation: rotateRobotAssisReverse 1s linear forwards;
 	}
 }
 
