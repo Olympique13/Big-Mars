@@ -73,43 +73,43 @@ document.addEventListener( 'DOMContentLoaded', function () {
         });
     });
 
-    window.addEventListener('scroll', function() {
-        var robot1 = this.document.getElementById('robotPosture2');
-        var robot2 = this.document.getElementById('robotPostureTelephone');
-        var robotAssis = this.document.getElementById('robotAssis')
+    // window.addEventListener('scroll', function() {
+    //     var robot1 = this.document.getElementById('robotPosture2');
+    //     var robot2 = this.document.getElementById('robotPostureTelephone');
+    //     var robotAssis = this.document.getElementById('robotAssis')
 
-        if(robot1){
-            if (window.scrollY > 250 || window.scrollY > 130) {
-                robot1.classList.remove('robotPosture2');
-                robot1.classList.add('robotPosture2_reverse');
-                robot1.classList.add('robotPosture2_reverse');
-            }
-            else {
-                robot1.classList.add('robotPosture2');
-                robot1.classList.remove('robotPosture2_reverse');
-            }
-        }
-        if(robot2){
-            if (window.scrollY > 2630 || window.scrollY < 1300) {
-                robot2.classList.remove('robotPostureTelephone');
-                robot2.classList.add('robotPostureTelephone_reverse');
-            } else {
-                robot2.classList.add('robotPostureTelephone');
-                robot2.classList.remove('robotPostureTelephone_reverse');
-            }
-        }
-        if(robotAssis){
-            if(window.scrollY > 2035 || window.scrollY < 1215 ){
-                robotAssis.classList.remove('robotPosture1');
-                robotAssis.classList.add('robotPosture1_reverse');
-            } else {
-                robotAssis.classList.add('robotPosture1');
-                robotAssis.classList.remove('robotPosture1_reverse');
-            }
-        }
-    });
+    //     if(robot1){
+    //         if (window.scrollY > 250 || window.scrollY > 130) {
+    //             robot1.classList.remove('robotPosture2');
+    //             robot1.classList.add('robotPosture2_reverse');
+    //             robot1.classList.add('robotPosture2_reverse');
+    //         }
+    //         else {
+    //             robot1.classList.add('robotPosture2');
+    //             robot1.classList.remove('robotPosture2_reverse');
+    //         }
+    //     }
+    //     if(robot2){
+    //         if (window.scrollY > 2630 || window.scrollY < 1300) {
+    //             robot2.classList.remove('robotPostureTelephone');
+    //             robot2.classList.add('robotPostureTelephone_reverse');
+    //         } else {
+    //             robot2.classList.add('robotPostureTelephone');
+    //             robot2.classList.remove('robotPostureTelephone_reverse');
+    //         }
+    //     }
+    //     if(robotAssis){
+    //         if(window.scrollY > 2035 || window.scrollY < 1215 ){
+    //             robotAssis.classList.remove('robotPosture1');
+    //             robotAssis.classList.add('robotPosture1_reverse');
+    //         } else {
+    //             robotAssis.classList.add('robotPosture1');
+    //             robotAssis.classList.remove('robotPosture1_reverse');
+    //         }
+    //     }
+    // });
 
-    console.log(window.scrollY);
+    // console.log(window.scrollY);
 
 } );
 

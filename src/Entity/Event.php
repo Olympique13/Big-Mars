@@ -44,8 +44,8 @@ class Event
     #[Gedmo\Timestampable(on: 'update')]
     private ?\DateTimeImmutable $updatedAt = null;
 
-    #[Vich\UploadableField(mapping: 'Event', fileNameProperty: 'imageName', size: 'imageSize')]
-    #[Assert\File(maxSize: '20M', mimeTypes: ['image/jpeg', 'image/png', 'image/gif'])]
+    #[Vich\UploadableField(mapping: 'event', fileNameProperty: 'imageName', size: 'imageSize')]
+    #[Assert\File(maxSize: '20M', mimeTypes: ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'])]
     private ?File $imageFile = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -57,7 +57,7 @@ class Event
     /**
      * @var Collection<int, EventSlot>
      */
-    #[ORM\OneToMany(targetEntity: EventSlot::class, mappedBy: 'event' , cascade: ["persist"])]
+    #[ORM\OneToMany(targetEntity: EventSlot::class, mappedBy: 'event', cascade: ["persist", "remove"])]
     private Collection $eventSlots;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -72,8 +72,8 @@ class Event
     #[ORM\Column(type: Types::TEXT)]
     private ?string $shortDescription = null;
 
-    #[Vich\UploadableField(mapping: 'BGEvent', fileNameProperty: 'bgImageName', size: 'bgImageSize')]
-    #[Assert\File(maxSize: '20M', mimeTypes: ['image/jpeg', 'image/png', 'image/gif'])]
+    #[Vich\UploadableField(mapping: 'bg_event', fileNameProperty: 'bgImageName', size: 'bgImageSize')]
+    #[Assert\File(maxSize: '20M', mimeTypes: ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'])]
     private ?File $bgImageFile = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -305,9 +305,9 @@ class Event
         return $this->bgImageName;
     }
 
-    public function setBgImageName(string $bgImageName): static
+    public function setBgImageName(?string $bgImageName): static
     {
-        $this->bgImageName = $bgImageName;
+        $this->bgImageName = $bgImageName ?? '';
 
         return $this;
     }
@@ -317,9 +317,9 @@ class Event
         return $this->bgImageSize;
     }
 
-    public function setBgImageSize(int $bgImageSize): static
+    public function setBgImageSize(?int $bgImageSize): static
     {
-        $this->bgImageSize = $bgImageSize;
+        $this->bgImageSize = $bgImageSize ?? 0;
 
         return $this;
     }

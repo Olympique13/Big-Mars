@@ -3,11 +3,11 @@ vich_uploader:
   metadata:
     type: attribute
   mappings:
-    Event:
+    event:
       uri_prefix: /images/events
-      upload_destination: '%kernel.project_dir%/assets/images/events'
+      upload_destination: '%kernel.project_dir%/public/upload/images/event'
       namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
-    BGEvent:
-      uri_prefix: /images/bgEvent
-      upload_destination: '%kernel.project_dir%/assets/images/bgEvent'
+    bg_event:
+      uri_prefix: /images/bgEvents
+      upload_destination: '%kernel.project_dir%/public/upload/images/bgEvent'
       namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

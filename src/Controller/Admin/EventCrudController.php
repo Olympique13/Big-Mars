@@ -42,10 +42,15 @@ class EventCrudController extends AbstractCrudController
             AssociationField::new('place', 'Lieu'),
             SlugField::new('slug', 'Slug')->setTargetFieldName('title')->hideOnIndex(),
             TextField::new('imageFile', 'Image')->setFormType(VichFileType::class)->onlyOnForms()->setRequired($pageName !== Crud::PAGE_EDIT),
-            ImageField::new('imageName', 'Aperçu de l\'image')->setBasePath('build/images/events')->onlyOnIndex(),
+            ImageField::new('imageName', 'Aperçu de l\'image')->setBasePath('upload/images/event')->onlyOnIndex(),
             TextField::new('bgImageFile', 'Arrière plan')->setFormType(VichFileType::class)->onlyOnForms()->setRequired($pageName !== Crud::PAGE_EDIT),
-            ImageField::new('bgImageName', 'Image d\'arrière plan')->setBasePath('build/images/bgEvents')->hideOnIndex()->hideOnForm(),
-            TextEditorField::new('content', 'Description'),
+            ImageField::new('bgImageName', 'Image d\'arrière plan')->setBasePath('upload/images/event')->hideOnIndex()->hideOnForm()->setRequired(false),
+            TextEditorField::new('content', 'Description')->setTrixEditorConfig([
+                'blockAttributes' => [
+                    'default' => ['tagName' => 'p'],
+                    'heading1' => ['tagName' => 'h2'],
+                ]
+            ]),
             IntegerField::new('maxParticipant', 'Participants max')->setRequired(true),
             CollectionField::new('eventSlots', 'Créneaux')->setRequired(true)->setEntryIsComplex()->useEntryCrudForm(EventSlotCrudController::class)->allowDelete(true),
             DateTimeField::new('createdAt', 'Date de création')->setFormat('dd MMM y HH:mm')->hideOnForm()->hideOnIndex(),
