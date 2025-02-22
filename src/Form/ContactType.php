@@ -24,7 +24,7 @@ class ContactType extends AbstractType
             ->add('phone')
             ->add('message')
             ->add('type', ChoiceType::class, [
-                'data' => 'Joueur',
+                'data' => '',
                 'choices' => [
                     'Un joueur' => 'Joueur',
                     'Une entreprise' => 'Entreprise',
