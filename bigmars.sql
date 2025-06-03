@@ -57,7 +57,7 @@ CREATE TABLE `category` (
   `created_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
   `updated_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,7 +66,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'escape game','escape-game','2025-01-27 16:33:56','2025-01-27 16:33:56');
+INSERT INTO `category` VALUES (1,'escape game','escape-game','2025-01-27 16:33:56','2025-01-27 16:33:56'),(2,'Sortie','sortie','2025-06-03 10:27:46','2025-06-03 10:27:46');
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -156,7 +156,7 @@ CREATE TABLE `event` (
   KEY `IDX_3BAE0AA7DA6A219` (`place_id`),
   CONSTRAINT `FK_3BAE0AA712469DE2` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
   CONSTRAINT `FK_3BAE0AA7DA6A219` FOREIGN KEY (`place_id`) REFERENCES `place` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -165,7 +165,7 @@ CREATE TABLE `event` (
 
 LOCK TABLES `event` WRITE;
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
-INSERT INTO `event` VALUES (4,1,'Big-Cache','ok','<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dignissim augue nibh, a luctus turpis feugiat vitae. Nulla vitae volutpat lacus. Sed lacinia libero lectus. Suspendisse potenti. Maecenas quis pellentesque risus. Quisque lobortis eros sit amet risus tristique bibendum. Sed consequat dolor nec felis placerat fringilla id ac urna. Nam fringilla sem at nisi blandit ornare. Quisque iaculis eros at sapien aliquet, nec maximus tortor consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat mi ut dapibus efficitur. Praesent dignissim eleifend consectetur. Aliquam lobortis auctor interdum. Donec tristique mauris et lobortis lacinia. Mauris lacinia vehicula purus, eget aliquet quam efficitur eget.<br><br></p><p>Fusce rhoncus, justo et auctor sodales, nisi urna finibus diam, id pretium massa lectus in metus. Morbi tempus varius justo, sit amet iaculis ex dapibus ac. Donec fringilla nisl et leo maximus, ac tempor ante tempor. Integer sed augue in nisi luctus tempus. Vivamus interdum accumsan urna eu fermentum. Etiam non consequat turpis. Sed venenatis, metus ac faucibus condimentum, risus tellus finibus tortor, a congue tellus lacus quis velit. Nullam gravida sem id enim faucibus, ac sollicitudin arcu iaculis. Vivamus quis urna vitae nisl semper mattis. Nunc erat urna, cursus vitae varius at, finibus sed nisl. Ut tincidunt, tortor sit amet viverra aliquet, ex risus pulvinar ex, et euismod nisi nisi quis sem. Quisque at ligula id odio venenatis maximus. Suspendisse ut commodo urna, non imperdiet velit.<br><br></p><p>Maecenas rhoncus, leo sed commodo malesuada, dui turpis tempus velit, in tincidunt augue diam ac nunc. Morbi tellus mauris, viverra at lacinia non, porta nec sem. Nullam vitae erat vitae leo cursus mollis ut in ipsum. Sed sagittis elit eros, in lacinia dolor interdum lobortis. Mauris vel leo tincidunt, facilisis erat nec, cursus enim. Nunc nisi ex, rhoncus sit amet aliquam ac, porttitor a turpis. Praesent suscipit tincidunt nisl, eu tincidunt leo. Vestibulum lacinia magna vitae erat dignissim, nec gravida lacus imperdiet. Vestibulum eget massa dictum, imperdiet nibh eget, ultricies enim. Integer turpis justo, dictum a ullamcorper a, consectetur in nunc. Vestibulum sed turpis malesuada, congue orci eu, vestibulum leo. Mauris auctor finibus est quis ultricies.<br><br></p><p>Nam sed justo ac lacus eleifend posuere. Nulla porttitor lobortis justo at posuere. Ut eget quam vel tortor feugiat accumsan. Phasellus sed nisl nulla. Nunc eu ultricies risus, non faucibus magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum congue, quam quis mattis cursus, purus purus blandit odio, ac pellentesque est ante in lectus. Vivamus non massa euismod, euismod dui sit amet, viverra nisl. Donec quis mauris nec mauris dictum volutpat. Fusce ultricies et ex in tempus. Mauris sollicitudin congue leo, et pulvinar mi. Aenean lobortis ipsum non pharetra fringilla.</p>','2025-03-04 23:28:39','2025-04-22 16:01:24','acer-wallpaper-02-3840x2400-67c77e975573c506540821.jpg',8894922,1,5,'Un grand cache cache à la réunion','acer-wallpaper-02-3840x2400-67c77e97577db248447273.jpg',8894922,1),(5,1,'Notre escape game','notre-escape-game','<p>C\'est le petit escape game</p>','2025-03-04 23:30:39','2025-03-04 23:30:39','acer-wallpaper-03-3840x2400-67c77f0f06d27395244280.jpg',15192435,1,5,'Un petit escape game pour développer les softs skills','acer-wallpaper-03-3840x2400-67c77f0f084a0088500216.jpg',15192435,1);
+INSERT INTO `event` VALUES (4,1,'Big-Cache','ok','<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dignissim augue nibh, a luctus turpis feugiat vitae. Nulla vitae volutpat lacus. Sed lacinia libero lectus. Suspendisse potenti. Maecenas quis pellentesque risus. Quisque lobortis eros sit amet risus tristique bibendum. Sed consequat dolor nec felis placerat fringilla id ac urna. Nam fringilla sem at nisi blandit ornare. Quisque iaculis eros at sapien aliquet, nec maximus tortor consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed placerat mi ut dapibus efficitur. Praesent dignissim eleifend consectetur. Aliquam lobortis auctor interdum. Donec tristique mauris et lobortis lacinia. Mauris lacinia vehicula purus, eget aliquet quam efficitur eget.<br><br></p><p>Fusce rhoncus, justo et auctor sodales, nisi urna finibus diam, id pretium massa lectus in metus. Morbi tempus varius justo, sit amet iaculis ex dapibus ac. Donec fringilla nisl et leo maximus, ac tempor ante tempor. Integer sed augue in nisi luctus tempus. Vivamus interdum accumsan urna eu fermentum. Etiam non consequat turpis. Sed venenatis, metus ac faucibus condimentum, risus tellus finibus tortor, a congue tellus lacus quis velit. Nullam gravida sem id enim faucibus, ac sollicitudin arcu iaculis. Vivamus quis urna vitae nisl semper mattis. Nunc erat urna, cursus vitae varius at, finibus sed nisl. Ut tincidunt, tortor sit amet viverra aliquet, ex risus pulvinar ex, et euismod nisi nisi quis sem. Quisque at ligula id odio venenatis maximus. Suspendisse ut commodo urna, non imperdiet velit.<br><br></p><p>Maecenas rhoncus, leo sed commodo malesuada, dui turpis tempus velit, in tincidunt augue diam ac nunc. Morbi tellus mauris, viverra at lacinia non, porta nec sem. Nullam vitae erat vitae leo cursus mollis ut in ipsum. Sed sagittis elit eros, in lacinia dolor interdum lobortis. Mauris vel leo tincidunt, facilisis erat nec, cursus enim. Nunc nisi ex, rhoncus sit amet aliquam ac, porttitor a turpis. Praesent suscipit tincidunt nisl, eu tincidunt leo. Vestibulum lacinia magna vitae erat dignissim, nec gravida lacus imperdiet. Vestibulum eget massa dictum, imperdiet nibh eget, ultricies enim. Integer turpis justo, dictum a ullamcorper a, consectetur in nunc. Vestibulum sed turpis malesuada, congue orci eu, vestibulum leo. Mauris auctor finibus est quis ultricies.<br><br></p><p>Nam sed justo ac lacus eleifend posuere. Nulla porttitor lobortis justo at posuere. Ut eget quam vel tortor feugiat accumsan. Phasellus sed nisl nulla. Nunc eu ultricies risus, non faucibus magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum congue, quam quis mattis cursus, purus purus blandit odio, ac pellentesque est ante in lectus. Vivamus non massa euismod, euismod dui sit amet, viverra nisl. Donec quis mauris nec mauris dictum volutpat. Fusce ultricies et ex in tempus. Mauris sollicitudin congue leo, et pulvinar mi. Aenean lobortis ipsum non pharetra fringilla.</p>','2025-03-04 23:28:39','2025-04-22 16:01:24','acer-wallpaper-02-3840x2400-67c77e975573c506540821.jpg',8894922,1,5,'Un grand cache cache à la réunion','acer-wallpaper-02-3840x2400-67c77e97577db248447273.jpg',8894922,1),(5,1,'Notre escape game','notre-escape-game','<p>C\'est le petit escape game</p>','2025-03-04 23:30:39','2025-03-04 23:30:39','acer-wallpaper-03-3840x2400-67c77f0f06d27395244280.jpg',15192435,1,5,'Un petit escape game pour développer les softs skills','acer-wallpaper-03-3840x2400-67c77f0f084a0088500216.jpg',15192435,1),(6,2,'Randonnée instructive','randonnee-instructive','<p>Participez à une randonnée magnifiques dans nos calanques de Marseille pour découvrir ce qui nous entoures</p>','2025-06-03 10:27:34','2025-06-03 10:27:59','screenshot-2025-06-03-102118-683eb1f66341d635622933.png',290634,1,15,'Découvrez ce qui nous entoures dans la nature à travers cette randonnée','screenshot-2025-06-03-102118-683eb1f664540827584329.png',290634,1);
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -220,7 +220,7 @@ CREATE TABLE `event_slot` (
   PRIMARY KEY (`id`),
   KEY `IDX_B3C56CCC71F7E88B` (`event_id`),
   CONSTRAINT `FK_B3C56CCC71F7E88B` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -229,7 +229,7 @@ CREATE TABLE `event_slot` (
 
 LOCK TABLES `event_slot` WRITE;
 /*!40000 ALTER TABLE `event_slot` DISABLE KEYS */;
-INSERT INTO `event_slot` VALUES (4,4,'2025-04-29 14:30:00','2025-03-29 18:30:00','2025-03-04 23:28:39','2025-04-22 14:03:08',1),(5,5,'2025-03-03 23:30:00','2025-03-03 23:30:00','2025-03-04 23:30:39','2025-03-04 23:30:39',1);
+INSERT INTO `event_slot` VALUES (4,4,'2025-06-25 14:30:00','2025-06-25 18:30:00','2025-03-04 23:28:39','2025-06-03 10:26:15',1),(5,5,'2025-06-27 11:30:00','2025-06-27 16:30:00','2025-03-04 23:30:39','2025-06-03 10:25:44',1),(6,6,'2025-06-28 10:27:00','2025-06-28 16:27:00','2025-06-03 10:27:34','2025-06-03 10:27:34',1);
 /*!40000 ALTER TABLE `event_slot` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -334,4 +334,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-01 11:53:43
+-- Dump completed on 2025-06-03 13:51:18
