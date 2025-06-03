@@ -28,7 +28,6 @@ class ContactCrudController extends AbstractCrudController
 
     public function configureCrud(Crud $crud): Crud
     {
-        
         return $crud
         ->setDefaultSort(['createdAt' => 'DESC'])
         ->setPaginatorPageSize(15)

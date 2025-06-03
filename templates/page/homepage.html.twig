@@ -131,7 +131,7 @@
                                         </defs>
                                     </svg>
                                     <!-- Image Robot -->
-                                    <img src="build/images/robot/posture2.png" id="robotPosture2" alt="Robot posture 2" class="robotPosture2 md:robotPosture2 hidden md:block md:absolute ">
+                                    <img src="{{ asset('build/images/robot/posture2.png') }}" id="robotPosture2" alt="Robot posture 2" class="robotPosture2 md:robotPosture2 hidden md:block md:absolute ">
                                     <img
                                     class="absolute object-cover object-center"
                                     src="{{ asset('build/images/homepage/img_iphone_bigmars.png') }}"
@@ -140,7 +140,7 @@
                                     <!-- Image inside mockup size: 290x624px (or 580x1248px for Retina devices) -->
                                     <!-- iPhone mockup -->
                                     <img class="relative mx-auto md:mr-0 w-[344px] md:w-[290px] max-w-md h-auto pointer-events-none"
-                                        src="/build/images/iphone-mockup.png" alt="iPhone mockup">
+                                        src="{{ asset('build/images/iphone-mockup.png') }}" alt="iPhone mockup">
 
                                     <!-- Play button -->
                                     {# <a class="absolute hover:opacity-75 transition duration-150 ease-in-out"
@@ -601,7 +601,7 @@
                                    class="card-event block relative h-full dark:bg-gray-200 bg-card-event shadow-lg rounded-lg overflow-hidden">
                                     <div class="overflow-hidden relative">
                                         <img class="img-event object-cover w-full h-56 sm:h-48 md:h-56"
-                                             src="build/images/events/{{ events.imageName }}"
+                                             src="upload/images/event/{{ events.imageName }}"
                                              alt="{{ events.title }}"/>
                                         <div class="absolute bottom-2 left-2">
                                             <ul class="flex flex-wrap align-center gap-2">
